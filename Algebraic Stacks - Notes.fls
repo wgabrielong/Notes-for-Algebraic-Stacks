@@ -1,8 +1,8 @@
-PWD c:/Users/bullg/OneDrive - Bowdoin College/Extracurricular Math Courses/Algebraic Stacks/Notes-for-Stacks
+PWD c:/Users/bullg/OneDrive - Bowdoin College/Extracurricular Math Courses/Algebraic Stacks/Notes-for-Algebraic-Stacks
 INPUT c:/texlive/2023/texmf.cnf
 INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/bullg/OneDrive - Bowdoin College/Extracurricular Math Courses/Algebraic Stacks/Notes-for-Stacks/Algebraic Stacks - Notes.tex
+INPUT c:/Users/bullg/OneDrive - Bowdoin College/Extracurricular Math Courses/Algebraic Stacks/Notes-for-Algebraic-Stacks/Algebraic Stacks - Notes.tex
 OUTPUT Algebraic Stacks - Notes.log
 INPUT c:/texlive/2023/texmf-dist/tex/latex/amscls/amsart.cls
 INPUT c:/texlive/2023/texmf-dist/tex/latex/amscls/amsart.cls
@@ -1159,6 +1159,45 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/stmaryrd/stmaryrd.sty
 INPUT ./Algebraic Stacks - Notes.aux
 INPUT Algebraic Stacks - Notes.aux
 INPUT Algebraic Stacks - Notes.aux
+INPUT ./Section 1.aux
+INPUT Section 1.aux
+INPUT Section 1.aux
+INPUT ./Section 2.aux
+INPUT Section 2.aux
+INPUT Section 2.aux
+INPUT ./Section 3.aux
+INPUT Section 3.aux
+INPUT Section 3.aux
+INPUT ./Section 4.aux
+INPUT Section 4.aux
+INPUT Section 4.aux
+INPUT ./Section 5.aux
+INPUT Section 5.aux
+INPUT Section 5.aux
+INPUT ./Section 6.aux
+INPUT Section 6.aux
+INPUT Section 6.aux
+INPUT ./Section 7.aux
+INPUT Section 7.aux
+INPUT Section 7.aux
+INPUT ./Section 8.aux
+INPUT Section 8.aux
+INPUT Section 8.aux
+INPUT ./Section 9.aux
+INPUT Section 9.aux
+INPUT Section 9.aux
+INPUT ./Section 10.aux
+INPUT Section 10.aux
+INPUT Section 10.aux
+INPUT ./Section 11.aux
+INPUT Section 11.aux
+INPUT Section 11.aux
+INPUT ./Section 12.aux
+INPUT Section 12.aux
+INPUT Section 12.aux
+INPUT ./Section 13.aux
+INPUT Section 13.aux
+INPUT Section 13.aux
 OUTPUT Algebraic Stacks - Notes.aux
 INPUT c:/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
@@ -1248,8 +1287,139 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT ./Algebraic Stacks - Notes.toc
 INPUT Algebraic Stacks - Notes.toc
 INPUT Algebraic Stacks - Notes.toc
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 OUTPUT Algebraic Stacks - Notes.toc
 INPUT c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./Section 1.tex
+INPUT ./Section 1.tex
+INPUT ./Section 1.tex
+OUTPUT Section 1.aux
+INPUT ./Section 1.tex
+INPUT ./Section 1.tex
+INPUT ./Section 1.tex
+INPUT Section 1.tex
+INPUT ./Section 1.tex
+INPUT Section 1.tex
+INPUT ./Section 2.tex
+INPUT ./Section 2.tex
+INPUT ./Section 2.tex
+OUTPUT Section 2.aux
+INPUT ./Section 2.tex
+INPUT ./Section 2.tex
+INPUT ./Section 2.tex
+INPUT Section 2.tex
+INPUT ./Section 2.tex
+INPUT Section 2.tex
+INPUT ./Section 3.tex
+INPUT ./Section 3.tex
+INPUT ./Section 3.tex
+OUTPUT Section 3.aux
+INPUT ./Section 3.tex
+INPUT ./Section 3.tex
+INPUT ./Section 3.tex
+INPUT Section 3.tex
+INPUT ./Section 3.tex
+INPUT Section 3.tex
+INPUT ./Section 4.tex
+INPUT ./Section 4.tex
+INPUT ./Section 4.tex
+OUTPUT Section 4.aux
+INPUT ./Section 4.tex
+INPUT ./Section 4.tex
+INPUT ./Section 4.tex
+INPUT Section 4.tex
+INPUT ./Section 4.tex
+INPUT Section 4.tex
+INPUT ./Section 5.tex
+INPUT ./Section 5.tex
+INPUT ./Section 5.tex
+OUTPUT Section 5.aux
+INPUT ./Section 5.tex
+INPUT ./Section 5.tex
+INPUT ./Section 5.tex
+INPUT Section 5.tex
+INPUT ./Section 5.tex
+INPUT Section 5.tex
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+OUTPUT Section 6.aux
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+INPUT Section 6.tex
+INPUT ./Section 6.tex
+INPUT Section 6.tex
+INPUT ./Section 7.tex
+INPUT ./Section 7.tex
+INPUT ./Section 7.tex
+OUTPUT Section 7.aux
+INPUT ./Section 7.tex
+INPUT ./Section 7.tex
+INPUT ./Section 7.tex
+INPUT Section 7.tex
+INPUT ./Section 7.tex
+INPUT Section 7.tex
+INPUT ./Section 8.tex
+INPUT ./Section 8.tex
+INPUT ./Section 8.tex
+OUTPUT Section 8.aux
+INPUT ./Section 8.tex
+INPUT ./Section 8.tex
+INPUT ./Section 8.tex
+INPUT Section 8.tex
+INPUT ./Section 8.tex
+INPUT Section 8.tex
+INPUT ./Section 9.tex
+INPUT ./Section 9.tex
+INPUT ./Section 9.tex
+OUTPUT Section 9.aux
+INPUT ./Section 9.tex
+INPUT ./Section 9.tex
+INPUT ./Section 9.tex
+INPUT Section 9.tex
+INPUT ./Section 9.tex
+INPUT Section 9.tex
+INPUT ./Section 10.tex
+INPUT ./Section 10.tex
+INPUT ./Section 10.tex
+OUTPUT Section 10.aux
+INPUT ./Section 10.tex
+INPUT ./Section 10.tex
+INPUT ./Section 10.tex
+INPUT Section 10.tex
+INPUT ./Section 10.tex
+INPUT Section 10.tex
+INPUT ./Section 11.tex
+INPUT ./Section 11.tex
+INPUT ./Section 11.tex
+OUTPUT Section 11.aux
+INPUT ./Section 11.tex
+INPUT ./Section 11.tex
+INPUT ./Section 11.tex
+INPUT Section 11.tex
+INPUT ./Section 11.tex
+INPUT Section 11.tex
+INPUT ./Section 12.tex
+INPUT ./Section 12.tex
+INPUT ./Section 12.tex
+OUTPUT Section 12.aux
+INPUT ./Section 12.tex
+INPUT ./Section 12.tex
+INPUT ./Section 12.tex
+INPUT Section 12.tex
+INPUT ./Section 12.tex
+INPUT Section 12.tex
+INPUT ./Section 13.tex
+INPUT ./Section 13.tex
+INPUT ./Section 13.tex
+OUTPUT Section 13.aux
+INPUT ./Section 13.tex
+INPUT ./Section 13.tex
+INPUT ./Section 13.tex
+INPUT Section 13.tex
+INPUT ./Section 13.tex
+INPUT Section 13.tex
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
@@ -1268,6 +1438,45 @@ INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmti8.tfm
 INPUT c:/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT Algebraic Stacks - Notes.aux
+INPUT ./Section 1.aux
+INPUT Section 1.aux
+INPUT Section 1.aux
+INPUT ./Section 2.aux
+INPUT Section 2.aux
+INPUT Section 2.aux
+INPUT ./Section 3.aux
+INPUT Section 3.aux
+INPUT Section 3.aux
+INPUT ./Section 4.aux
+INPUT Section 4.aux
+INPUT Section 4.aux
+INPUT ./Section 5.aux
+INPUT Section 5.aux
+INPUT Section 5.aux
+INPUT ./Section 6.aux
+INPUT Section 6.aux
+INPUT Section 6.aux
+INPUT ./Section 7.aux
+INPUT Section 7.aux
+INPUT Section 7.aux
+INPUT ./Section 8.aux
+INPUT Section 8.aux
+INPUT Section 8.aux
+INPUT ./Section 9.aux
+INPUT Section 9.aux
+INPUT Section 9.aux
+INPUT ./Section 10.aux
+INPUT Section 10.aux
+INPUT Section 10.aux
+INPUT ./Section 11.aux
+INPUT Section 11.aux
+INPUT Section 11.aux
+INPUT ./Section 12.aux
+INPUT Section 12.aux
+INPUT Section 12.aux
+INPUT ./Section 13.aux
+INPUT Section 13.aux
+INPUT Section 13.aux
 INPUT ./Algebraic Stacks - Notes.out
 INPUT ./Algebraic Stacks - Notes.out
 INPUT Algebraic Stacks - Notes.run.xml

@@ -1,3 +1,20 @@
 \contentsline {section}{\tocsection {}{}{Overview}}{1}{section*.1}%
-\contentsline {section}{\tocsection {}{1}{Sites}}{1}{section.1}%
-\contentsline {section}{\tocsection {}{}{References}}{2}{section*.3}%
+\contentsline {part}{\tocpart {Part}{}{Grothendieck Topologies, Sites, and Fibered Categories}}{2}{section*.3}%
+\contentsline {section}{\tocsection {}{1}{Grothendieck Topologies}}{2}{section.1}%
+\contentsline {section}{\tocsection {}{2}{Fibered Categories}}{3}{section.2}%
+\contentsline {section}{\tocsection {}{3}{Descent}}{4}{section.3}%
+\contentsline {part}{\tocpart {Part}{}{Algebraic Spaces}}{5}{section*.4}%
+\contentsline {section}{\tocsection {}{4}{Algebraic Spaces}}{5}{section.4}%
+\contentsline {section}{\tocsection {}{5}{Quotients in Algebraic Spaces}}{6}{section.5}%
+\contentsline {section}{\tocsection {}{6}{Quasicoherent Sheaves on Algebraic Spaces}}{7}{section.6}%
+\contentsline {part}{\tocpart {Part}{}{Algebraic Stacks}}{8}{section*.5}%
+\contentsline {section}{\tocsection {}{7}{Algebraic Stacks}}{8}{section.7}%
+\contentsline {section}{\tocsection {}{8}{Quasicoherent Sheaves on Algebraic Stacks}}{9}{section.8}%
+\contentsline {part}{\tocpart {Part}{}{The Geometry of Stacks}}{10}{section*.6}%
+\contentsline {section}{\tocsection {}{9}{Geometric Properties of Stacks}}{10}{section.9}%
+\contentsline {section}{\tocsection {}{10}{Coarse Moduli Spaces}}{11}{section.10}%
+\contentsline {section}{\tocsection {}{11}{Gerbes}}{12}{section.11}%
+\contentsline {section}{\tocsection {}{12}{Cohomology of Stacks}}{13}{section.12}%
+\contentsline {section}{\tocsection {}{13}{Derived Categories of Stacks}}{14}{section.13}%
+\contentsline {part}{\tocpart {Part}{}{End Material}}{15}{section*.7}%
+\contentsline {section}{\tocsection {}{}{References}}{15}{section*.8}%
