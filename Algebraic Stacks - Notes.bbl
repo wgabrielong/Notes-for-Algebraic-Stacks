@@ -19,6 +19,43 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{LaumonMoret-Bailly}{book}{}
+      \name{author}{2}{}{%
+        {{hash=1657077975cef7487d44c493171f0b39}{%
+           family={Laumon},
+           familyi={L\bibinitperiod},
+           given={Gérard},
+           giveni={G\bibinitperiod}}}%
+        {{hash=9e0e00bb55114668fd4bbb296e23a76b}{%
+           family={Moret-Bailly},
+           familyi={M\bibinithyphendelim B\bibinitperiod},
+           given={Laurent},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {French}%
+      }
+      \list{publisher}{1}{%
+        {Berlin: Springer}%
+      }
+      \strng{namehash}{ebe301949966392ceeac501226c2f853}
+      \strng{fullhash}{ebe301949966392ceeac501226c2f853}
+      \strng{bibnamehash}{ebe301949966392ceeac501226c2f853}
+      \strng{authorbibnamehash}{ebe301949966392ceeac501226c2f853}
+      \strng{authornamehash}{ebe301949966392ceeac501226c2f853}
+      \strng{authorfullhash}{ebe301949966392ceeac501226c2f853}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{3-540-65761-4}
+      \field{issn}{0071-1136}
+      \field{series}{Ergeb. Math. Grenzgeb., 3. Folge}
+      \field{title}{Champs algébriques}
+      \field{volume}{39}
+      \field{year}{2000}
+      \keyw{14D15,14D22,14-02,14F20}
+    \endentry
     \entry{Olsson}{book}{}
       \name{author}{1}{}{%
         {{hash=a7554a741543f1f36342629af74900ef}{%
