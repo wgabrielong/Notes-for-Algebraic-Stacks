@@ -17,4 +17,5 @@
 \contentsline {section}{\tocsection {}{12}{Cohomology of Stacks}}{13}{section.12}%
 \contentsline {section}{\tocsection {}{13}{Derived Categories of Stacks}}{14}{section.13}%
 \contentsline {part}{\tocpart {Part}{}{End Material}}{15}{section*.7}%
-\contentsline {section}{\tocsection {}{}{References}}{15}{section*.8}%
+\contentsline {section}{\tocsection {Appendix}{A}{Category Theory}}{16}{appendix.A}%
+\contentsline {section}{\tocsection {Appendix}{}{References}}{17}{section*.8}%

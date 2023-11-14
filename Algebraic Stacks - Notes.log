@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  3 NOV 2023 19:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  13 NOV 2023 20:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -915,7 +915,7 @@ LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 \c@theorem=\count465
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
- (./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 4.aux) (./Section 5.aux) (./Section 6.aux) (./Section 7.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux))
+ (./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 4.aux) (./Section 5.aux) (./Section 6.aux) (./Section 7.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Appendix 1.aux))
 \openout1 = `"Algebraic Stacks - Notes.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -1119,28 +1119,36 @@ Package biblatex Info: Reference segment=0 on input line 37.
 ] [15
 
 
+]
+\openout2 = `"Appendix 1.aux"'.
+
+ (./Appendix 1.tex) [16
+
+] [17
+
+
 ] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 4.aux) (./Section 5.aux) (./Section 6.aux) (./Section 7.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux))
+(./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 4.aux) (./Section 5.aux) (./Section 6.aux) (./Section 7.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Appendix 1.aux))
 Package rerunfilecheck Info: File `"Algebraic Stacks - Notes".out' has not changed.
-(rerunfilecheck)             Checksum: 59098D3F1503152CC3F78BCC6134D225;3549.
+(rerunfilecheck)             Checksum: CDF4DA144A50351FDBDF2A685B538A42;3748.
 Package logreq Info: Writing requests to '"Algebraic Stacks - Notes".run.xml'.
 \openout1 = `"Algebraic Stacks - Notes.run.xml"'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36187 strings out of 476017
- 718699 string characters out of 5793766
- 1861660 words of memory out of 5000000
- 55817 multiletter control sequences out of 15000+600000
- 523198 words of font info for 77 fonts, out of 8000000 for 9000
+ 36421 strings out of 476017
+ 723875 string characters out of 5793766
+ 1866660 words of memory out of 5000000
+ 56029 multiletter control sequences out of 15000+600000
+ 526908 words of font info for 91 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 101i,6n,104p,668b,1329s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "Algebraic Stacks - Notes.pdf" (15 pages, 134835 bytes).
+ 101i,15n,104p,764b,1341s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on "Algebraic Stacks - Notes.pdf" (17 pages, 195563 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
- 41 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

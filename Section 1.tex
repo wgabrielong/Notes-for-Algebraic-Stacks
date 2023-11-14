@@ -1,2 +1,41 @@
 \part*{Grothendieck Topologies, Sites, and Fibered Categories}
 \section{Grothendieck Topologies}
+Let us recall the following definitions. 
+\begin{definition}[Presheaf]\label{def: presheaf on topological space}
+    Let $X$ be a topological space. A presheaf of sets $\Fcal$ on $X$ is a functor $(X^{\Opens})^{\Opp}\to\Sets$. 
+\end{definition}
+A presheaf is a sheaf if it satisfies additional gluing axioms. 
+\begin{definition}[Sheaf]\label{def: topological sheaf}
+    Let $X$ be a topological space. A sheaf of sets $\Fcal$ on $X$ is a functor $(X^{\Opens})^{\Opp}\to\Sets$ such that the sequence 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEZjYWwoWCkiXSxbMiwwLCJcXHByb2Rfe2l9XFxGY2FsKFhfe2l9KSJdLFs0LDAsIlxccHJvZF97aSxqfVxcRmNhbChYX3tpfVxcY2FwIFhfe2p9KSJdLFswLDFdLFsxLDIsIiIsMCx7Im9mZnNldCI6LTF9XSxbMSwyLCIiLDAseyJvZmZzZXQiOjF9XV0=
+    \begin{tikzcd}
+        {\Fcal(X)} && {\prod_{i}\Fcal(X_{i})} && {\prod_{i,j}\Fcal(X_{i}\cap X_{j})}
+        \arrow[from=1-1, to=1-3]
+        \arrow[shift left, from=1-3, to=1-5]
+        \arrow[shift right, from=1-3, to=1-5]
+    \end{tikzcd}$$
+    is an equalizer for $\{X_{i}\}$ an open cover of $X$.  
+\end{definition}
+In this way, we say that a sheaf on $X$ is a presheaf on $X$ satisfying descent. Note here that we implicitly used the fact that $X^{\Opens}$ can be naturally endowed with the strucutre of a category with objects open sets of the topological space $X$ and morphisms inclusions of such open sets. This begs the question if we can replace $X^{\Opens}$ with some other category $\Csf$, allowing us to define a sheaf on an arbitrary category $\Csf$. We do this via the construction of a Grothendieck topology by replacing open sets of a topological space with maps into this space. 
+\begin{definition}[Grothendieck Topology]\label{def: Grothendieck topology}
+    Let $\Csf$ be a category. A Grothendieck topology on $\Csf$ is the data of a set $\{X_{i}\to X\}$ for each object $X\in\Obj(\Csf)$ known as a covering of $X$ such that the following conditions hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item If $Y\to X$ is an isomorphism then $\{Y\to X\}$ is a covering.  
+        \item If $\{X_{i}\to X\}$ is a covering and $Y\to X$ any morphism then $\{X_{i}\times_{X}Y\}$ exist and $\{X_{i}\times_{X}Y\to X\}$ is a covering. 
+        \item If $\{X_{i}\to X\}$ is a covering and for each $i$ $\{X_{ij}\to X_{i}\}$ is a covering then the composites $\{X_{ij}\to X_{i}\to X\}$ is a covering. 
+    \end{enumerate}
+\end{definition}
+This allows us to define a site. 
+\begin{definition}[Site]\label{def: site}
+    A site on a category $\Csf$ is the category $\Csf$ endowed with a Grothendieck topology. 
+\end{definition}
+Let us see some examples.
+\begin{example}[Site of a Topological Space]
+    Let $X$ be a topological space and $X^{\Opens}$ the category of open sets of $X$ with morphisms inclusions. One can endow $X^{\Opens}$ with a Grothendieck topology by associating to each $U\subseteq X$ open, the set of open covers of $U$. The fiber product is given by intersection of open sets, which agrees with our previous discussion of sheaves and presheaves. 
+\end{example}
+\begin{example}
+    Consider the category of topological spaces $\Top$. The category $\Top$ can be endowed with a Grothendieck topology by taking covers of a topological space $X\in\Obj(\Top)$ to open, continuous, injective maps $X_{i}\to X$. 
+\end{example}
+\begin{example}[\'{E}tale Site of a Scheme]
+    Let $X$ be a scheme. The \'{e}tale site of $X$, denoted $X_{\et}$, is the full subcategory of $\Sch_{X}$ where covers are \'{e}tale morphisms. 
+\end{example}
