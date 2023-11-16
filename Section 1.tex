@@ -37,5 +37,80 @@ Let us see some examples.
     Consider the category of topological spaces $\Top$. The category $\Top$ can be endowed with a Grothendieck topology by taking covers of a topological space $X\in\Obj(\Top)$ to open, continuous, injective maps $X_{i}\to X$. 
 \end{example}
 \begin{example}[\'{E}tale Site of a Scheme]
-    Let $X$ be a scheme. The \'{e}tale site of $X$, denoted $X_{\et}$, is the full subcategory of $\Sch_{X}$ where covers are \'{e}tale morphisms. 
+    Let $S$ be a scheme. The \'{e}tale site of $S$, denoted $X_{\et}$, is the full subcategory of $\Sch_{S}$ where covers are \'{e}tale morphisms. 
 \end{example}
+It is sometimes useful to consider coverings that are not finitely presented. We do this by using the fpqc topology. 
+\begin{definition}[fpqc Morphism]\label{def: fpqc morphism}
+    Let $f:X\to Y$ be a surjective morphism of schemes. $f$ is an fpqc morphism if for every affine open $V\subseteq Y$, $f^{-1}(V)$ is quasicompact in $X$.
+\end{definition}
+\begin{remark}
+    The notation fpqc arises from the French, fid\`{e}lement plat et quasi-compact. 
+\end{remark}
+This allows us to define the fpqc topology on the category of schemes over a fixed scheme $S$. 
+\begin{definition}[fpqc Site]\label{def: fpqc site}
+    Let $S$ be a scheme. The fpqc site on $S$-schemes $(\Sch_{S})_{\fpqc}$ is the data of coverings $\{X_{i}\to X\}$ for each $X\in\Obj(\Sch_{S})$ such that $\coprod_{i}X_{i}\to X$ is fpqc. 
+\end{definition}
+We can thus show the following proposition. 
+\begin{proposition}
+    Let $X\to Y$ be a morphism of schemes and $\{Y_{i}\to Y\}$ an fpqc covering of $Y$. Suppose that for each $i$, the induced map $Y_{i}\times_{Y}X\to Y_{i}$ has one of the following properties: 
+    \begin{enumerate}[label=(\alph*)]
+        \item separated, 
+        \item quasicompact, 
+        \item locally of finite presentation, 
+        \item proper, 
+        \item affine, 
+        \item finite, 
+        \item flat, 
+        \item smooth, 
+        \item unramified, 
+        \item \'{e}tale,
+        \item is an embedding, 
+        \item or is a closed embedding
+    \end{enumerate}
+    then so does $X\to Y$. 
+\end{proposition}
+\begin{proof}
+    All these properties and being fpqc are affine-local on target and the condition on the induced map $Y_{i}\times_{Y}X\to Y$ implies the condition on the map $X\to Y$ by \cite[Prop. 2.7.1]{EGAIVpt1}. 
+\end{proof}
+Having defined a topology, we can now define a sheaf theory on a site. Recall from earlier that sheaves on a topological space $X$ is a presheaf that satisfies additional axioms. The sheaf condition can be generalized to any site, replacing intersections of open sets with fibered products. 
+\begin{definition}[Separated Presheaf on a Site]\label{def: sep presheaf on site}
+    Let $\Csf$ be a site and $F:\Csf^{\Opp}\to\Sets$ a presheaf of sets on $\Csf$. $F$ is a separated functor if there are $a,b\in F(X)$ whose pullbacks to $F(X_{i})$ coincide then $a=b$ on $F(U)$. 
+\end{definition}
+\begin{definition}[Sheaf on a Site]\label{def: sheaf on site}
+    Let $\Csf$ be a site and $F:\Csf^{\Opp}\to\Sets$ a presheaf of sets on $\Csf$. $F$ is a sheaf if for all coverings $\{X_{i}\to X\}$ the sequence 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJGKFgpIl0sWzIsMCwiXFxwcm9kX3tpfUYoWF97aX0pIl0sWzQsMCwiXFxwcm9kX3tpLGp9RihYX3tpfVxcdGltZXNfe1h9WF97an0pIl0sWzAsMV0sWzEsMiwiXFxwcl97MX1eeyp9IiwwLHsib2Zmc2V0IjotMX1dLFsxLDIsIlxccHJfezJ9XnsqfSIsMix7Im9mZnNldCI6MX1dXQ==
+    \begin{tikzcd}
+        {F(X)} && {\prod_{i}F(X_{i})} && {\prod_{i,j}F(X_{i}\times_{X}X_{j})}
+        \arrow[from=1-1, to=1-3]
+        \arrow["{\pr_{1}^{*}}", shift left, from=1-3, to=1-5]
+        \arrow["{\pr_{2}^{*}}"', shift right, from=1-3, to=1-5]
+    \end{tikzcd}$$
+    is an equalizer. 
+\end{definition}
+\begin{remark}
+    As in the case of sheaves on a topological space, the condition on equalizers is equivalent to the gluing of sections. Given a covering $\{X_{i}\to X\}$ function of sets $F(X)\to \prod_{i}F(X_{i})$ is induced along restrictions and the natural projection maps $$\pr_{1}:X_{i}\times_{X}X_{j}\to X_{i},\pr_{2}:X_{i}\times_{X}X_{j}\to X_{j}$$ sends $a_{i}\in F(X_{i})$ to $\pr_{1}^{*}a_{i}$ with $\pr_{2}^{*}$ defined similarly. The equalizer condition states that if pullbacks of sections $\pr_{1}^{*}a_{i}=\pr_{2}^{*}a_{j}$ as elements of $F(X_{i}\times_{X}X_{j})$ then they are pulled back from some $a$ on $F(X)$ restricting to the $a_{i}$ on $F(X_{i})$. 
+\end{remark}
+Given an object $X\in\Obj(\Csf)$ we can define a sieve on $X$ as follows. 
+\begin{definition}[Sieve]
+    Let $X\in\Obj(\Csf)$. A sieve on $X$ is a subfunctor of the Yoneda functor $h_{X}:\Csf^{\Opp}\to\Sets$.
+\end{definition}
+Given a subfunctor $S$ of $h_{X}$, we get a collection $\Scal$ of arrows $T\to X$ by taking $\cup_{T\in\Obj(\Csf)}S(T)$ such that for $T\to X$ in $\Scal$, every composite $T'\to T\to X$ is in $\Scal$. Conversely, given $\Scal$ we can restrict the Yoneda functor appropriately to get $S:\Csf^{\Opp}\to\Sets$. 
+\\\\
+For $\{X_{i}\to X\}$ a a collection of morphisms and $X\in\Obj(\Csf)$ we can similarly define a subfunctor $h_{\{X_{i}\to X\}}:\Csf^{\Opp}\to\Sets$ where $T\to X$ if and only if there exists a factorization $T\to X_{i}\to X$ for some $i$. In the case of the functor $h_{\{X_{i}\to X\}}$, the metaphor of the sieve becomes much more clear: the $X_{i}$ are the holes of the sieve, and $T\to X$ is in $h_{\{X_{i}\to X\}}(T)$ if and only if it ``goes through one of the holes''. 
+\\\\
+For a collection $\{X_{i}\to X\}$ and $F:\Csf^{\Opp}\to\Sets$ a functor, we can define $F(\{X_{i}\to X\})$ to be the set of elements of $\prod_{i}F(X_{i})$ whose images in $\prod_{i,j}F(X_{i}\times_{X}X_{j})$ are equal. Sections of $F(X)$ evidently give rise to sections of $\prod_{i}F(X_{i})$ that agree on $\prod_{i,j}F(X_{i}\times_{X}X_{j})$ inducing a map $F(X)\to F(\{X_{i}\to X\})$. Note here that if $F$ is a sheaf the descent condition implies the map $F(X)\to F(\{X_{i}\to X\})$ is a bijection for all coverings. 
+\\\\
+We show that the set $F(\{X_{i}\to X\})$ can be defined in terms of sieves. 
+\begin{proposition}\label{prop: sieve of cover}
+    There is a canonical bijection of sets $$R:\NatTrans(h_{\{X_{i}\to X\}},F)\to F(\{X_{i}\to X\})$$ such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXE5hdFRyYW5zKGhfe1h9LEYpIl0sWzIsMCwiRihYKSJdLFswLDEsIlxcTmF0VHJhbnMoaF97XFx7WF97aX1cXHRvIFhcXH19LCBGKSJdLFsyLDEsIkYoXFx7WF97aX1cXHRvIFhcXH0pIl0sWzIsMywiUiIsMl0sWzEsM10sWzAsMV0sWzAsMl1d
+    \begin{tikzcd}
+        {\NatTrans(h_{X},F)} && {F(X)} \\
+        {\NatTrans(h_{\{X_{i}\to X\}}, F)} && {F(\{X_{i}\to X\})}
+        \arrow["R"', from=2-1, to=2-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+    \end{tikzcd}$$
+    commutes and $R$ is universal with respect to this property. 
+\end{proposition}

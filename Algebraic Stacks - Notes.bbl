@@ -19,6 +19,39 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{EGAIVpt1}{article}{}
+      \name{author}{1}{}{%
+        {{hash=6e1e873f9a9e10eed2c0bea7d3c8c7a8}{%
+           family={Grothendieck},
+           familyi={G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {French}%
+      }
+      \strng{namehash}{6e1e873f9a9e10eed2c0bea7d3c8c7a8}
+      \strng{fullhash}{6e1e873f9a9e10eed2c0bea7d3c8c7a8}
+      \strng{bibnamehash}{6e1e873f9a9e10eed2c0bea7d3c8c7a8}
+      \strng{authorbibnamehash}{6e1e873f9a9e10eed2c0bea7d3c8c7a8}
+      \strng{authornamehash}{6e1e873f9a9e10eed2c0bea7d3c8c7a8}
+      \strng{authorfullhash}{6e1e873f9a9e10eed2c0bea7d3c8c7a8}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0073-8301}
+      \field{journaltitle}{Publ. Math., Inst. Hautes Étud. Sci.}
+      \field{title}{Éléments de géométrie algébrique. {IV}: Étude locale des schémas et des morphismes de schémas. ({Première} partie). {Rédigé} avec la colloboration de {J}. {Dieudonné}}
+      \field{volume}{20}
+      \field{year}{1964}
+      \field{pages}{101\bibrangedash 355}
+      \range{pages}{255}
+      \verb{doi}
+      \verb 10.1007/BF02684747
+      \endverb
+      \keyw{14-02,14Axx}
+    \endentry
     \entry{LaumonMoret-Bailly}{book}{}
       \name{author}{2}{}{%
         {{hash=1657077975cef7487d44c493171f0b39}{%

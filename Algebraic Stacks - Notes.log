@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  13 NOV 2023 20:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  15 NOV 2023 23:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1030,101 +1030,116 @@ Package biblatex Info: Reference segment=0 on input line 37.
  [1{c:/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 \openout2 = `"Section 1.aux"'.
 
- (./Section 1.tex) [2
+ (./Section 1.tex [2
 
-]
+] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 97--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--104
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--104
+
+ []
+
+) [4]
 \openout2 = `"Section 2.aux"'.
 
- (./Section 2.tex) [3
+ (./Section 2.tex) [5
 
 
 
 ]
 \openout2 = `"Section 3.aux"'.
 
- (./Section 3.tex) [4
+ (./Section 3.tex) [6
 
 
 
 ]
 \openout2 = `"Section 4.aux"'.
 
- (./Section 4.tex) [5
+ (./Section 4.tex) [7
 
 
 
 ]
 \openout2 = `"Section 5.aux"'.
 
- (./Section 5.tex) [6
+ (./Section 5.tex) [8
 
 
 
 ]
 \openout2 = `"Section 6.aux"'.
 
- (./Section 6.tex) [7
+ (./Section 6.tex) [9
 
 
 
 ]
 \openout2 = `"Section 7.aux"'.
 
- (./Section 7.tex) [8
+ (./Section 7.tex) [10
 
 
 
 ]
 \openout2 = `"Section 8.aux"'.
 
- (./Section 8.tex) [9
+ (./Section 8.tex) [11
 
 
 
 ]
 \openout2 = `"Section 9.aux"'.
 
- (./Section 9.tex) [10
+ (./Section 9.tex) [12
 
 
 
 ]
 \openout2 = `"Section 10.aux"'.
 
- (./Section 10.tex) [11
+ (./Section 10.tex) [13
 
 
 
 ]
 \openout2 = `"Section 11.aux"'.
 
- (./Section 11.tex) [12
+ (./Section 11.tex) [14
 
 
 
 ]
 \openout2 = `"Section 12.aux"'.
 
- (./Section 12.tex) [13
+ (./Section 12.tex) [15
 
 
 
 ]
 \openout2 = `"Section 13.aux"'.
 
- (./Section 13.tex) [14
+ (./Section 13.tex) [16
 
 
 
-] [15
+] [17
 
 
 ]
 \openout2 = `"Appendix 1.aux"'.
 
- (./Appendix 1.tex) [16
+ (./Appendix 1.tex) [18
 
-] [17
+] [19
 
 
 ] 
@@ -1137,18 +1152,18 @@ Package logreq Info: Writing requests to '"Algebraic Stacks - Notes".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36421 strings out of 476017
- 723875 string characters out of 5793766
- 1866660 words of memory out of 5000000
- 56029 multiletter control sequences out of 15000+600000
- 526908 words of font info for 91 fonts, out of 8000000 for 9000
+ 36545 strings out of 476017
+ 726442 string characters out of 5793766
+ 1870660 words of memory out of 5000000
+ 56131 multiletter control sequences out of 15000+600000
+ 527254 words of font info for 92 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 101i,15n,104p,764b,1341s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on "Algebraic Stacks - Notes.pdf" (17 pages, 195563 bytes).
+ 101i,16n,104p,855b,1383s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on "Algebraic Stacks - Notes.pdf" (19 pages, 257298 bytes).
 PDF statistics:
- 300 PDF objects out of 1000 (max. 8388607)
- 248 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
+ 361 PDF objects out of 1000 (max. 8388607)
+ 297 compressed objects within 3 object streams
+ 76 named destinations out of 1000 (max. 500000)
  181 words of extra memory for PDF output out of 10000 (max. 10000000)
 
