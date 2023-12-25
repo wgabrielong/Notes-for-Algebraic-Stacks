@@ -1,1 +1,353 @@
-\section{Fibered Categories}
+\section{Fibered Categories}\label{sec: fibered categories}
+Fix a base category $\Ssf$. We consider categories over $\Ssf$. That is, those categories $\Fsf$ with a functor $p:\Fsf\to\Ssf$. More explicitly, we have the following definition. 
+\begin{definition}[Category Over]\label{def: category over}
+    We say that $\Fsf$ is a category over $\Ssf$ if there exists a functor $p:\Fsf\to\Ssf$. 
+\end{definition}
+The relationship between the categories $\Fsf$ and $\Ssf$ are given by ``lying over'' in the following sense. 
+\begin{definition}[Lying Over]
+    Consider $\Fsf$ over $\Ssf$ with $p:\Fsf\to\Ssf$. 
+    \begin{enumerate}[label=(\alph*)]
+        \item (Objects) An object $\alpha\in\Obj(\Fsf)$ lies over $A\in\Obj(\Ssf)$ if $p(\alpha)=A$. 
+        \item (Morphisms) An morphism $\phi:\alpha\to\beta$ in $\Fsf$ lies over $f:A\to B$ in $\Ssf$ if the diagram 
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGFscGhhIl0sWzIsMCwiXFxiZXRhIl0sWzAsMSwiQSJdLFsyLDEsIkIiXSxbMCwxLCIoXFxhbHBoYVxcdG9cXGJldGEpIl0sWzEsMywicCgtKSJdLFswLDIsInAoLSkiLDJdLFsyLDMsInAoXFxhbHBoYVxcdG9cXGJldGEpIiwyXV0=
+        \begin{tikzcd}
+            \alpha && \beta \\
+            A && B
+            \arrow["{\phi}", from=1-1, to=1-3]
+            \arrow["{p(-)}", from=1-3, to=2-3]
+            \arrow["{p(-)}"', from=1-1, to=2-1]
+            \arrow["{p(\phi)=f}"', from=2-1, to=2-3]
+        \end{tikzcd}$$
+        commutes. 
+    \end{enumerate}
+\end{definition}
+This allows us to define the notion of a Cartesian morphism in $\Fsf$. 
+\begin{definition}[Cartesian Morphism]\label{def: cartesian morphism}
+    Let $\Fsf$ be a category over $\Ssf$. A morphism $\phi:\alpha\to\beta$ in $\Fsf$ is Cartesian if for any $\psi:\eta\to\beta$ in $\Fsf$ and $g:p(\eta)\to p(\alpha)$ in $\Ssf$ with $p(\phi)\circ g= p(\psi)$ in $\Ssf$ there exists a unique $\rho:\eta\to\alpha$ lying over $g$ making the diagram 
+    $$% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXGV0YSJdLFsyLDEsIlxcYWxwaGEiXSxbMiwyLCJwKFxcYWxwaGEpIl0sWzAsMSwicChcXGV0YSkiXSxbNCwxLCJcXGJldGEiXSxbNCwyLCJwKFxcYmV0YSkiXSxbMCw0LCJcXHBzaSIsMV0sWzAsMSwiXFxleGlzdHMhXFxyaG8iLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCwzXSxbMywyLCJnIiwxXSxbMSwyXSxbMyw1XSxbMSw0LCJcXHBoaSIsMV0sWzIsNV0sWzQsNV1d
+    \begin{tikzcd}
+        \eta \\
+        {p(\eta)} && \alpha && \beta \\
+        && {p(\alpha)} && {p(\beta)}
+        \arrow["\psi"{description}, from=1-1, to=2-5]
+        \arrow["{\exists!\rho}"{description}, dashed, from=1-1, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow["g"{description}, from=2-1, to=3-3]
+        \arrow[from=2-3, to=3-3]
+        \arrow[from=2-1, to=3-5]
+        \arrow["\phi"{description}, from=2-3, to=2-5]
+        \arrow[from=3-3, to=3-5]
+        \arrow[from=2-5, to=3-5]
+    \end{tikzcd}$$
+    commute, and universal with respect to that property. 
+\end{definition}
+One can show that Cartesian morphisms satisfy the following properties. 
+\begin{proposition}
+    Let $\Fsf$ be a category over $\Ssf$. 
+    \begin{enumerate}[label=(\alph*)]
+        \item The composite of Cartesian arrows in $\Fsf$ is Cartesian. 
+        \item If $\alpha\to\beta$ and $\beta\to\eta$ are morphisms in $\Fsf$ and $\beta\to\eta$ is Cartesian then $\alpha\to\beta$ is Cartesian if and only if the composite $\alpha\to\beta\to\eta$ is Cartesian. 
+        \item A morphism $\phi$ in $\Fsf$ such that $p(\phi)$ is an isomorphism in $\Ssf$ is Cartesian if and only if $\phi$ is an isomorphism in $\Fsf$. 
+        \item Let $p:\Csf\to\Ssf$ and $F:\Fsf\to\Csf$ be functors and $\phi:\alpha\to\beta$ a morphism in $\Fsf$. If $\phi$ is Cartesian over $F(\phi):F(\alpha)\to F(\beta)$ in $\Csf$ and $F(\phi)$ is Cartesian over $p(F(\phi)):p(F(\alpha))\to p(F(\beta))$ in $\Ssf$ then $\phi$ is Cartesian over $p(F(\phi)):p(F(\alpha))\to p(F(\beta))$ in $\Ssf$. 
+    \end{enumerate}
+\end{proposition}
+This in turn allows us to define fibered categories. 
+\begin{definition}[Fibered Category]\label{def: fibered category}
+    Let $\Fsf$ be a category over $\Ssf$. $\Fsf$ is a fibered category over $\Ssf$ if for all $f:A\to B$ in $\Ssf$ and $\beta$ lying over $B$ there is a Cartesian morphism $\phi:\alpha\to\beta$ in $\Fsf$ lying over $f$ in $\Ssf$. 
+\end{definition}
+This means that for $p:\Fsf\to\Ssf$ a fibered category, objects of $\Fsf$ can be pulled back along any morphism in $\Ssf$ and that these pullbacks are unique up to unique isomorphism. Naturally we want these fibered functors to amalgamate into the data of a (possibly higher) category. To that end, we define morphisms of fibered categories as follows. 
+\begin{definition}[Morphism of Fibered Categories]\label{def: morphism of fibered categories}
+    Let $p:\Fsf\to\Ssf, q:\Gsf\to\Ssf$ be categories fibered over $\Ssf$. A morphism of fibered categories is a functor $F:\Fsf\to\Gsf$ such that $q\circ F=p$ and $F$ takes Cartesian morphisms in $\Fsf$ to Cartesian morphisms in $\Gsf$. 
+\end{definition}
+The language of fibered categories should be quite suggestive of analogous concepts in algebraic topology. Given a topological space $B$ and $E\to B$ a fibration, one can consider $E_{b}$ the fiber over $b\in B$. In the context of fibered categories, we define the following. 
+\begin{definition}[Fiber]\label{def: fiber}
+    Let $p:\Fsf\to\Ssf$ be a fibered category. For $X\in\Obj(\Ssf)$ the fiber $\Fsf_{X}$ is the subcategory of $\Fsf$ whose objects are those lying over $X$ and whose morphisms are those lying over $\id_{X}$. 
+\end{definition}
+For a morphism of fibered categories $F$ as in \Cref{def: morphism of fibered categories}, the functor $F$ sends $\Fsf_{X}$ to $\Gsf_{X}$ and hence restricts to a subfunctor $F_{X}:\Fsf_{X}\to\Gsf_{X}$. Let us consider how this definition of a fiber is reasonably compatible with the pullback structure we have previously discussed. 
+\\\\
+Let $\Fsf$ be fibered over $\Ssf$ and $f:A\to B$ a morphism in $\Ssf$. For each $\beta$ lying over $B$ in $\Fsf$ we choose a pullback $\phi_{\beta}:f^{*}\beta\to\beta$ with $\phi_{\beta}$ lying over $f$ and $f^{*}\beta$ lying over $A$ we can define a functor on the fiber categories $f^{*}:\Fsf_{B}\to\Fsf_{A}$ by defining a map on objects $\beta\mapsto f^{*}\beta$ and for $\tau:\beta\to\beta'$ over $\id_{B}$ in $\Fsf_{B}$ the unique map $f^{*}\tau:f^{*}\beta\to f^{*}\beta'$ that makes the diagram 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJmXnsqfVxcYmV0YSJdLFswLDEsImZeeyp9XFxiZXRhJyJdLFsyLDAsIlxcYmV0YSJdLFsyLDEsIlxcYmV0YSciXSxbMCwyLCJcXHBoaV97XFxiZXRhfSJdLFsxLDMsIlxccGhpX3tcXGJldGEnfSIsMl0sWzAsMSwiZl57Kn1cXHRhdSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFsyLDMsIlxcdGF1Il1d
+\begin{tikzcd}
+	{f^{*}\beta} && \beta \\
+	{f^{*}\beta'} && {\beta'}
+	\arrow["{\phi_{\beta}}", from=1-1, to=1-3]
+	\arrow["{\phi_{\beta'}}"', from=2-1, to=2-3]
+	\arrow["{f^{*}\tau}"', dashed, from=1-1, to=2-1]
+	\arrow["\tau", from=1-3, to=2-3]
+\end{tikzcd}$$
+commute. 
+\begin{definition}[Cleavage]\label{def: cleavage}
+    Let $p:\Fsf\to\Ssf$ be a fibered category. A cleavage of $\Fsf$ is a collection of Cartesian morphisms $K$ of $\Fsf$ such that for each $f:A\to B$ in $\Ssf$ and $\beta\in\Obj(\Fsf_{B})$ there is $\alpha\in\Fsf_{A}$ such that $p(\alpha)=A$ and a unique Cartesian morphism $\phi:\alpha\to\beta$ in $K$ lying over $f$. 
+\end{definition}
+Visually we have the following diagram 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXGFscGhhIl0sWzIsMCwiXFxiZXRhIl0sWzAsMSwiQSJdLFsyLDEsIkIiXSxbMiwzLCJcXHBoaSIsMl0sWzAsMSwiZiJdLFswLDIsInAiLDJdLFsxLDMsInAiXV0=
+\begin{tikzcd}
+	\alpha && \beta \\
+	A && B
+	\arrow["f"', from=2-1, to=2-3]
+	\arrow["\phi", from=1-1, to=1-3]
+	\arrow["p"', from=1-1, to=2-1]
+	\arrow["p", from=1-3, to=2-3]
+\end{tikzcd}$$
+where $\phi$ is a Cartesian morphism in $K$. 
+\subsection{Higher Functors and the 2-Category $\Cat$}\label{subsec: higher functors}
+By the axiom of choice, every fibered category has a cleavage. For $p:\Fsf\to\Ssf$ a fibered category and each $f:A\to B$ there is a functor $f^{*}:\Fsf_{B}\to\Fsf_{A}$ between the fibers. However, there are several fundamental issues. Firstly, the pullback along identities $\id_{A}^{*}:\Fsf_{A}\to\Fsf_{A}$ need not be identities; secondly, the category of categories does not form a category itself, but instead a 2-category $\Cat$ -- the 2-category $\Cat$ then would have objects categories, morphisms functors between these categories, and 2-morphisms natural transformations between functors. Instead of a functor, we get a lax 2-functor, which we now define. 
+\newpage
+\begin{definition}[Lax 2-Functor]\label{def: lax 2 functor}
+    Let $\Ssf$ be a category. A lax 2-functor $\Phi$ on $\Ssf$ consists of the following data. 
+    \begin{enumerate}[label=(\alph*)]
+        \item For each $X\in\Obj(\Ssf)$ a category $\Phi\left(X\right)$.
+        \item For each $(f:X\to Y)\in\Mor_{\Ssf}$ a functor $f^{*}:\Phi\left(Y\right)\to\Phi\left(X\right)$. 
+        \item For each $X\in\Obj(\Csf)$ a natural isomorphism $\varepsilon_{X}:\id_{X}^{*}\Longrightarrow \id_{\Phi\left(X\right)}$ between functors $\Phi\left(X\right)\to\Phi\left(X\right)$. 
+        \item For $(f:X\to Y), (g:Y\to Z)\in\Mor_{\Ssf}$ a natural isomorphism $\alpha_{f,g}:f^{*}g^{*}\Longrightarrow (fg)^{*}$ between functors $\Phi\left(X\right)\to\Phi\left(Z\right)$ such that the following conditions hold:
+        \begin{enumerate}[label=(\roman*)]
+            \item For $\beta\in\Obj\left(\Phi\left(Y\right)\right)$ we have 
+            $$\alpha_{\id_{X},f}(\beta)=\varepsilon_{X}\left(f^{*}\beta\right):\id_{X}^{*}f^{*}\beta\to f^{*}\beta$$
+            and
+            $$\alpha_{f,\id_{Y}}(\beta)=f^{*}\varepsilon_{Y}:f^{*}\id_{Y}^{*}\beta\to f^{*}\beta.$$
+            \item If also we have $(h:Z\to W)\in\Mor_{\Ssf}$ and $\gamma\in\Obj\left(\Phi\left(W\right)\right)$ the diagram 
+            $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJmXnsqfWdeeyp9aF57Kn1cXGdhbW1hIl0sWzIsMCwiKGdmKV57Kn1oXnsqfVxcZ2FtbWEiXSxbMCwxLCJmXnsqfShnaCleeyp9XFxnYW1tYSJdLFsyLDEsIihoZ2YpXnsqfVxcZ2FtbWEiXSxbMCwyLCJmXnsqfVxcYWxwaGFfe2csaH0oXFxnYW1tYSkiLDJdLFsxLDMsIlxcYWxwaGFfe2dmLGh9KFxcZ2FtbWEpIl0sWzAsMSwiXFxhbHBoYV97ZixnfShoXnsqfVxcZ2FtbWEpIl0sWzIsMywiXFxhbHBoYV97ZixoZ30oXFxnYW1tYSkiLDJdXQ==
+            \begin{tikzcd}
+                {f^{*}g^{*}h^{*}\gamma} && {(gf)^{*}h^{*}\gamma} \\
+                {f^{*}(gh)^{*}\gamma} && {(hgf)^{*}\gamma}
+                \arrow["{f^{*}\alpha_{g,h}(\gamma)}"', from=1-1, to=2-1]
+                \arrow["{\alpha_{gf,h}(\gamma)}", from=1-3, to=2-3]
+                \arrow["{\alpha_{f,g}(h^{*}\gamma)}", from=1-1, to=1-3]
+                \arrow["{\alpha_{f,hg}(\gamma)}"', from=2-1, to=2-3]
+            \end{tikzcd}$$
+            commutes. 
+        \end{enumerate}
+    \end{enumerate}
+\end{definition}
+This construction of a lax 2-functor rigidifies the construction of a (higher) functor into $\Cat$, the category of categories. Indeed, \emph{a priori}, even if it is natural to do so, there is neither a reason why the functor induced by pullback along $(\id_{X}:X\to X)\in\Mor_{\Ssf}$ induces an equivalence of categories $\id_{\Phi\left(X\right)}:\Phi\left(X\right)\to\Phi\left(X\right)$ nor is there a reason why for $(f:X\to Y),(g:Y\to Z)\in\Mor_{\Ssf}$ the functors 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFBoaVxcbGVmdChaXFxyaWdodCkiXSxbMiwwLCJcXFBoaVxcbGVmdChZXFxyaWdodCkiXSxbNCwwLCJcXFBoaVxcbGVmdChaXFxyaWdodCkiXSxbMCwxLCJnXnsqfSJdLFsxLDIsImZeeyp9Il1d
+\begin{tikzcd}
+	{\Phi\left(Z\right)} && {\Phi\left(Y\right)} && {\Phi\left(Z\right)}
+	\arrow["{g^{*}}", from=1-1, to=1-3]
+	\arrow["{f^{*}}", from=1-3, to=1-5]
+\end{tikzcd}$$
+necessarily agrees with the composition
+$$% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXFBoaVxcbGVmdChaXFxyaWdodCkiXSxbNCwwLCJcXFBoaVxcbGVmdChaXFxyaWdodCkiXSxbMCwxLCIoZmcpXnsqfSJdXQ==
+\begin{tikzcd}
+	{\Phi\left(Z\right)} &&&& {\Phi\left(Z\right)}.
+	\arrow["{(fg)^{*}}", from=1-1, to=1-5]
+\end{tikzcd}$$
+This makes the diagram
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFBoaVxcbGVmdChYXFxyaWdodCkiXSxbMiwwLCJcXFBoaVxcbGVmdChaXFxyaWdodCkiXSxbMSwxLCJcXFBoaVxcbGVmdChZXFxyaWdodCkiXSxbMSwyLCJnXnsqfSJdLFsyLDAsImZeeyp9Il0sWzEsMCwiKGZnKV57Kn0iLDJdLFs1LDIsIlxcYWxwaGFfe2YsZ30iLDEseyJsYWJlbF9wb3NpdGlvbiI6NjAsInNob3J0ZW4iOnsic291cmNlIjoyMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\begin{tikzcd}
+	{\Phi\left(X\right)} && {\Phi\left(Z\right)} \\
+	& {\Phi\left(Y\right)}
+	\arrow["{g^{*}}", from=1-3, to=2-2]
+	\arrow["{f^{*}}", from=2-2, to=1-1]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{(fg)^{*}}"', from=1-3, to=1-1]
+	\arrow["{\alpha_{f,g}}"{description, pos=0.6}, shorten <=3pt, Rightarrow, 2tail reversed, no head, from=0, to=2-2]
+\end{tikzcd}$$
+rigid in the sense that the composition is unique. 
+\begin{remark}
+    The astute would note this is the definition of a contravariant lax 2-functor. We omit the more general definitions for ease of exposition. 
+\end{remark}
+\begin{remark}
+    Those familiar with higher categorical language will note that the exposition above is equivalent to the 2-category of categories $\Cat$ being a strict 2-category, in the sense that all coherence data above the level of 2-morphisms are rigid. 
+\end{remark}
+One would expect a fibered category $p:\Fsf\to\Ssf$ equipped with a cleavage gives rise to a lax 2-functor -- the cleavage here gives uniqueness of the functor up to a choice of preimage. This is indeed the case as we now show. 
+\newpage
+\begin{lemma}\label{lem: fibered cat with cleavage is lax2}
+    Let $p:\Fsf\to\Ssf$ be a fibered category. $p$ defines a lax 2-functor to the category of categories associating to each object $A\in\Obj(\Ssf)$ a category
+    $$A\mapsto \Fsf_{A}$$
+    and to each morphism a functor
+    $$(f:A\to B)\mapsto (f^{*}:\Fsf_{B}\to\Fsf_{A}).$$
+\end{lemma}
+\begin{proof}
+    Evidently (a) and (b) are fulfilled. (c) follows from the fact that pullbacks are unique up to unique isomorphism so $\id_{A}^{*}:\Fsf_{A}\to\Fsf_{A}$ is naturally isomorphic to the identity functor. For (d) any functor completing the solid diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEZzZl97WH0iXSxbMiwwLCJcXEZzZl97Wn0iXSxbMSwxLCJcXEZzZl97WX0iXSxbMSwyLCJnXnsqfSJdLFsyLDAsImZeeyp9Il0sWzEsMCwiIiwyLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+    \begin{tikzcd}
+        {\Fsf_{A}} && {\Fsf_{C}} \\
+        & {\Fsf_{B}}
+        \arrow["{g^{*}}", from=1-3, to=2-2]
+        \arrow["{f^{*}}", from=2-2, to=1-1]
+        \arrow[dashed, from=1-3, to=1-1]
+    \end{tikzcd}$$
+    it is unique since $\id_{\Fsf_{A}}:\Fsf_{A}\to\Fsf_{A}$ is Cartesian. 
+    \\\\
+    (d)(i) is given by the commutativity of the following diagram 
+    $$% https://q.uiver.app/#q=WzAsMTIsWzAsMCwiXFxpZF97QX1eeyp9Zl57Kn1cXGJldGEiXSxbMCwxLCJBIl0sWzIsMiwiZl57Kn1cXGJldGEiXSxbMiwzLCJBIl0sWzQsMSwiXFxiZXRhIl0sWzQsMiwiQiJdLFs2LDAsImZeeyp9XFxpZF97Qn1eeyp9XFxiZXRhIl0sWzYsMSwiQSJdLFs4LDIsIlxcaWRfe0J9XnsqfVxcYmV0YSJdLFs4LDMsIkIiXSxbMTAsMSwiXFxiZXRhIl0sWzEwLDIsIkIiXSxbNCw1XSxbMiwzXSxbMyw1LCJmIiwxXSxbMSw1LCJmIiwxLHsibGFiZWxfcG9zaXRpb24iOjYwLCJjdXJ2ZSI6LTJ9XSxbMSwzLCJcXGlkX3tBfSIsMV0sWzIsMCwiXFxpZF97QX1eeyp9IiwxXSxbMCwxXSxbNCwwLCJcXGlkX3tcXEZzZl97QX19Zl57Kn0iLDEseyJjdXJ2ZSI6Mn1dLFs0LDIsImZeeyp9IiwxXSxbNyw5LCJmIiwxXSxbOCw2LCJmXnsqfSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjozMH1dLFs2LDddLFs4LDldLFs5LDExLCJcXGlkX3tCfSIsMV0sWzEwLDgsIlxcaWRfe0J9XnsqfSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo0MH1dLFsxMCw2LCJmXnsqfVxcaWRfe1xcRnNmX3tCfX0iLDEseyJjdXJ2ZSI6Mn1dLFsxMCwxMV0sWzcsMTEsImYiLDEseyJjdXJ2ZSI6LTJ9XSxbMjcsMjIsIiIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbMTksMTcsIiIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+    \begin{tikzcd}
+        {\id_{A}^{*}f^{*}\beta} &&&&&& {f^{*}\id_{B}^{*}\beta} \\
+        A &&&& \beta && A &&&& \beta \\
+        && {f^{*}\beta} && B &&&& {\id_{B}^{*}\beta} && B \\
+        && A &&&&&& B
+        \arrow[from=2-5, to=3-5]
+        \arrow[from=3-3, to=4-3]
+        \arrow["f"{description}, from=4-3, to=3-5]
+        \arrow["f"{description, pos=0.6}, curve={height=-12pt}, from=2-1, to=3-5]
+        \arrow["{\id_{A}}"{description}, from=2-1, to=4-3]
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{\id_{A}^{*}\cong\id_{\Fsf_{A}}}"{description}, from=3-3, to=1-1]
+        \arrow[from=1-1, to=2-1]
+        \arrow[""{name=1, anchor=center, inner sep=0}, "{\id_{A}^{*}f^{*}}"{description}, curve={height=12pt}, from=2-5, to=1-1]
+        \arrow["{f^{*}}"{description}, from=2-5, to=3-3]
+        \arrow["f"{description}, from=2-7, to=4-9]
+        \arrow[""{name=2, anchor=center, inner sep=0}, "{f^{*}}"{description, pos=0.3}, from=3-9, to=1-7]
+        \arrow[from=1-7, to=2-7]
+        \arrow[from=3-9, to=4-9]
+        \arrow["{\id_{B}}"{description}, from=4-9, to=3-11]
+        \arrow["{\id_{B}^{*}\cong\id_{\Fsf_{B}}}"{description, pos=0.4}, from=2-11, to=3-9]
+        \arrow[""{name=3, anchor=center, inner sep=0}, "{f^{*}\id_{B}^{*}}"{description}, curve={height=12pt}, from=2-11, to=1-7]
+        \arrow[from=2-11, to=3-11]
+        \arrow["f"{description}, curve={height=-12pt}, from=2-7, to=3-11]
+        \arrow[shorten <=8pt, shorten >=8pt, Rightarrow, from=3, to=2]
+        \arrow[shorten <=8pt, shorten >=8pt, Rightarrow, from=1, to=0]
+    \end{tikzcd}$$
+    \\\\
+    To verify (d)(ii) with the setup $f:A\to B, g:B\to C, h:C\to D$ we have $f^{*}g^{*}h^{*}\delta$ and $(hgf)^{*}\delta$ both pullbacks of some $\delta\in\Obj\left(\Fsf_{D}\right)$ but there is a unique morphism in $\Fsf_{A}$ lying over $\id_{A}$ such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJmXnsqfWdeeyp9aF57Kn1cXGRlbHRhIl0sWzAsMSwiQSJdLFsyLDEsIkEiXSxbMiwwLCIoaGdmKV57Kn1cXGRlbHRhIl0sWzEsMiwiXFxpZF97QX0iLDJdLFswLDNdLFswLDEsInAiLDJdLFszLDIsInAiXV0=
+    \begin{tikzcd}
+        {f^{*}g^{*}h^{*}\delta} && {(hgf)^{*}\delta} \\
+        A && A
+        \arrow["{\id_{A}}"', from=2-1, to=2-3]
+        \arrow[from=1-1, to=1-3]
+        \arrow["p"', from=1-1, to=2-1]
+        \arrow["p", from=1-3, to=2-3]
+    \end{tikzcd}$$
+    commutes by the definition of Cartesian arrows and the natural isomorphisms in the following diagram
+    $$% https://q.uiver.app/#q=WzAsNSxbMCwwLCJmXnsqfWdeeyp9aF57Kn1cXGRlbHRhIl0sWzAsMiwiZl57Kn0oaGcpXnsqfVxcZGVsdGEiXSxbMywwLCIoZ2YpXnsqfWheeyp9XFxkZWx0YSJdLFszLDIsIihoZ2YpXnsqfVxcZGVsdGEiXSxbMSwyXSxbMCwyLCJcXGFscGhhX3tmLGd9KGheeyp9XFxkZWx0YSkiXSxbMiwzLCJcXGFscGhhX3tnZixofShcXGRlbHRhKSJdLFsxLDMsIlxcYWxwaGFfe2YsaGd9KFxcZGVsdGEpIiwyXSxbMCwxLCJmXnsqfVxcYWxwaGFfe2csaH0oXFxkZWx0YSkiLDJdLFswLDNdLFsyLDksIiIsMSx7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH19XSxbMSw5LCIiLDEseyJzaG9ydGVuIjp7InRhcmdldCI6MjB9fV1d
+    \begin{tikzcd}
+        {f^{*}g^{*}h^{*}\delta} &&& {(gf)^{*}h^{*}\delta} \\
+        \\
+        {f^{*}(hg)^{*}\delta} & {} && {(hgf)^{*}\delta}
+        \arrow["{\alpha_{f,g}(h^{*}\delta)}", from=1-1, to=1-4]
+        \arrow["{\alpha_{gf,h}(\delta)}", from=1-4, to=3-4]
+        \arrow["{\alpha_{f,hg}(\delta)}"', from=3-1, to=3-4]
+        \arrow["{f^{*}\alpha_{g,h}(\delta)}"', from=1-1, to=3-1]
+        \arrow[""{name=0, anchor=center, inner sep=0}, from=1-1, to=3-4]
+        \arrow[shorten >=8pt, Rightarrow, from=1-4, to=0]
+        \arrow[shorten >=8pt, Rightarrow, from=3-1, to=0]
+    \end{tikzcd}$$
+    as desired. 
+\end{proof}
+Under special circumstances, a lax 2-functor from a category $\Ssf$ to the category of categories can be made into a functor. 
+\begin{definition}[Splitting Cleavage]\label{def: split cleavage}
+    Let $p:\Fsf\to\Ssf$ be a fibered category with cleavage $K$. The cleavage $K$ is splitting if it contains all identities and is closed under composition. 
+\end{definition}
+One then shows the following. 
+\begin{lemma}\label{lem: lax2 is functor iff split cleavage}
+    The lax 2-functor associated to the cleavage is a functor if and only if the cleavage is splitting. 
+\end{lemma}
+\begin{proof}
+    If the cleavage is splitting then the composition law is rigid with unitality and associativity by \Cref{def: lax 2 functor}.
+\end{proof}
+\begin{remark}
+    Generally, fibered categories do not admit a splitting. 
+\end{remark}
+The converse to \Cref{lem: fibered cat with cleavage is lax2} also holds. That is, given a fibered category with a lax 2-functor, one can construct a cleavage.
+\begin{lemma}\label{lem: lax2 fibered cat has cleavage}
+   Suppose $p:\Fsf\to\Ssf$ is a fibered category and $\Phi$ some lax 2-functor on $\Ssf$ given on objects by 
+   $$A\mapsto\Fsf_{A}$$
+   and on morphisms by 
+   $$(f:A\to B)\mapsto (f^{*}:\Fsf_{B}\to\Fsf_{A}).$$
+   There exists a cleavage $K$ realizing $\Phi$.  
+\end{lemma} 
+Evidently this results in the following theorem. 
+\begin{theorem}\label{thm: lax2 iff cleavage}
+    Let $p:\Fsf\to\Csf$ be a fibered category. The following are equivalent. 
+    \begin{enumerate}[label=(\alph*)]
+        \item There is a lax 2-functor $\Phi:\Ssf\to\Cat$.
+        \item The category $\Ssf$ has a cleavage $K$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Immediate from \Cref{lem: lax2 fibered cat has cleavage} and \Cref{lem: fibered cat with cleavage is lax2}.
+\end{proof}
+We list an additional property of fibered categories.
+\begin{definition}[Stable Property of Morphisms]\label{def: stable property of morphisms}
+    A collection of morphisms $\Psf\subseteq\Mor_{\Csf}$ of a category $\Csf$ is stable if the following two conditions hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item If $f:A\to B$ is in $\Psf$ and $\phi:A'\to A,\psi:B'\to B$ are isomorphisms then the composition $(\psi\circ f\circ\phi):A'\to B'$ is in $\Psf$ as well. 
+        \item Given $A\to B$ in $\Psf$ and any map $C\to B$ the fibered product 
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJBXFx0aW1lc197Qn1DIl0sWzAsMSwiQSJdLFsyLDEsIkIiXSxbMiwwLCJDIl0sWzMsMl0sWzEsMl0sWzAsM10sWzAsMV1d
+        \begin{tikzcd}
+            {A\times_{B}C} && C \\
+            A && B
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=2-1, to=2-3]
+            \arrow[from=1-1, to=1-3]
+            \arrow[from=1-1, to=2-1]
+        \end{tikzcd}$$
+        exists and $A\times_{B}C\to C$ is in $\Psf$. 
+    \end{enumerate}
+\end{definition}
+\subsection{Categories Fibered in Groupoids}\label{subsec: categories fibered in groupoids}
+We now turn to a very important example of fibered categories. Categories fibered in groupoids. Recall here the following definition from category theory. 
+\begin{definition}[Groupoid]\label{def: groupoid}
+    Let $\Csf$ be a category. $\Csf$ is a groupoid if and only if every morphism in $\Csf$ is an isomorphism. 
+\end{definition}
+Naturally, we define a category fibered in groupoids as follows. 
+\begin{definition}[Category Fibered in Groupoids]\label{def: category fibered in groupoids}
+    Let $p:\Fsf\to\Ssf$ be a fibered category. $p:\Fsf\to\Ssf$ is a category fibered in groupoids if for all $A\in\Obj(\Ssf)$ the category $\Fsf_{A}$ is a groupoid. 
+\end{definition}
+One can alternatively characterize categories fibered in groupoids as follows. 
+\begin{lemma}\label{lem: cfg iff cartesian plus}
+    Let $p:\Fsf\to\Ssf$ be a fibered category. $p:\Fsf\to\Ssf$ is fibered in groupoids if and only if the following two properties hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item Every arrow in $\Fsf$ is Cartesian. 
+        \item Given $\beta\in\Obj(\Fsf)$ and $f:A\to p(\beta)$ in $\Ssf$, there exists $\phi:\alpha\to\beta$ in $\Fsf$ such that $p(\phi)=f$. 
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    $(\Longrightarrow)$ Suppose $p:\Fsf\to\Ssf$ is a category fibered in groupoids. Lifts exist and are unique by $\id_{\Fsf_{B}}$ Cartesian satisfying (ii). For (i), let $\phi:\alpha\to\beta$ lying over $f:A\to B$ and $\phi':\alpha'\to\beta$ a pullback of $\beta\in\Obj(\Fsf_{B})$ to $\Fsf_{A}$, there is a map $\eta:\alpha\to\alpha'$ in $\Fsf_{A}$ which is an isomorphism since $p:\Fsf\to\Ssf$ is a category fibered in groupoids. But isomorphisms are unique so $\phi$ is Cartesian. 
+    \\\\
+    $(\Longleftarrow)$ Suppose conditions (a) and (b) hold and let $\phi:\alpha'\to\alpha$ be a morphism $\Fsf_{A}$ over $A\in\Obj(\Ssf)$. Since this morphism $\phi$ is Cartesian there is $\psi:\alpha\to\alpha'$ filling in the following diagram. 
+    $$% https://q.uiver.app/#q=WzAsNixbMiwxLCJcXGFscGhhJyJdLFsyLDIsIkEiXSxbNCwxLCJcXGFscGhhIl0sWzQsMiwiQSJdLFswLDAsIlxcYWxwaGEiXSxbMCwxLCJBIl0sWzUsMSwiXFxpZF97QX0iLDFdLFs0LDAsIlxccHNpIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMV0sWzQsMiwiXFxpZF97XFxhbHBoYX0iLDFdLFs1LDMsIlxcaWRfe0F9IiwxLHsibGFiZWxfcG9zaXRpb24iOjYwfV0sWzQsNV0sWzIsM10sWzAsMiwiXFxwaGkiLDFdLFsxLDMsIlxcaWRfe0F9IiwxXV0=
+    \begin{tikzcd}
+        \alpha \\
+        A && {\alpha'} && \alpha \\
+        && A && A
+        \arrow["{\id_{A}}"{description}, from=2-1, to=3-3]
+        \arrow["\psi"{description}, dashed, from=1-1, to=2-3]
+        \arrow[from=2-3, to=3-3]
+        \arrow["{\id_{\alpha}}"{description}, from=1-1, to=2-5]
+        \arrow["{\id_{A}}"{description, pos=0.6}, from=2-1, to=3-5]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=2-5, to=3-5]
+        \arrow["\phi"{description}, from=2-3, to=2-5]
+        \arrow["{\id_{A}}"{description}, from=3-3, to=3-5]
+    \end{tikzcd}$$
+    By the commutativity of the upper triangle, $\phi\circ\psi\Longrightarrow\id_{\alpha}$ so $\psi$ is a right inverse of $\phi$ and by the diagram 
+    $$% https://q.uiver.app/#q=WzAsNixbMiwxLCJcXGFscGhhIl0sWzIsMiwiQSJdLFs0LDEsIlxcYWxwaGEnIl0sWzQsMiwiQSJdLFswLDAsIlxcYWxwaGEnIl0sWzAsMSwiQSJdLFs1LDEsIlxcaWRfe0F9IiwxXSxbNCwwLCJcXHBoaSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDFdLFs0LDIsIlxcaWRfe1xcYWxwaGEnfSIsMV0sWzUsMywiXFxpZF97QX0iLDEseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNCw1XSxbMiwzXSxbMCwyLCJcXHBzaSIsMV0sWzEsMywiXFxpZF97QX0iLDFdXQ==
+    \begin{tikzcd}
+        {\alpha'} \\
+        A && \alpha && {\alpha'} \\
+        && A && A
+        \arrow["{\id_{A}}"{description}, from=2-1, to=3-3]
+        \arrow["\phi"{description}, dashed, from=1-1, to=2-3]
+        \arrow[from=2-3, to=3-3]
+        \arrow["{\id_{\alpha'}}"{description}, from=1-1, to=2-5]
+        \arrow["{\id_{A}}"{description, pos=0.6}, from=2-1, to=3-5]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=2-5, to=3-5]
+        \arrow["\psi"{description}, from=2-3, to=2-5]
+        \arrow["{\id_{A}}"{description}, from=3-3, to=3-5]
+    \end{tikzcd}$$
+    so too is $\phi$ the right inverse of $\psi$, showing $\phi$ is an isomorphism. 
+\end{proof}
+We now consider the higher categorical variant of Yoneda's lemma. Recall that we have seen how a category $\Csf$ can be embedded into the functor category $\Fun(\Csf^{\Opp},\Sets)$, equivalently described as the category of set-valued presheaves on $\Csf$. One can similarly define for a fibered category $p:\Fsf\to\Ssf$ an embedding $\Fun(\Ssf^{\Opp},\Sets)$ into the 2-category of fibered categories over $\Ssf$ denoted $\FibCat(\Ssf)$ by taking for $F\in\Obj\left(\Fun(\Ssf^{\Opp},\Sets)\right)$ defining the fiber to be the collection of objects
+$$\Fsf_{A}=\left\{(A,\alpha)\in\Obj(\Ssf)\times F(A)\right\}$$
+and morphisms $f^{*}:\Fsf_{B}\to\Fsf_{A}$ such that 
+$$f^{*}\left((B,F(f(\alpha)))\right)=(A,\alpha).$$
+By composing these embeddings, we have an embedding of a category $\Csf$ to the 2-category of categories fibered over $\Csf$, $\FibCat(\Csf)$. For a category $\Csf$, the map on objects takes $Z\in\Obj(\Csf)$ to the slice category $\Csf_{(-/Z)}$ whose objects are morphisms $X\to Z$ and whose morphisms are commutative triangles 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWSJdLFsxLDEsIloiXSxbMCwyXSxbMSwyXSxbMCwxLCJmIl1d
+\begin{tikzcd}
+	X && Y \\
+	& Z
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=1-3, to=2-2]
+	\arrow["f", from=1-1, to=1-3]
+\end{tikzcd}$$
+which we denote $f$, taking the morphisms to $Z$, known as the structure morphisms, as implicit. One yields a map $\Csf_{(-/Z)}\to\Csf$ by $(X\to Z)\mapsto X$, compatible with morphisms in the obvious way. 
+\begin{definition}[Representable Fibered Category]\label{def: representable fibered category}
+   A fibered category over $\Csf$ is representable if it is equivalent as a category to a slice category $\Csf_{(-/Z)}$ for some $Z\in\Obj(\Csf)$. 
+\end{definition}
+We now state and prove the 2-categorical Yoneda lemma. 
+\begin{lemma}[2-Categorical Yoneda]\label{lem: 2cat Yoneda}
+    Let $p:\Fsf\to\Csf$ be a fibered category and $Z\in\Obj(\Csf)$. There is an equivalence of categories 
+    $$\Fun\left(\Csf_{(-/Z)},\Fsf\right)\to\Fsf_{Z}.$$
+\end{lemma}

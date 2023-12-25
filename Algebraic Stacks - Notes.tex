@@ -20,7 +20,7 @@
   {\end{proof}}
 \renewcommand\qedsymbol{$\blacksquare$}
 
-\usepackage{amsmath, amssymb, tikz, amsthm, csquotes, multicol, footnote, tablefootnote, biblatex, wrapfig, float, quiver, mathrsfs, cleveref, enumitem, upgreek,stmaryrd}
+\usepackage{amsmath, amssymb, tikz, amsthm, csquotes, multicol, footnote, tablefootnote, biblatex, wrapfig, float, quiver, mathrsfs, cleveref, enumitem, upgreek,stmaryrd, bm}
 \addbibresource{refs.bib}
 \theoremstyle{definition}
 \newtheorem{theorem}{Theorem}[section]
@@ -33,7 +33,9 @@
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem*{remark}{Remark}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem*{nntheorem}{Theorem}
 \numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
 \begin{document}
 \large
 \title[Algebraic Stacks]{Algebraic Stacks}
@@ -49,18 +51,18 @@ These notes roughly correspond to an attempt to learn stack theory that began in
 \include{Section 1}
 \include{Section 2}
 \include{Section 3}
-\include{Section 4}
+%\include{Section 4}
 \include{Section 5}
-\include{Section 6}
-\include{Section 7}
+%\include{Section 6}
+%\include{Section 7}
 \include{Section 8}
 \include{Section 9}
 \include{Section 10}
 \include{Section 11}
 \include{Section 12}
 \include{Section 13}
-\part*{End Material}
-\appendix
+\include{Section 14}
 \include{Appendix 1}
+\include{Appendix 2}
 \printbibliography
 \end{document}

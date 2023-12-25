@@ -1,0 +1,14 @@
+Ch. 1 
+-Finish proof of Grothendieck's theorem. 
+
+Ch. 2 
+-Finish proof of converse of fibered categories and cleavages. 
+-Add stuff on global sheaves on the site and the fibered category of quasicoherent sheaves. 
+-Better bridge to 2-Yoneda through categories fibered in sets and equivalence relations. 
+
+Ch. 3
+- More exposiiton on descent. Especially why it is not dependent on the cleavage. 
+- Category of descent data via sieves. 
+
+Ch. 5 (Spaces) 
+- Go back and do everything identifying the scheme and the functor it represents. 

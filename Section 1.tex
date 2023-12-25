@@ -1,5 +1,5 @@
-\part*{Grothendieck Topologies, Sites, and Fibered Categories}
-\section{Grothendieck Topologies}
+\part*{Grothendieck Topologies, Sites, and Fibered Categories}\label{part: topologies sites and fibered categories}
+\section{Grothendieck Topologies}\label{sec: grothendieck topologies}
 Let us recall the following definitions. 
 \begin{definition}[Presheaf]\label{def: presheaf on topological space}
     Let $X$ be a topological space. A presheaf of sets $\Fcal$ on $X$ is a functor $(X^{\Opens})^{\Opp}\to\Sets$. 
@@ -17,40 +17,62 @@ A presheaf is a sheaf if it satisfies additional gluing axioms.
     is an equalizer for $\{X_{i}\}$ an open cover of $X$.  
 \end{definition}
 In this way, we say that a sheaf on $X$ is a presheaf on $X$ satisfying descent. Note here that we implicitly used the fact that $X^{\Opens}$ can be naturally endowed with the strucutre of a category with objects open sets of the topological space $X$ and morphisms inclusions of such open sets. This begs the question if we can replace $X^{\Opens}$ with some other category $\Csf$, allowing us to define a sheaf on an arbitrary category $\Csf$. We do this via the construction of a Grothendieck topology by replacing open sets of a topological space with maps into this space. 
-\begin{definition}[Grothendieck Topology]\label{def: Grothendieck topology}
-    Let $\Csf$ be a category. A Grothendieck topology on $\Csf$ is the data of a set $\{X_{i}\to X\}$ for each object $X\in\Obj(\Csf)$ known as a covering of $X$ such that the following conditions hold:
+\begin{definition}[Covering]\label{def: cover}
+    Let $\Csf$ be a category. A covering on $X\in\Obj(\Csf)$ is a set of collections of morphisms $\{X_{i}\to X\}$ such that the following conditions hold:
     \begin{enumerate}[label=(\alph*)]
         \item If $Y\to X$ is an isomorphism then $\{Y\to X\}$ is a covering.  
         \item If $\{X_{i}\to X\}$ is a covering and $Y\to X$ any morphism then $\{X_{i}\times_{X}Y\}$ exist and $\{X_{i}\times_{X}Y\to X\}$ is a covering. 
         \item If $\{X_{i}\to X\}$ is a covering and for each $i$ $\{X_{ij}\to X_{i}\}$ is a covering then the composites $\{X_{ij}\to X_{i}\to X\}$ is a covering. 
     \end{enumerate}
 \end{definition}
-This allows us to define a site. 
+This allows us to define Grothendieck topologies and sites. 
+\begin{definition}[Grothendieck Topology]\label{def: Grothendieck topology}
+    Let $\Csf$ be a category. A Grothendieck topology on $\Csf$ is the data of a covering for each $X\in\Obj(\Csf)$.
+\end{definition}
 \begin{definition}[Site]\label{def: site}
     A site on a category $\Csf$ is the category $\Csf$ endowed with a Grothendieck topology. 
 \end{definition}
 Let us see some examples.
 \begin{example}[Site of a Topological Space]
-    Let $X$ be a topological space and $X^{\Opens}$ the category of open sets of $X$ with morphisms inclusions. One can endow $X^{\Opens}$ with a Grothendieck topology by associating to each $U\subseteq X$ open, the set of open covers of $U$. The fiber product is given by intersection of open sets, which agrees with our previous discussion of sheaves and presheaves. 
+    Let $X$ be a topological space and $X^{\Opens}$ the category of open sets of $X$ with morphisms inclusions. One can endow $X^{\Opens}$ with a Grothendieck topology by associating to each $U\subseteq X$ open, the set of open coverings of $U$. The fiber product is given by intersection of open sets, which agrees with our previous discussion of sheaves and presheaves. 
 \end{example}
-\begin{example}
-    Consider the category of topological spaces $\Top$. The category $\Top$ can be endowed with a Grothendieck topology by taking covers of a topological space $X\in\Obj(\Top)$ to open, continuous, injective maps $X_{i}\to X$. 
+\begin{example}\label{ex: global topology}
+    Consider the category of topological spaces $\Top$. The category $\Top$ can be endowed with a Grothendieck topology by taking coverings of a topological space $X\in\Obj(\Top)$ to open, continuous, injective maps $X_{i}\to X$. 
 \end{example}
-\begin{example}[\'{E}tale Site of a Scheme]
-    Let $S$ be a scheme. The \'{e}tale site of $S$, denoted $X_{\et}$, is the full subcategory of $\Sch_{S}$ where covers are \'{e}tale morphisms. 
-\end{example}
-It is sometimes useful to consider coverings that are not finitely presented. We do this by using the fpqc topology. 
+\subsection{Sites in Algebraic Geometry}\label{subsec: sites in algebraic geometry}
+In algebraic geometry, is sometimes useful to consider coverings that are not finitely presented, and more generally topologies that are finer -- containing more open sets -- than the Zariski topology. We introduce some of these structures here. 
 \begin{definition}[fpqc Morphism]\label{def: fpqc morphism}
     Let $f:X\to Y$ be a surjective morphism of schemes. $f$ is an fpqc morphism if for every affine open $V\subseteq Y$, $f^{-1}(V)$ is quasicompact in $X$.
 \end{definition}
 \begin{remark}
-    The notation fpqc arises from the French, fid\`{e}lement plat et quasi-compact. 
+    The notation fpqc arises from the French, fid\`{e}lement plat et quasi-compact, or faithfully flat and quasicompact. 
 \end{remark}
-This allows us to define the fpqc topology on the category of schemes over a fixed scheme $S$. 
-\begin{definition}[fpqc Site]\label{def: fpqc site}
-    Let $S$ be a scheme. The fpqc site on $S$-schemes $(\Sch_{S})_{\fpqc}$ is the data of coverings $\{X_{i}\to X\}$ for each $X\in\Obj(\Sch_{S})$ such that $\coprod_{i}X_{i}\to X$ is fpqc. 
+This allows us to define the various Grothendieck topologies on the category of schemes over a fixed scheme $S$. 
+\begin{definition}[Small Zariski Site]\label{def: small Zariski site}
+    Let $X$ be a scheme. The small Zariski site on $X$, $X_{\Zar}$ is the category with objects open subschemes $U\subseteq X$ and morphisms inclusions. The Grothendieck topology is given by coverings of collections of open embeddings $\{U_{i}\to U\}$ such that $\cup_{i}U_{i}=U$. 
 \end{definition}
-We can thus show the following proposition. 
+\begin{definition}[Big Zariski Site]\label{def: big Zariski site}
+    Let $S$ be a scheme and $\Sch_{S}$ the category of $S$-schemes. The big Zariski site on $S$-schemes $(\Sch_{S})_{\Zar}$ has coverings given by sets of $S$-morphisms $\{X_{i}\to X\}$ for which $X_{i}\to X$ is an open embedding and $\cup_{i}X_{i}=X$. 
+\end{definition}
+\begin{definition}[Smooth Site]\label{def: smooth site}
+    Let $S$ be a scheme and $\Sch_{S}$ the category of $X$-schemes. The smooth site on $S$-schemes $(Sch_{S})_{\Sm}$ is the full subcategory of the slice category $\Sch_{S}$ with objects smooth morphisms $(X\to S)$ and morphisms smooth commuting triangles. The Grothendieck topology is given by collections of smooth morphisms $\{X_{i}\to X\}$ such that $\coprod_{i}X_{i}\to X$ is surjective. 
+\end{definition}
+\begin{definition}[Small \'{E}tale Site]\label{def: small etale site}
+    Let $X$ be a scheme. The small \'{e}tale site on $X$, $X_{\et}$ is the full subcategory of the slice category $\Sch_{X}$ with objects \'{e}tale morphisms $(U\to X)$ and morphisms \'{e}tale commuting triangles. The Grothendieck topology is given by collections of \'{e}tale morphisms $\{U_{i}\to U\}$ such that $\coprod_{i}U_{i}\to U$ is surjective. 
+\end{definition}
+\begin{definition}[Big \'{E}tale Site]\label{def: big etale site}
+    Let $S$ be a scheme and $\Sch_{S}$ the category of $S$-schemes. The big \'{e}tale site on $S$-schemes $(\Sch_{S})_{\et}$ has coverings given by collections of $S$-morphisms $\{X_{i}\to X\}$ for which $X_{i}\to X$ is \'{e}tale and $\coprod_{i}X_{i}\to X$ is surjective. 
+\end{definition}
+\begin{definition}[Lisse-\'{E}tale Site]\label{def: lisse etale site}
+    Let $X$ be a scheme. The lisse-\'{e}tale site on $X$, $X_{\LisEt}$ is the full subcategory of the slice category $\Sch_{X}$ with objects smooth morphisms $(U\to X)$ and morphisms smooth commuting triangles. The Grothendieck topology is given by collections of smooth morphisms $\{U_{i}\to U\}$ such that $\coprod_{i}U_{i}\to U$ is surjective. 
+\end{definition}
+\begin{definition}[fppf Site]\label{def: fppf site}
+    Let $S$ be a scheme and $\Sch_{S}$ the category of $S$-schemes. The fppf site on $S$-schemes $(\Sch_{S})_{\fppf}$ has coverings given by collections $\{X_{i}\to X\}$ for which $X_{i}\to X$ is flat and locally of finite presentation and $\coprod_{i}X_{i}\to X$ is surjective. 
+\end{definition}
+\begin{definition}[fpqc Site]\label{def: fpqc site}
+    Let $S$ be a scheme and $\Sch_{S}$ the category of $S$-schemes. The fpqc site on $S$-schemes $(\Sch_{S})_{\fpqc}$ has coverings given by collections $\{X_{i}\to X\}$ for each $X\in\Obj(\Sch_{S})$ such that $\coprod_{i}X_{i}\to X$ is fpqc. 
+\end{definition}
+The following proposition shows that the various types of morphisms play well with the definition of coverings. 
 \begin{proposition}
     Let $X\to Y$ be a morphism of schemes and $\{Y_{i}\to Y\}$ an fpqc covering of $Y$. Suppose that for each $i$, the induced map $Y_{i}\times_{Y}X\to Y_{i}$ has one of the following properties: 
     \begin{enumerate}[label=(\alph*)]
@@ -72,6 +94,19 @@ We can thus show the following proposition.
 \begin{proof}
     All these properties and being fpqc are affine-local on target and the condition on the induced map $Y_{i}\times_{Y}X\to Y$ implies the condition on the map $X\to Y$ by \cite[Prop. 2.7.1]{EGAIVpt1}. 
 \end{proof}
+The the topologies can be classified according to coarseness, with the Zariski topology being the coarsest -- having the fewest open sets. 
+\begin{theorem}\label{thm: classification of Grothendieck topologies on cat of schemes}
+    In increasing level of coarseness, 
+    $$\text{fpqc}\leq\text{fppf}\leq\text{\'{e}tale}\leq\text{Zariski}.$$
+    In particular any sheaf in a topology on the left is a sheaf in the topology on the right. 
+\end{theorem}
+\begin{remark}
+    We will soon clarify how sheaves in a finer topology are sheaves in a coarser one. 
+\end{remark}
+\begin{proof}
+    This can be directly checked by considering the properties of the corresponding types of morphisms. 
+\end{proof}
+\subsection{Sheaves on Sites}\label{subsec: sheaves on sites}
 Having defined a topology, we can now define a sheaf theory on a site. Recall from earlier that sheaves on a topological space $X$ is a presheaf that satisfies additional axioms. The sheaf condition can be generalized to any site, replacing intersections of open sets with fibered products. 
 \begin{definition}[Separated Presheaf on a Site]\label{def: sep presheaf on site}
     Let $\Csf$ be a site and $F:\Csf^{\Opp}\to\Sets$ a presheaf of sets on $\Csf$. $F$ is a separated functor if there are $a,b\in F(X)$ whose pullbacks to $F(X_{i})$ coincide then $a=b$ on $F(U)$. 
@@ -114,3 +149,158 @@ We show that the set $F(\{X_{i}\to X\})$ can be defined in terms of sieves.
     \end{tikzcd}$$
     commutes and $R$ is universal with respect to this property. 
 \end{proposition}
+Evidently $\NatTrans(h_{X},F)\to F(X)$ is the bijection induced by the Yoneda embedding and the vertical maps given by restriction $h_{X}$ to $h_{\{X_{i}\to X\}}$ and $F(X)$ to $F(\{X_{i}\to X\})$, respectively. 
+\begin{proof}
+    Suppose $\phi:h_{\{X_{i}\to X\}}\Rightarrow F$. For each $i$, $X_{i}\to X$ is in $h_{\{X_{i}\to X\}}(X_{i})$ where we define $R\phi = \phi(X_{i}\to X)\in\prod_{i} F(X_{i})$. By the definition of a sieve, the pullbacks $\pr_{1}^{*}\phi(X_{i}\to X)$ and $\pr_{2}^{*}(X_{i}\to X)$ agree on $X_{i}\times_{X}X_{j}$ so $R\phi\in F(\{X_{i}\to X\})$, defining a function $R:\NatTrans(h_{\{X_{i}\to X\}}, F)\to F(\{X_{i}\to X\})$ and giving the commutativity of the diagram. 
+    \\\\
+    We now show $R$ is a bijection. Suppose there are two natural transformations $\phi,\psi:h_{\{X_{i}\to X\}}\Rightarrow F(\{X_{i}\to X\})$ such that $R\phi = R\psi$. For $T\to X$ of some $h_{\{X_{i}\to X\}}(T)$ there exists $f:T\to X_{i}$ so by definition of natural transformations we have 
+    $$\phi(T\to X)=f^{*}\phi(X_{i}\to X)=f^{*}\psi(X_{i}\to X)=\psi(T\to X)$$
+    so $\phi=\psi$ proving injectivity. For surjectivity suppose we have some $\xi_{i}\in F(\{X_{i}\to X\})$ we show that $\xi_{i}$ defines a natural transformation $h_{\{X_{i}\to X\}}\to F$. For some element of $h_{\{X_{i}\to X\}}(T)$ choose a factorization with $f:T\to X_{i}$ defining a pullback $f^{*}\xi_{i}$ of $F(X)$. Given some other factorization $g:T\to X_{j}$ we get a morphism $T\to X_{i}\times_{X}X_{j}$ whose composites with $\pr_{1},\pr_{2}$ are $f,g$, respectively. Since $\pr_{1}^{*}\xi_{i}=\pr_{2}^{*}\xi_{j}$, we have $f^{*}\xi_{i}=g^{*}\xi_{j}$ showing surjectivity defining a natural transformation where $R\phi=\xi_{i}$. 
+\end{proof}
+This gives us a characterization of sheaves as follows. 
+\begin{corollary}\label{corr: sheaf and covering condition}
+    A functor $\Csf^{\Opp}\to\Sets$ is a sheaf if and only if for any covering $\{X_{i}\to X\}$ in $\Csf$ the induced function 
+    $$F(X)=\NatTrans(h_{X},F)\to\NatTrans(h_{\{X_{i}\to X\}},F)$$
+    is a bijection.
+\end{corollary}
+We can in fact sharpen this characterization. 
+\begin{definition}[Belong To]\label{def: belong to}
+    Let $\Tsf$ be a Grothendieck topology on a category $\Csf$. A sieve $S\subseteq h_{X}$ of an object $X\in\Obj(\Csf)$ belongs in $\Tsf$ if there is a covering $\{X_{i}\to X\}$ in $\Tsf$ such that $h_{\{X_{i}\to X\}}\subseteq S$. 
+\end{definition}
+\begin{remark}
+    If $\Csf$ is a site, the sieves of $\Csf$ are the sieves belonging to the Grothendieck topology of $\Csf$. 
+\end{remark}
+The importance of this characterization is crucial to the characterization of sheaves on a Grothendieck topology. 
+\begin{proposition}\label{prop: sheaf in GT iff bijective on sieves}
+    Let $F:\Csf^{\Opp}\to\Sets$ be a presheaf of sets in a Grothendieck topology $\Tsf$. $F$ is a sheaf if and only if for all sieves $S\in\Tsf$ the induced map 
+    $$F(X)=\Mor_{\PSh(\Csf)}\left(h_{X},F\right)\to\Mor_{\PSh(\Csf)}\left(S,F\right)$$
+    is a bijection.
+\end{proposition}
+\begin{proof}
+    $(\Longrightarrow)$ This is immediate from \Cref{corr: sheaf and covering condition} as a natural transformation of functors $\Csf^{\Opp}\to\Sets$ are exactly morphsims in $\PSh(\Csf)$. 
+    \\\\
+    $(\Longleftarrow)$ Suppose $F$ is a sheaf and for some $S\subseteq h_{X}$ belonging to the Grothendieck topology $\Tsf$ of the category $\Csf$. Let $\{X_{i}\to X\}$ be a covering of $X$ with $h_{\{X_{i}\to X\}}\subseteq S$. Once again by \Cref{corr: sheaf and covering condition} we have that 
+    $$\Mor_{\PSh(\Csf)}\left(h_{X},F\right)\to\Mor_{\PSh(\Csf)}\left(S,F\right)\to\Mor_{\PSh(\Csf)}\left(h_{\{X_{i}\to X\}},F\right)$$
+    is a bijection. To show $\Mor_{\PSh(\Csf)}\left(h_{X},F\right)\to\Mor_{\PSh(\Csf)}\left(S,F\right)$ is a bijection also, it suffices to show that $\Mor_{\PSh(\Csf)}\left(S,F\right)\to\Mor_{\PSh(\Csf)}\left(h_{\{X_{i}\to X\}},F\right)$ is an injection. Let $\phi,\psi:S\to F$ be two natural transformations with the same image in $\Mor_{\PSh(\Csf)}\left(h_{\{X_{i}\to X\}},F\right)$, $(Y\to X)\in S(Y)$. Taking pullbacks, we have a covering $\{X_{i}\times_{X}Y\to X\}$ with each map in $h_{\{X_{i}\to X\}}\left(X_{i}\times_{X}Y\right)$ by the sieve axioms and projections $\pr_{2,i}:X_{i}\times_{X}Y\to Y$. We thus have equalities 
+    $$\pr_{2,i}^{*}\phi(Y\to X)=\phi\left(X_{i}\times_{X}Y\right)=\psi\left(X_{i}\times_{X}Y\right)=\pr_{2,i}^{*}\psi(Y\to X)$$
+    but since $F$ is a sheaf, it satisfies the identity axiom so the equality above in fact shows $$\phi(Y\to X)=\psi(Y\to X)$$
+    as desired. 
+\end{proof}
+To further elaborate on an important idea used in the preceding proof, consider $\{X_{i}\to X\}$ and $\{Y_{j}\to X\}$ two coverings of $X\in\Obj(\Csf)$ with $\Csf$ some category with a Grothendieck topology. We can define a new covering $\{X_{i}\times_{X}Y_{j}\to X\}$ another covering. The behavior of a map $Z\to X$ and its factorizations through the various covers are governed by the following proposition. 
+\newpage
+\begin{proposition}\label{prop: fibered covering and sieves}
+    Let $\Csf$ be a category and $X\in\Obj(\Csf)$. 
+    \begin{enumerate}[label=(\alph*)]
+        \item If $\{X_{i}\to X\}$ and $\{Y_{j}\to X\}$ are two coverings and $\{X_{i}\times_{X}Y_{j}\to X\}$ the covering associated to the fibered product then 
+        $$h_{\{X_{i}\times_{X}Y_{j}\to X\}}=h_{\{X_{i}\to X\}}\cap h_{\{Y_{j}\to X\}}\subseteq h_{X}.$$
+        \item If $S_{1},S_{2}$ are sieves on $X$ in the Grothendieck topology $\Tsf$, the intersection $S_{1}\cap S_{2}\subseteq h_{X}$ is also a sieve in the Grothendieck topology $\Tsf$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Suppose $Z\to X$ is a morphism factoring through the covering $\{X_{i}\times_{X}Y_{j}\to X\}$ then by the universal property of fibered products, there is a commuting diagram of the following form:
+    $$% https://q.uiver.app/#q=WzAsNSxbMSwxLCJYX3tpfVxcdGltZXNfe1h9WV97an0iXSxbMywxLCJYX3tpfSJdLFsxLDIsIllfe2p9Il0sWzMsMiwiWCJdLFswLDAsIloiXSxbMiwzXSxbMSwzXSxbMCwyXSxbMCwxXSxbNCwyLCIiLDIseyJjdXJ2ZSI6Mn1dLFs0LDEsIiIsMix7ImN1cnZlIjotMn1dLFs0LDBdXQ==
+    \begin{tikzcd}
+        Z \\
+        & {X_{i}\times_{X}Y_{j}} && {X_{i}} \\
+        & {Y_{j}} && X
+        \arrow[from=3-2, to=3-4]
+        \arrow[from=2-4, to=3-4]
+        \arrow[from=2-2, to=3-2]
+        \arrow[from=2-2, to=2-4]
+        \arrow[curve={height=12pt}, from=1-1, to=3-2]
+        \arrow[curve={height=-12pt}, from=1-1, to=2-4]
+        \arrow[from=1-1, to=2-2]
+    \end{tikzcd}$$
+    showing that $Z$ factors through both the coverings $\{X_{i}\to X\}$ and $\{Y_{j}\to X\}$, that is, $h_{\{X_{i}\times_{X}Y_{j}\to X\}}\subseteq h_{\{X_{i}\to X\}}\cap h_{\{Y_{j}\to X\}}$ where the maps $Z\to X_{i}, Z\to Y_{j}$ arise from composing $Z\to X$ with the projection maps. The reverse converse containment $h_{\{X_{i}\to X\}}\cap h_{\{Y_{j}\to Y\}}\subseteq h_{\{X_{i}\times_{X}Y_{j}\to X\}}$ evident by the universal property of fibered products. This shows (a) which immediately implies (b). 
+\end{proof}
+We now consider how the varying Grothendieck topologies on a site can give rise to different sheaves. 
+\begin{definition}[Refinement]\label{def: refinement}
+    Let $\Csf$ be a category and $\{X_{i}\to X\}_{i\in I}, \{Y_{j}\to X\}_{j\in J}$ two collections of morphisms. The collection $\{Y_{j}\to X\}_{j\in J}$ is a refinement of $\{X_{i}\to X\}_{i\in I}$ if for all $j\in J$ there exists $i\in I$ such that the map $Y_{j}\to X$ factors as 
+    $$Y_{j}\to X_{i}\to X.$$
+\end{definition}
+\begin{remark}
+    Note that the data of factorizations is not part of the data of a refinement. The definition solely requires their existence. 
+\end{remark}
+This condition of refinement is best phrased in terms of sieves. 
+\begin{proposition}\label{prop: refinement and sieves}
+    Let $\Csf$ be a category and $\{X_{i}\to X\}_{i\in I}, \{Y_{j}\to X\}_{j\in J}$ two collections of morphisms. The collection $\{Y_{j}\to X\}_{j\in J}$ is a refinement of $\{X_{i}\to X\}_{i\in I}$ if and only if $h_{\{Y_{j}\to X\}}$ is a subfunctor of $h_{\{X_{i}\to X\}}$. 
+\end{proposition}
+\begin{proof}
+    Immediate from \Cref{def: refinement}.
+\end{proof}
+A refinement of a refinement is evidently a refinement. Furthermore, any covering is tautologically a refinement of itself: given a cover $\{X_{i}\to X\}$ it is a refinement of $\{X_{i}\to X\}$ in the sense that for all $i$ there exists a factorization 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYX3tpfSJdLFsyLDAsIlhfe2l9Il0sWzQsMCwiWCJdLFsxLDJdLFswLDEsIlxcaWRfe1hfe2l9fSJdXQ==
+\begin{tikzcd}
+	{X_{i}} && {X_{i}} && X
+	\arrow[from=1-3, to=1-5]
+	\arrow["{\id_{X_{i}}}", from=1-1, to=1-3]
+\end{tikzcd}$$
+Thus the relation of being a refinement provides an order between coverings of an object $X\in\Obj(\Csf)$. 
+\begin{definition}[Subordinate Topologies]\label{def: subordinate topologies}
+    Let $\Csf$ be a category and $\Tsf,\Tsf'$ two Grothendieck topologies on $\Csf$. The Grothendieck topology $\Tsf$ is subordinate to the Grothendieck topology $\Tsf'$ if every covering in $\Tsf$ has a refinement that is a covering in $\Tsf'$. 
+\end{definition} 
+\begin{remark}
+    For $\Tsf$ subordinate to $\Tsf'$ we write $T\preccurlyeq\Tsf'$. 
+\end{remark}
+\begin{definition}[Equivalent Topologies]\label{def: equivalent topologies}
+    Let $\Csf$ be a category and $\Tsf,\Tsf'$ be two Grothendieck topologies on $\Csf$. If $\Tsf\preccurlyeq\Tsf'$ and $\Tsf'\preccurlyeq\Tsf$ then the Grothendieck topologies $\Tsf,\Tsf'$ are equivalent. 
+\end{definition}
+We previously mentioned that being a refinement was a transitive and reflexive between sets of morphisms to an object. Globally this is incarnated as the relation of being subordinate to, which is a transitive and reflexive relation between Grothendieck topologies on a category $\Csf$. Equivalence of Grothendieck topologies as defined in \Cref{def: equivalent topologies} is thus an equivalence relation. Once again, this is most clearly stated in terms of sieves. 
+\begin{proposition}\label{prop: sieves and subordinate topologies}
+    Let $\Csf$ be a category and $\Tsf,\Tsf'$ two Grothendieck topologies on $\Csf$. $\Tsf\preccurlyeq\Tsf'$ if and only if every sieve of $\Tsf$ belongs to $\Tsf'$. 
+\end{proposition}
+\begin{proof}
+    This is checked elementwise, from which the result follows by \Cref{prop: refinement and sieves}.
+\end{proof}
+This naturally leads to the following corollary.
+\begin{corollary}\label{corr: sieves and equivalent topologies}
+    Two Grothendieck topologies $\Tsf,\Tsf'$ on a category $\Csf$ are equivalent if and only if they have the same sieves. 
+\end{corollary}
+These statements on subordinate topologies immediately lead to the following statements about sheaves. 
+\begin{proposition}\label{prop: refinements and sheaves on sites}
+    Let $\Csf$ be a category and $\Tsf,\Tsf'$ two Grothendieck topologies on $\Csf$. If $\Tsf\preccurlyeq\Tsf'$ then every sheaf in $\Tsf'$ is a sheaf on $\Tsf$. 
+\end{proposition}
+\begin{proof}
+    Denote $\Csf_{\Tsf},\Csf_{\Tsf'}$ the sites with Grothendieck topologies $\Tsf,\Tsf'$, respectively. From \Cref{prop: sheaf in GT iff bijective on sieves}, we know that if $F$ is a sheaf on $\Csf_{\Tsf'}$ we have a bijective map $\Mor_{\PSh(\Csf_{\Tsf'})}\left(h_{X},F\right)\to\Mor_{\PSh(\Csf_{\Tsf'})}\left(S,F\right)$ for all $X\in\Obj(\Csf)$ and all sieves $S\in\Tsf'$. But all sieves in $\Tsf'$ are in $\Tsf$ too by \Cref{prop: sieves and subordinate topologies} so the map $\Mor_{\PSh(\Csf_{\Tsf})}\left(h_{X},F\right)\to\Mor_{\PSh(\Csf_{\Tsf})}\left(S,F\right)$ is also a bijection, showing that $F$ is a sheaf in $\Csf_{\Tsf}$.  
+\end{proof}
+Once again, we have the following corollary. 
+\begin{corollary}\label{corr: refinements and sheaves on sites}
+    Let $\Csf$ be a category $\Tsf,\Tsf'$ two Grothendieck topologies on $\Csf$. If $\Tsf$ and $\Tsf'$ are equivalent as Grothendieck topologies then the sites $\Csf_{\Tsf},\Csf_{\Tsf'}$ have the same sheaves.
+\end{corollary}
+\begin{proof}
+    Immediate from \Cref{corr: sieves and equivalent topologies} and \Cref{prop: refinements and sheaves on sites}.
+\end{proof}
+\begin{remark}
+    Note that in the preceding discussion we used the language of topologies, which contrasts with that of Grothendieck's construction using pretopologies. 
+\end{remark}
+We introduce a few final notions about Grothendieck topologies before turning to a discussion of representable functors. 
+\begin{definition}[Saturated Topology]\label{def: sturated topology}
+    Let $\Csf$ be a category and $\Tsf$ a Grothendieck topology on the category $\Csf$. $\Tsf$ is a saturated Grothendieck topology if every collection of morphisms having a refinement in $\Tsf$ is in $\Tsf$. 
+\end{definition}
+\begin{definition}[Saturation]\label{def: saturation}
+    Let $\Csf$ be a category and $\Tsf$ a Grothendieck topology on the category $\Csf$. The saturation $\overline{\Tsf}$ of $\Tsf$ is the smallest collection of coverings that is saturated. 
+\end{definition}
+\begin{remark}
+    Equivalently $\overline{\Tsf}$ is the collection of sets of morphisms which have a refinement in $\Tsf$. 
+\end{remark}
+This leads to the following proposition. \newpage
+\begin{proposition}\label{prop: saturated GTs}
+    Let $\Tsf$ be a Grothendieck topology on a category $\Csf$. 
+    \begin{enumerate}[label=(\alph*)]
+        \item $\Tsf$ is a subcollection of sets of morphisms in $\overline{\Tsf}$, 
+        \item the Grothendieck topologies $\Tsf$ and $\overline{\Tsf}$ agree,
+        \item $\Tsf$ is a saturated Grothendieck topology if and only if the collections of sets of morphisms in $\Tsf,\overline{\Tsf}$ agree,
+        \item a Grothendieck topology $\Tsf'$ on $\Csf$ is subordinate to $\Tsf$ if and only if the collection of sets of morphisms in $\Tsf'$ is a subcollection of sets of morphisms in $\Tsf$, 
+        \item two Grothendieck topologies $\Tsf,\Tsf'$ on a category $\Csf$ are equivalent if and only if the collections of sets of morphisms in $\overline{\Tsf},\overline{\Tsf'}$ are equal,
+        \item a Grothendieck topology on $\Csf$ is equivalent to a unique saturated topology. 
+    \end{enumerate}
+\end{proposition}
+The statement and proof of \Cref{prop: refinements and sheaves on sites} is suggestive of the connection between sheaves on sites and representable functors, which we now turn to. 
+\subsection{Sheaves on the Site of Schemes}\label{subsec: sites with scheme categories}
+In the case of topological spaces, one can observe that representable functors $\Top^{\Opp}\to\Sets$ is a sheaf in the global topology in the sense of \Cref{ex: global topology}. Indeed, given $X,Y$ topological spaces and an open covering $\{Y_{i}\}_{i\in I}$ of $Y$ (in the usual sense), and continuous functions $f_{i}:Y_{i}\to X$ such that $f_{i}|_{U_{i}\cap U_{j}}=f_{j}|_{U_{i}\cap U_{j}}$ agree for all $i,j$, there exists a unique continuous function $f:U\to X$ such that $f_{i}=f|_{U_{i}}$ for all $i$ -- this is the content of the gluability axiom. In other words, since the set $\Mor_{\Top}(Y,X)$ can be reconstructed from local data, so to can the functor $\Mor_{\Top}(-,X)$. 
+\\\\
+However, this is no longer obvious the case in the category of schemes. The remainder of this section will be dedicated to proving the following difficult theorem of Grothendieck. 
+\begin{theorem}[Grothendieck]\label{thm: Grothendieck rep functor is fpqc sheaf}
+    Let $S$ be a scheme and consider the category $\Sch_{S}$. A representable functor on $\Sch_{S}$ is a sheaf in the fpqc topology. 
+\end{theorem}
+By the refinement of Grothendieck topologies on the category of schemes, a representable functor on $\Sch_{S}$ is also a sheaf in the \'{e}tale and fppf topologies. 

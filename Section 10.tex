@@ -1,1 +1,168 @@
-\section{Coarse Moduli Spaces}
+\part*{The Geometry of Stacks}\label{part: geometry of stacks}
+\section{Geometric Properties of Stacks}\label{sec: geometry of stacks}
+We now consider some further properties of morphisms of stacks. 
+\begin{definition}[Embedding]\label{def: embedding of stacks}
+    Let $f:\Zcal\to\Xcal$ be a morphism of $S$-algebraic stacks. $f$ is an embedding if $f$ is a representable morphism of stacks and for all $Y\to\Ycal$ for $Y$ an algebraic space the map $Y\times_{\Ycal}\Xcal\to\Ycal$ is an embedding of algebraic spaces. 
+\end{definition}
+\begin{definition}[Open Embedding]\label{def: open embedding of stacks}
+    Let $f:\Zcal\to\Xcal$ be a morphism of $S$-algebraic stacks. $f$ is an open embedding if $f$ is a representable morphism of stacks and for all $Y\to\Ycal$ for $Y$ an algebraic space the map $Y\times_{\Ycal}\Xcal\to\Ycal$ is an embedding of algebraic spaces. 
+\end{definition}
+\begin{definition}[Closed Embedding]\label{def: closed embedding of stacks}
+    Let $f:\Zcal\to\Xcal$ be a morphism of $S$-algebraic stacks. $f$ is a closed embedding if $f$ is a representable morphism of stacks and for all $Y\to\Ycal$ for $Y$ an algebraic space the map $Y\times_{\Ycal}\Xcal\to\Ycal$ is an embedding of algebraic spaces. 
+\end{definition}
+Here we used \Cref{def: property of stack morphism via spaces} and the following Cartesian diagram
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFswLDEsIlxcWGNhbCJdLFsyLDAsIlkiXSxbMiwxLCJcXFljYWwiXSxbMSwzLCJmIiwyXSxbMiwzXSxbMCwxXSxbMCwyXV0=
+    \begin{tikzcd}
+        {Y\times_{\Ycal}\Xcal} && Y \\
+        \Xcal && \Ycal
+        \arrow["f"', from=2-1, to=2-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+for $Y\to\Ycal$ a map from an algebraic space $Y$ to the stack $\Ycal$. 
+\begin{definition}[Closed Substack]\label{def: closed substack}
+    Let $\Xcal$ be an $S$-algebraic stack. A closed substack of $\Xcal$ is an equivalence class of closed embeddings $\Zcal\to\Xcal$ such that 
+    $$\left(f_{1}:\Zcal_{1}\to\Xcal\right)\sim\left(f_{2}:\Zcal\to\Xcal\right)$$
+    if and only if there is a morphism of stacks $g:\Zcal_{1}\to\Zcal_{2}$ and a $S$-natural isomorphism of stack morphisms $\sigma:f_{2}\circ g\to f_{1}$. 
+\end{definition}
+\begin{remark}
+    In the setup of \Cref{def: closed embedding of stacks} that $f$ is a representable morphism of stacks so in the definition of closed substacks (\ref{def: closed substack}) the pair $(g,\sigma)$ is unique up to unique isomorphism. 
+\end{remark}
+We now define the property closedness and universal closedness of morphisms of stacks. 
+\begin{definition}[Closed Morphism of Stacks]\label{def: closed morphism of stacks}
+    Let $\Xcal$ be an $S$-algebraic stack and $f:\Xcal\to Y$ a morphism from $\Xcal$ to a scheme $Y$. $f$ is a closed morphism of stacks if for all closed substacks $\Zcal\subseteq\Xcal$, $f(\Zcal)\subseteq Y$ is a closed subscheme. 
+\end{definition}
+\begin{definition}[Universally Closed Morphism of Stacks]\label{def: universally closed morphism of stacks}
+    Let $f:\Xcal\to\Ycal$ be a morphism of $S$-algebraic stacks. $f$ is a universally closed morphism of stacks if for all schemes $Y$ and $Y\to\Ycal$ 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFswLDEsIlxcWGNhbCJdLFsyLDAsIlkiXSxbMiwxLCJcXFljYWwiXSxbMSwzLCJmIiwyXSxbMiwzXSxbMCwxXSxbMCwyXV0=
+    \begin{tikzcd}
+        {Y\times_{\Ycal}\Xcal} && Y \\
+        \Xcal && \Ycal
+        \arrow["f"', from=2-1, to=2-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+    the morphism $Y\times_{\Ycal}\Xcal\to Y$ is a closed morphism of stacks. 
+\end{definition}
+This leads us to the definition of a proper morphism of algebraic stacks, building on the notion of separatedness of stack morphisms as introduced in \Cref{def: separated stack morphism}.
+\begin{definition}[Proper Morphism of Stacks]\label{def: proper morphism of stacks}
+    Let $f:\Xcal\to\Ycal$ be a morphism of $S$-algebraic stacks. $f$ is a proper morphism if it is separated, of finite type, and universally closed. 
+\end{definition}
+We can characterize universal closedness for representable separated morphisms of finite type in terms of properness.
+\begin{proposition}\label{prop: separated finite type is universally closed iff proper}
+    Let $f:\Xcal\to\Ycal$ be a representable separated morphism of finite type of $S$-algebraic stacks. $f$ is universally closed if and only if $f$ is proper. 
+\end{proposition}
+\subsection{The Functors $\relSpec$ and $\relProj$}
+Once again drawing parallels to the constructions in the category of schemes, we can construct stacks from sheaves using relative spec $\relSpec$ and relative proj $\relProj$. 
+\begin{definition}[Relative Spec for Stacks]
+    Let $\Xcal$ be an $S$-algebraic stack and 
+    $$\Acal:\LisEt\left(\Xcal\right)^{\Opp}\longrightarrow\Alg_{\Ocal_{\Xcal}}$$
+    be a quasicoherent sheaf of algebras on $\Xcal$. The stack $\relSpec_{\Xcal}\left(\Acal\right)$ has 
+    \begin{enumerate}[label=(\alph*)]
+        \item objects triples $(T,x,\rho)$ where $T$ is an $S$-scheme, $x\in\Xcal(T)$, and $\rho:x^{*}\Acal\to\Ocal_{T}$ is a morphism of sheaves of algebras on the scheme $T$;
+        \item morphisms $(g,g^{b}):(T',x',\rho')\to(T,x,\rho)$ such that $g:T'\to T$ a morphism of $S$-schemes and $g^{b}:x'\to x$ a morphism in $\Xcal$ over $g$ such that the diagram 
+        $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJ4J157Kn1cXEFjYWwiXSxbMiwwLCJnXnsqfXheeyp9XFxBY2FsIl0sWzEsMSwiXFxPY2FsX3tUJ30iXSxbMCwxLCJnXntifSJdLFswLDIsIlxccmhvJyIsMl0sWzEsMiwiZ157Kn1cXHJobyJdXQ==
+        \begin{tikzcd}
+            {x'^{*}\Acal} && {g^{*}x^{*}\Acal} \\
+            & {\Ocal_{T'}}
+            \arrow["{g^{b}}", from=1-1, to=1-3]
+            \arrow["{\rho'}"', from=1-1, to=2-2]
+            \arrow["{g^{*}\rho}", from=1-3, to=2-2]
+        \end{tikzcd}$$
+        commutes. 
+    \end{enumerate}
+\end{definition}
+Recall that we have descent for quasicoherent sheaves and thus $\relSpec_{\Xcal}\left(\Acal\right)$ is a stack in the \'{e}tale topology. There there is a natural forgetful map of stacks
+$$\relSpec_{\Xcal}\left(\Acal\right)\longrightarrow\Xcal$$
+by $(T,x,\rho)\mapsto(T,x)$. 
+\\\\
+Recall that by specializing \Cref{def: property of stack morphism via spaces}, a representable morphism of $S$-algebraic stacks $\Xcal\to\Ycal$ is affine if for all morphisms $y:Y\to\Xcal$ and $Y$ an algebraic space the map $Y\times_{\Ycal}\Xcal\to Y$ arising from the Cartesian square 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFswLDEsIlxcWGNhbCJdLFsyLDAsIlkiXSxbMiwxLCJcXFljYWwiXSxbMSwzLCJmIiwyXSxbMiwzXSxbMCwxXSxbMCwyXV0=
+    \begin{tikzcd}
+        {Y\times_{\Ycal}\Xcal} && Y \\
+        \Xcal && \Ycal
+        \arrow["f"', from=2-1, to=2-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+is an affine morphism. In particular, for $\Xcal\to\Zcal$ and $\Ycal\to\Zcal$ two affine morphisms, the $\Zcal$-morphisms $\Mor_{\Zcal}\left(\Xcal,\Ycal\right)$ are a set, and hence the full subacategory of the slice category of stacks over $\Zcal$ with structure morphisms affine morphisms form a 1-category. Relative spec then is a functor from quasicoherent sheaves on a stack to the slice category. 
+\begin{proposition}
+    Let $\mathsf{Aff}_{\Xcal}$ be the 1-category of the full subcategory of the slice category of $S$-algebraic stacks over $\Xcal$ with structure morphisms affine morphisms. The functor 
+    $$\relSpec_{\Xcal}\left(-\right):\QCoh(\Xcal)_{\LisEt}\longrightarrow\mathsf{Aff}_{\Xcal}$$
+    by $\Acal\mapsto\relSpec_{\Xcal}\left(\Acal\right)$ is an equivalence of categories. 
+\end{proposition}
+The construction of relative proj constructs a stack in a similar way. Recall the setup for schemes. Let $T$ be an $S$-scheme and $\Acal=\bigoplus_{d\geq0}\Acal_{d}$ a quasicoherent sheaf of graded $\Ocal_{T}$-algebras we have a scheme $\relProj_{T}\left(\Acal\right)$ constructed by gluing $\proj\left(\Gamma(U,\Acal)\right)$ over all $U\subseteq T$ affine open. There is a natural map $\pi:\relProj_{T}\left(\Acal\right)\to T$ that factors as 
+$$% https://q.uiver.app/#q=WzAsNCxbNiwwLCJUIl0sWzQsMCwiVSJdLFsyLDAsIlxccHJvalxcbGVmdChcXEFjYWwoVSlcXHJpZ2h0KT1cXHByb2pcXGxlZnQoXFxHYW1tYShVLFxcQWNhbClcXHJpZ2h0KSJdLFswLDAsIlxccmVsUHJval97VH1cXGxlZnQoXFxBY2FsXFxyaWdodCl8X3tcXHBpXnstMX0oVSl9Il0sWzEsMCwiXFxpb3RhX3tVfSJdLFsyLDFdLFszLDIsIlxcc2ltIl1d
+\begin{tikzcd}
+	{\relProj_{T}\left(\Acal\right)|_{\pi^{-1}(U)}} && {\proj\left(\Acal(U)\right)=\proj\left(\Gamma(U,\Acal)\right)} && U && T
+	\arrow["{\iota_{U}}", from=1-5, to=1-7]
+	\arrow[from=1-3, to=1-5]
+	\arrow["\sim", from=1-1, to=1-3]
+\end{tikzcd}$$
+on all restrictions 
+$$\pi|_{\pi^{-1}(U)}:\relProj_{T}\left(\Acal\right)|_{\pi^{-1}(U)}\to T$$
+for $U\subseteq T$ open and inclusion $\iota_{U}:U\to T$. One can think of $\pi:\relProj_{T}\left(\Acal\right)\to T$ as a fibration on $T$ by projective schemes. Naturally a section $\rho$ is a map $\rho:T\to\relProj_{T}\left(\Acal\right)$
+$$% https://q.uiver.app/#q=WzAsMixbMCwwLCJcXHJlbFByb2pfe1R9XFxsZWZ0KFxcQWNhbFxccmlnaHQpIl0sWzAsMiwiVCJdLFswLDEsIlxccGkiXSxbMSwwLCJcXHJobyIsMCx7ImN1cnZlIjotM31dXQ==
+\begin{tikzcd}
+	{\relProj_{T}\left(\Acal\right)} \\
+	\\
+	T
+	\arrow["\pi", from=1-1, to=3-1]
+	\arrow["\rho", curve={height=-18pt}, from=3-1, to=1-1]
+\end{tikzcd}$$
+such that $\pi\circ\rho=\id_{T}$. 
+\begin{definition}[Relative Proj for Stacks]\label{def: relative proj for stacks}
+    Let $\Xcal$ be an $S$-algebraic stack and $\Acal=\bigoplus_{d\geq0}\Acal_{d}$ a quasicoherent sheaf of graded $\Ocal_{\Xcal}$-algebras on $\Xcal$. The stack $\relProj_{\Xcal}\left(\Acal\right)$ has 
+    \begin{enumerate}[label=(\alph*)]
+        \item objects triples $(T,x,\rho)$ with $T$ an $S$-scheme, $x\in\Xcal(T)$, and $\rho:T\to\relProj_{T}(x^{*}\Acal)$ a section of the $T$-scheme;
+        \item morphisms $(g,\widetilde{g}):(T',x',\rho')\to(T,x,\rho)$ such that $g:T'\to T$ is a morphism of $S$-schemes and $\widetilde{g}:x'\to x$ a morphism in $\Xcal$ over $g$ such that the diagram 
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUJyJdLFsyLDAsIlQiXSxbMiwxLCJcXHJlbFByb2pfe1R9XFxsZWZ0KHheeyp9XFxBY2FsXFxyaWdodCkiXSxbMCwxLCJcXHJlbFByb2pfe1QnfVxcbGVmdCh4J157Kn1cXEFjYWxcXHJpZ2h0KSJdLFszLDIsIlxcd2lkZXRpbGRle2d9IiwyXSxbMCwxLCJnIl0sWzEsMiwiXFxyaG8iXSxbMCwzLCJcXHJobyciLDJdXQ==
+        \begin{tikzcd}
+            {T'} && T \\
+            {\relProj_{T'}\left(x'^{*}\Acal\right)} && {\relProj_{T}\left(x^{*}\Acal\right)}
+            \arrow["{\widetilde{g}}"', from=2-1, to=2-3]
+            \arrow["g", from=1-1, to=1-3]
+            \arrow["\rho", from=1-3, to=2-3]
+            \arrow["{\rho'}"', from=1-1, to=2-1]
+        \end{tikzcd}$$
+        commutes. 
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    For 
+    $$\Acal=\bigoplus_{d\geq0}\Acal_{d}$$ 
+    a quasicoherent sheaf of $\Ocal_{\Xcal}$-algebras for all $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$, $\Acal_{(T,t)}$ is a quasicoherent sheaf of graded $\Ocal_{T}$-algebras with equivalence $(\Ocal_{\Xcal})_{(T,t)}=\Gamma(T,\Ocal_{T})=\Ocal_{T}(T)$ by definition. 
+\end{remark}
+\subsection{Root Stacks}\label{subsec: root stacks}
+One important construction one encounters is that of root stacks. Let $X$ be a scheme and $D$ an effective Cartier divisor on $X$. One might want to find an effective Cartier divisor $E$ and integer $n$ such that $nE\sim D$. This is not possible in general, but one could find a morphism of schemes $f:Y\to X$ such that there exists an effective Cartier divisor $E$ on $Y$ and an integer $n$ giving the following equivalence of divisors $nE\sim f^{*}D$. The root stack construction attempts to give a solution to this problem by finding a ``universal'' such $(Y,E)$. Recall that divisors do not pull back along arbitrary morphisms, necessitating the introduction of the following more general object. 
+\begin{definition}[Generalized Effective Cartier Divisor]\label{def: generalized effective Cartier divisor}
+    Let $X$ be a scheme. A generalized Cartier divisor on $X$ is a pair $(L,\rho)$ such that $L$ is an invertible sheaf on $X$ and $\rho:L\to\Ocal_{X}$ a morphism of $\Ocal_{X}$-modules. 
+\end{definition}
+An isomorphism of generalized Cartier divisors $(L',\rho')$ and $(L,\rho)$ is an isomorphism of line bundles $\sigma:L'\to L$ such that the diagram 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJMJyJdLFsyLDAsIkwiXSxbMSwxLCJcXE9jYWxfe1h9Il0sWzAsMSwiXFxzaWdtYSJdLFswLDIsIlxccmhvJyIsMl0sWzEsMiwiXFxyaG8iXV0=
+\begin{tikzcd}
+	{L'} && L \\
+	& {\Ocal_{X}}
+	\arrow["\sigma", from=1-1, to=1-3]
+	\arrow["{\rho'}"', from=1-1, to=2-2]
+	\arrow["\rho", from=1-3, to=2-2]
+\end{tikzcd}$$
+commutes. Indeed for $D\subset X$ an effective Cartier divisor and $\Ical_{D}$ its ideal sheaf, the inclusion $D\hookrightarrow X$ induces a morphism of $\Ocal_{X}$-modules $j_{D}:\Ical_{D}\to\Ocal_{X}$ where for $D,D'$ two effective Cartier divisors $(\Ical_{D},j_{D})$ and $(\Ical_{D'},j_{D'})$ are isomorphic if and only if $D\sim D'$ if and only if $\Ical_{D}\cong\Ical_{D'}$ as $\Ocal_{X}$-modules. One can define the product of two generalized Cartier divisors $(L,\rho)$ and $(L',\rho')$
+$$(L,\rho)\cdot(L',\rho')=(L\otimes L', \rho\otimes\rho')$$
+with 
+$$\rho\otimes\rho':L\otimes L'\longrightarrow \Ocal_{X}\cong\Ocal_{X}\otimes_{\Ocal_{X}}\Ocal_{X}.$$
+For $n\geq0$ one can define the effective Cartier divisor $(L^{\otimes n},\rho^{\otimes n})$ to be the $N$-fold product of $(L,\rho)$ with itself in the abovementioned way. Let $\stackyDiv^{+}\left(X\right)$ to be the set of isomorphism classes of generalized effective Cartier divisors. The tensor product endows $\stackyDiv^{+}(X)$ with the structure of a commutative monoid. 
+\\\\
+The advantage of generalized Cartier divisors is that they can be pulled back along morphisms of schemes as for $f:Y\to X$ and $(L,\rho)$ a generalized Cartier divisor on $X$, $g^{*}L$ is a generalized Cartier divisor on $Y$ with morphism to $\Ocal_{Y}$ given by $g^{*}\rho:g^{*}L\to g^{*}\Ocal_{X}=\Ocal_{Y}$. The construction of $\stackyDiv^{+}(X)$ is thus functorial on schemes, allowing us to make the following construction. 
+\begin{definition}[$\mathsf{Div}$]\label{def: the fibered category of generalized cartier Divisors}
+    Let $\mathsf{Div}$ be the category with objects pairs $\left(T,(L,\rho)\right)$ with $T$ a scheme and $(L,\rho)\in\stackyDiv^{+}(T)$ and morphisms 
+    $$(g,g^{b}):\left(T',(L',\rho')\right)\longrightarrow\left(T,(L,\rho)\right)$$
+    with $g:T'\to T$ a morphism of schemes and $g^{b}:(L',\rho')\to(g^{*}L,g^{*}\rho)$ an isomorphism of effective Cartier divisors on $T'$. 
+\end{definition}
+By descent for sheaves, $\mathsf{Div}$ is a stack on the category of schemes. In fact, this stack has an especially nice description. 
+\begin{proposition}\label{prop: Div fibered category is isomorphic to the line mod Gm}
+    There is an isomorphism of stacks $\mathsf{Div}\to[\A^{1}/\GG_{m}]$. 
+\end{proposition}

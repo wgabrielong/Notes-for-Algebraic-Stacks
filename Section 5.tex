@@ -1,1 +1,97 @@
-\section{Quotients in Algebraic Spaces}
+\part*{Algebraic Spaces}\label{part: algebraic spaces}
+\section{Algebraic Spaces}\label{sec: algebraic spaces}
+We begin with a discussion of various algebro-geometric and categorical preliminaries required to define algebraic spaces. 
+\\\\
+First recall that we have defined stable properties of morphisms in \Cref{def: stable property of morphisms}. We now define a stable property of objects in a category. 
+\begin{definition}[Stable Class of Objects]\label{def: stable class of objects}
+    Let $\Ssf$ be a site such that all representable presheaves are sheaves. A subclass of objects $\Obj(\Csf)\subseteq\Obj(\Ssf)$ is stable with respect to a property $\Psf$ if for all coverings $\{X_{i}\to X\}$, $X$ has property $\Psf$ if and only if $X_{i}$ have property $\Psf$ for all $i$. 
+\end{definition}
+\begin{definition}[Stable Property of Objects]\label{def: stable property of objects}
+    A property $\Psf$ is stable if the class of objects containing $\Psf$ is stable.
+\end{definition}
+Turning to some categorical notions, we define the following. 
+\begin{definition}[Closed Subcategory]\label{def: closed subcategory}
+    Let $\Csf$ be a category. A closed subcategory $\Dsf$ of $\Csf$ is a subcategory such that the following conditions hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\Dsf$ contains all isomorphisms in $\Csf$.
+        \item For all Cartesian diagrams in $\Csf$
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYJyJdLFswLDEsIlknIl0sWzIsMCwiWCJdLFsyLDEsIlkiXSxbMiwzLCJmIl0sWzAsMSwiZiciLDJdLFsxLDNdLFswLDJdXQ==
+        \begin{tikzcd}
+            {X'} && X \\
+            {Y'} && Y
+            \arrow["f", from=1-3, to=2-3]
+            \arrow["{f'}"', from=1-1, to=2-1]
+            \arrow[from=2-1, to=2-3]
+            \arrow[from=1-1, to=1-3]
+        \end{tikzcd}$$
+        if $f\in\Mor_{\Dsf}$ then $f'\in\Mor_{\Dsf}$.
+    \end{enumerate}
+\end{definition}
+\begin{definition}[Stable Subcategory]\label{def: stable subcategory}
+    Let $\Dsf$ be a closed subcategory of a category $\Csf$. $\Dsf$ is stable if for all $(f:X\to Y)\in\Mor_{\Csf}$ and all coverings $\{Y_{i}\to Y\}$, $f$ is a morphism in $\Dsf$ if and only if all morphisms $f_{i}:X\times_{Y}XY_{i}\to Y_{i}$ are in $\Dsf$. 
+\end{definition}
+\begin{definition}[Local On Domain]\label{def: local on domain}
+    A stable closed subcategory $\Dsf$ of a category $\Csf$ is local on domain if for all $f:X\to Y$ and coverings $\{X_{i}\to X\}$, $f$ is a morphism in $\Dsf$ if and only if $X_{i}\to X\to Y$ is in $\Dsf$. 
+\end{definition}
+We alternatively define stable properties of morphisms \Cref{def: stable property of morphisms} as follows. 
+\begin{definition}[Stable Property of Morphisms]\label{def: stable property of morphisms 2}
+    Let $\Psf$ be some property of morphisms in $\Csf$ satisfied by isomorphisms and closed under compositions and $\Dsf_{\Psf}$ the subcategory of $\Csf$ with the same objects but morphisms those satisfying property $\Psf$. $\Psf$ is a stable property of morphisms if $\Dsf_{\Psf}$ is a stable subcategory. 
+\end{definition}
+Similarly, we define locality on domain as follows. 
+\begin{definition}[Morphisms Local on Domain]\label{def: morphisms local on domain}
+    Let $\Psf$ be some property of morphisms in $\Csf$ satisfied by isomorphisms and closed under compositions and $\Dsf_{\Psf}$ the subcategory of $\Csf$ with the same objects but morphisms those satisfying property $\Psf$. $\Psf$ is a stable property of morphisms if $\Dsf_{\Psf}$ is local on domain as a subcategory. 
+\end{definition}
+One can show the following fact about morphisms of schemes. \newpage
+\begin{proposition}\label{prop: stable properties of morphisms of schemes}
+    Let $S$ be a scheme and consider the big \'{e}tale site $(\Sch_{S})_{\et}$. 
+    \begin{enumerate}[label=(\alph*)]
+        \item The following properties of morphisms in $(\Sch_{S})_{\et}$ are stable: proper, separated, surjective, and quasi-compact. 
+        \item The following properties of morphisms in $(\Sch_{S})_{\et}$ are stable and local on domain: locally of finite type, locally of finite presentation, flat, \'{e}tale, universally open, locally quasi-finite, and smooth. 
+    \end{enumerate}
+\end{proposition}
+We now introduce some language to describe morphisms of sheaves on the \'{e}tale site. 
+\begin{definition}[Representable by Schemes]\label{def: morphism of etale sheaves representable by schemes}
+    Let $S$ be a scheme and let $\Fsf,\Gsf$ be sheaves on the site $(\Sch_{S})_{\et}$ and $f:\Fsf\to\Gsf$ a morphism of sheaves. The morphism $f$ is representable by schemes if for every $S$-scheme $T$ and morphism $T\to \Gsf$ the fibered product functor $\Fsf\times_{\Gsf}h_{T}$ is representable by a scheme. 
+\end{definition}
+\begin{definition}[Properties of Morphisms of \'{E}tale Sheaves]
+    Let $S$ be a scheme and let $\Fsf,\Gsf$ be sheaves on the site $(\Sch_{S})_{\et}$, $f:\Fsf\to\Gsf$ a morphism of sheaves, and $\Psf$ a stable property of morphisms of schemes. If $f$ is representable by schemes, then $f$ has property $\Psf$ if for every $S$-scheme $T$ the morphism $\pr_{2}:\Fsf\times_{\Gsf}h_{T}\to h_{T}$ has $\Psf$. 
+\end{definition}
+\begin{example}
+    Let $\Fsf,\Gsf$ be representable sheaves, say by $X,Y$, respectively. Any morphism $f:\Fsf\to\Gsf$ is representable by sheaves, induced by the corresponding morphism of schemes $X\to Y$. For any $S$-scheme $T$ with a map $T\to Y$ we have that $\Fsf\times_{\Gsf}h_{T}$ is the scheme $T\times_{Y}X$. 
+\end{example}
+\begin{lemma}\label{lem: morphisms of schemes and etale sheaves}
+    Let $S$ be a scheme and $f:X\to Y$ be a $S$-morphism of schemes and $\Psf$ a stable property of morphisms of schemes. The morphism $f$ has property $\Psf$ if and only if the morphism of representable sheaves $h_{f}:h_{X}\to h_{Y}$ has property $\Psf$. 
+\end{lemma}
+\begin{proof}
+    Let $T$ be an $S$-scheme and $g:T\to Y$ with $h_{g}:h_{T}\to h_{Y}$ where we have a natural isomorphism $h_{T}\times_{h_{Y}}h_{X}\Longrightarrow h_{X\times_{Y}T}$.
+    $$% https://q.uiver.app/#q=WzAsOCxbMiwxLCJZIl0sWzIsMCwiVCJdLFswLDEsIlgiXSxbMCwwLCJYXFx0aW1lc197WX1UIl0sWzQsMCwiaF97WH1cXHRpbWVzX3toX3tZfX1oX3tUfVxcUmlnaHRhcnJvdyBoX3tYXFx0aW1lc197WX1UfSJdLFs0LDEsImhfe1h9Il0sWzYsMCwiaF97VH0iXSxbNiwxLCJoX3tZfSJdLFsyLDBdLFszLDFdLFsxLDBdLFszLDJdLFs1LDddLFs0LDZdLFs0LDVdLFs2LDddXQ==
+    \begin{tikzcd}
+        {X\times_{Y}T} && T && {h_{X}\times_{h_{Y}}h_{T}\Rightarrow h_{X\times_{Y}T}} && {h_{T}} \\
+        X && Y && {h_{X}} && {h_{Y}}
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=2-5, to=2-7]
+        \arrow[from=1-5, to=1-7]
+        \arrow[from=1-5, to=2-5]
+        \arrow[from=1-7, to=2-7]
+    \end{tikzcd}$$
+    We have that $f$ is $\Psf$ if and only if $X_{\times_{Y}}T\to T$ is $\Psf$ if and only if $h_{X\times_{Y}T}\to h_{T}$ is $\Psf$ if and only if $h_{f}$ is $\Psf$ upon repeated application of the stable property of morphisms. 
+\end{proof}
+We prove an additional lemma before defining algebraic spaces.
+\begin{lemma}[Representable Diagonal Implies Representability]\label{lem: rep diagonal then rep}
+    Let $S$ be a scheme and $\Fsf$ a sheaf on $(\Sch_{S})_{\et}$. If $\delta_{\Fsf}:\Fsf\to\Fsf\times\Fsf$ is representable by schemes and $T$ any $S$-scheme then the morphism of sheaves $f:h_{T}\to\Fsf$ is representable by schemes. 
+\end{lemma} 
+\begin{proof}
+    This follows from general abstract nonsense. See \cite[\href{https://stacks.math.columbia.edu/tag/0022}{Lemma 0022}]{stacks-project} and \cite[\href{https://stacks.math.columbia.edu/tag/0024}{Lemma 0024}]{stacks-project}. 
+\end{proof}
+We are now able to define algebraic spaces, an important, slightly more restricted notion of an algebraic stack. 
+\begin{definition}[Algebraic Space]\label{def: algebraic space}
+    Let $S$ be a scheme. An algebraic space over $S$ is a functor $X:\Sch_{S}^{\Opp}\to\Sets$ such that the following hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item $X$ is a sheaf on the big \'{e}tale site $(\Sch_{S})_{\et}$. 
+        \item $\delta_{\Fsf}:\Fsf\to\Fsf\times_{S}\Fsf$ is representable by schemes. 
+        \item There is an $S$-scheme $U$ and a surjective \'{e}tale morphism $U\to X$. 
+    \end{enumerate}
+\end{definition}

@@ -1,1 +1,43 @@
-\section{Category Theory}
+\part*{End Material}
+\appendix
+\section{Representable Functors}\label{sec: representable functors}
+Let $\Csf$ be a category and consider functors from $\Csf^{\Opp}\to\Sets$. These are objects of the functor category $\Fun(\Csf^{\Opp},\Sets)$ whose objects are functors $\Csf^{\Opp}\to\Sets$ and whose morphisms are natural transformations between such functors. For any object $A\in\Obj(\Csf)$, we can define a set-valued functor $h_{A}$ as follows:
+$$h_{A}:\Csf^{\Opp}\to\Sets \text{ by }A\mapsto\Mor_{\Csf}(-,A).$$
+For an object $B\in\Obj(\Csf)$, our functor $h_{A}$ sends $B$ to the set $\Mor_{\Csf}(B,A)$ the set of morphisms from $B$ to $A$ in the category $\Csf$. Given $f\in\Mor_{\Csf}(B,C)$ we get a map of sets $h_{A}(f):h_{A}(C)\to h_{A}(B)$ defined by composition with $f$. For another $g\in \Mor_{\Csf}(A,D)$, we get a natural transformation of functors $h_{f}:h_{A}\to h_{D}$ where for any $f\in\Mor_{\Csf}(B,C)$ we have the following commutative diagram. 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJoX3tBfShDKSJdLFswLDEsImhfe0F9KEIpIl0sWzIsMCwiaF97RH0oQykiXSxbMiwxLCJoX3tEfShCKSJdLFsxLDMsImhfe2d9KEIpIiwyXSxbMiwzLCJoX3tEfShmKSJdLFswLDEsImhfe0F9KGYpIiwyXSxbMCwyLCJoX3tnfShDKSJdXQ==
+\begin{tikzcd}
+	{h_{A}(C)} && {h_{D}(C)} \\
+	{h_{A}(B)} && {h_{D}(B)}
+	\arrow["{h_{g}(B)}"', from=2-1, to=2-3]
+	\arrow["{h_{D}(f)}", from=1-3, to=2-3]
+	\arrow["{h_{A}(f)}"', from=1-1, to=2-1]
+	\arrow["{h_{g}(C)}", from=1-1, to=1-3]
+\end{tikzcd}$$
+The map $h_{(-)}:\Csf\to\Fun(\Csf^{\Opp},\Sets)$ sends each object of $\Csf$ to a set-valued functor, the functor it represents, which we now define. 
+\begin{definition}[Representable Functor]\label{def: representable functor}
+    A functor $F:\Csf^{\Opp}\to\Sets$ is representable if there exists $A\in\Obj(\Csf)$ and a natural isomorphism $F\Longrightarrow h_{A}$. 
+\end{definition}
+Yoneda's lemma shows that the functor $h_{(-)}:\Csf\to\Fun(\Csf^{\Opp},\Sets)$ is fully faithful.
+\begin{lemma}[Yoneda]\label{lem: Yoneda}
+    Let $F:\Csf^{\Opp}\to\Sets$ be a functor. For any $A\in\Obj(\Csf)$, there is a bijection 
+    $$\NatTrans(h_{A},F)\to F(A).$$
+\end{lemma}
+Yoneda's lemma tells us that $\Csf$ is embedded in the functor category $\Fun(\Csf^{\Opp},\Sets)$. Further, we know that for a functor $F:\Csf^{\Opp}\to\Sets$ we get a functor $h_{F}:\Fun(\Csf^{\Opp},\Sets)^{\Opp}\to\Sets$ taking $G\in\Obj(\Fun(\Csf^{\Opp},\Sets))$ to the set of natural transformations between $G$ and $F$ $\NatTrans(G,F)$. This suggests that every functor $\Csf^{\Opp}\to\Sets$ can be extended to a representable functor. This can be done via a process known as Kan extension, referring to 
+\\\\
+Note, however, that the functor $h_{(-)}:\Csf\to\Fun(\Csf^{\Opp},\Sets)$ is not essentially surjective, and hence would not define an equivalence of categories. This means that not every functor $\Csf^{\Opp}\to\Sets$ is representable by some object $A\in\Obj(\Csf)$. However, if we restrict to the full subcategory of representable functors in the functor category $\Fun(\Csf^{\Opp},\Sets)$, $h_{(-)}$ would indeed define a categorical equivalence between $\Csf$ and the subcategory of $\Fun(\Csf^{\Opp},\Sets)$ of representable functors. 
+\\\\
+From the proof of \Cref{lem: Yoneda}, we know that given a natural transformation of functors $T:h_{A}\to F$ on evaluation we get $T(A):h_{A}(A)\to F(A)$ yielding an element $T(A)(\id_{A})=\alpha\in F(A)$ for $\id_{A}\in h_{A}(A)=\Mor_{\Csf}(A,A)$ the identity morphism on $A$. This defined a set function $\NatTrans(h_{A},F)\to F(A)$. Conversely, given some $\alpha\in F(A)$, we can define a natural transformation $T:h_{A}\longrightarrow F$ as follows: for any $D\in\Obj(\Csf)$ an element of the set $h_{A}(D)$ is a morphism $g:D\to A$ which defines a map of sets $F(g):F(A)\to F(D)$. We define $T(D):h_{A}(D)\to F(D)$ by $g\mapsto F(g)(\alpha)$ where the latter lies in $F(D)$ by the definition of $T(D)$ above. This coheres into the data of a natural transformation by the appropriate pointwise verifications. This suggests that elements of $F(A)$ for an object $A\in\Obj(\Csf)$, can exhibit control over the functor $F$. This motivates the following discussion. 
+\begin{definition}[Universal Object]\label{def: universal object}
+    Let $F:\Csf^{\Opp}\to\Sets$ be a functor. A universal object for $F$ is a pair $(A,\alpha)\in\Obj(\Csf)\times F(A)$ such that for each $B\in\Obj(\Csf)$ and each $\beta\in F(B)$ there is a unique map $f\in\Mor_{\Csf}(B,A)$ such that $F(f)(\alpha)=\beta$. 
+\end{definition}
+From the exposition above, we can see that $(A,\alpha)$ is a universal object if the natural transformation $h_{A}\Longrightarrow F$ defined by $\alpha$ is a natural isomorphism. Since every natural transformation $h_{A}\Longrightarrow F$ is defined by some object $\alpha\in F(A)$, we can conclude the following. 
+\begin{proposition}\label{prop: representable iff universal object}
+    A functor $F:\Csf^{\Opp}\to\Sets$ is representable if and only if it has a universal object. 
+\end{proposition}
+Let us now consider some examples in the context of algebraic geometry. 
+\begin{example}
+    Let $S=\spec A$ and consider the affine line $\A^{1}_{S}=\spec A[t]$. We have a functor $\Ocal:\Sch_{S}^{\Opp}\to\Rings$ taking an $S$-scheme $X$ to $\Ocal(X)$ its ring of global sections. For $f:X\to Y$ a map of schemes, we get a ring homomorphism $\Ocal(Y)\to\Ocal(X)$ induced by the taking global sections of the pullback of sheaves $f^{\sharp}:\Ocal_{Y}\to f^{*}\Ocal_{X}$. Since $\A^{1}_{S}$ is an affine scheme, we have $t\in\Ocal(\A^{1}_{S})=A[t]$ and for any $S$-scheme $X$ and $g\in\Ocal(X)$ there is a unique morphism $X\to\A^{1}_{S}$ such that the pullback of $t$ to $x$ is exactly $g$. So $(\A^{1}_{S},t)$ is the universal object for and $\A^{1}_{S}$ represents the functor $\Ocal:\Sch_{S}^{\Opp}\to\Rings$. 
+\end{example}
+\begin{example}
+    Let $S=\spec A$ and consider $\GG_{m,S}=\A^{1}_{S}\setminus\{0_{S}\}=\spec A[t,t^{-1}]$. A morphism of $S$-schemes $X\to\GG_{m,S}$ is determined by the image of $t\in\Ocal(\GG_{m,S})=A[t,t^{-1}]$ in $\Ocal(S)=A$. So $\GG_{m,S}$ represents $\Ocal(X)^{\times}$ the group of invertible sections of the structure sheaf. 
+\end{example}

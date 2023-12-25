@@ -1,1 +1,388 @@
-\section{Quasicoherent Sheaves on Algebraic Stacks}
+\part*{Algebraic Stacks}\label{part: algebraic stacks}
+\section{Algebraic Stacks}\label{sec: algebraic stacks}
+Recall the definition of a stack (in the category-theoretic sense) from \Cref{def: categorical stack}, here taking it as a sheaf over the big \'{e}tale site with all descent data effective. 
+\begin{definition}[Representable Morphism of Stacks]\label{def: representable morphism of stacks}
+    Let $\Xcal,\Ycal$ be stacks. A morphism of stacks $f:\Xcal\to\Ycal$ is representable if for every scheme $U$ and morphism $y:h_{U}\to\Ycal$ the fibered product $\Xcal\times_{\Ycal,y}h_{U}$ is representable by an algebraic space. 
+\end{definition}
+Note how this is different from the notion of being representable by schemes \Cref{def: morphism of etale sheaves representable by schemes} as we now explain. 
+\begin{lemma}\label{lem: mor of stacks is rep if fiber product is space}
+    Let $\Xcal,\Ycal$ be stacks and $f:\Xcal\to\Ycal$ be a morphism of stacks. If $f:\Xcal\to\Ycal$ is representable then for all algebraic spaces $V$ and morphsims $y:V\to\Ycal$ the fibered product $V\times_{\Ycal}\Xcal$ is an algebraic space. 
+\end{lemma}
+We can now define an algebraic stack, also known as an Artin stack. We will soon define Deligne-Mumford stacks, another type of algebraic stack.  
+\begin{definition}[Algebraic Stack]\label{def: algebraic stack}
+    Let $\Xcal$ be a stack over the big \'{e}tale site $(\Sch_{S})_{\et}$. $\Xcal$ is an algebraic stack if the following conditions hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item The diagonal morphism $\delta_{\Xcal}:\Xcal\to\Xcal\times_{S}\Xcal$ is representable by algebraic spaces. 
+        \item There is a smooth surjective morphism $X\to\Xcal$ for $X$ a scheme. 
+    \end{enumerate}
+\end{definition}
+Naturally one defines a morphism of algebraic stacks as a stack morphism between algebraic stacks. We should also be careful to note that being a stack is a property of fibered categories over the site $(\Sch_{S})_{\et}$, with their morphisms being functors between fibered categories. In particular, $\Mor_{\Stacks}(\Xcal,\Ycal)$ forms a category and not a set. 
+\begin{lemma}\label{lem: representable diagonal means isoms are an algebraic space}
+    Let $S$ be a scheme and  $\Xcal$ be a stack on the big \'{e}tale site of $S$-schemes $(\Sch_{S})_{\et}$. The diagonal $\delta_{\Xcal}:\Xcal\to\Xcal\times_{S}\Xcal$ is representable if and only if for every $S$-scheme $U$ and $u_{1},u_{2}\in\Xcal(U)$ the sheaf $\ulIsom(u_{1},u_{2})$ on $\Sch_{U}$ is an algebraic space. 
+\end{lemma}
+\begin{proof}
+    This follows by the square 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXElzb20odV97MX0sdV97Mn0pIl0sWzAsMSwiXFxYY2FsIl0sWzIsMSwiXFxYY2FsXFx0aW1lc197U31cXFhjYWwiXSxbMiwwLCJVIl0sWzAsM10sWzMsMl0sWzAsMV0sWzEsMl1d
+    \begin{tikzcd}
+        {\ulIsom(u_{1},u_{2})} && U \\
+        \Xcal && {\Xcal\times_{S}\Xcal}
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    being Cartesian. 
+\end{proof}
+In fact, one can show that morphisms from an algebraic space to a stack are representable. 
+\begin{proposition}\label{prop: representable fibered product of space maps to stack}
+    If $\Xcal$ is an $S$-algebraic stack and $x:X\to\Xcal, y:Y\to\Xcal$ maps from $S$-algebraic spaces $X,Y$ to $\Xcal$
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc197XFxYY2FsfVgiXSxbMCwxLCJYIl0sWzIsMCwiWSJdLFsyLDEsIlxcWGNhbCJdLFsxLDMsIngiLDJdLFsyLDMsInkiXSxbMCwyXSxbMCwxXV0=
+    \begin{tikzcd}
+        {Y\times_{\Xcal}X} && Y \\
+        X && \Xcal
+        \arrow["x"', from=2-1, to=2-3]
+        \arrow["y", from=1-3, to=2-3]
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+    \end{tikzcd}$$
+    then the fibered product $Y\times_{\Xcal}X$ is an algebraic space. 
+\end{proposition}
+From which one can deduce the following corollary. 
+\begin{corollary}\label{corr: morphisms of spaces to stacks are representable}
+    If $x:X\to\Xcal$ is a morphism from an algebraic space $X$ to an algebraic stack $\Xcal$ then $x:X\to\Xcal$ is representable. 
+\end{corollary}
+\subsection{The Classifying Stack of a Group}\label{subsec: classifying stack of a group}
+Perhaps the most evident way algebraic stacks arise is as quotients of schemes by a group action. We first construct such a quotient as a fibered category, before showing it is a stack. 
+\begin{definition}[The Fibered Category {$[X/G]$}]\label{def: fibered category X mod G}
+    Let $X$ be an $S$-algebraic space and $G$ a smooth group scheme over a base scheme $S$ with an action on $X$. Let $[X/G]$ be the category fibered over the big \'{e}tale site $(\Sch_{S})_{\et}$ with 
+    \begin{enumerate}[label=(\alph*)]
+        \item Objects triples $(T,\Pcal,\pi)$ where $T$ is an $S$-scheme, $\Pcal$ is a $(G\times_{S}T)$-torsor on the big \'{e}tale site $(\Sch_{T})_{\et}$, and $\pi:\Pcal\to X\times_{S}T$ is a $(G\times_{S}T)$-equivariant morphism of $T$-schemes. 
+        \item Morphisms 
+        $$(f,f^{b}):(T',\Pcal',\pi')\longrightarrow(T,\Pcal,\pi)$$
+        where $f:T'\to T$ is a morphism of $S$-schemes and $f^{b}:\Pcal'\to f^{*}\Pcal$ an isomorphism of $(G\times_{S}T')$ torsors in $\Sch_{T'}$ such that the diagram 
+        $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFBjYWwnIl0sWzIsMCwiXFxQY2FsIl0sWzEsMSwiWFxcdGltZXNfe1N9VCciXSxbMCwxLCJmXntifSJdLFswLDIsIlxccGknIiwyXSxbMSwyLCJmXnsqfVxcY2lyY1xccGkiXV0=
+        \begin{tikzcd}
+            {\Pcal'} && \Pcal \\
+            & {X\times_{S}T'}
+            \arrow["{f^{b}}", from=1-1, to=1-3]
+            \arrow["{\pi'}"', from=1-1, to=2-2]
+            \arrow["{f^{*}\circ\pi}", from=1-3, to=2-2]
+        \end{tikzcd}$$
+        commutes. 
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+   For condition (b) in \Cref{def: fibered category X mod G} above, we are considering the diagram obtained by repeated pullback
+   $$% https://q.uiver.app/#q=WzAsNixbMCwwLCIoR1xcdGltZXNfe1N9VClcXHRpbWVzX3tUfVQnIl0sWzAsMSwiVCciXSxbMiwwLCJHXFx0aW1lc197U31UIl0sWzIsMSwiVCJdLFs0LDAsIkciXSxbNCwxLCJTIl0sWzEsMywiZiIsMl0sWzMsNV0sWzAsMl0sWzIsNF0sWzQsNV0sWzIsM10sWzAsMV1d
+   \begin{tikzcd}
+       {(G\times_{S}T)\times_{T}T'} && {G\times_{S}T} && G \\
+       {T'} && T && S
+       \arrow["f"', from=2-1, to=2-3]
+       \arrow[from=2-3, to=2-5]
+       \arrow[from=1-1, to=1-3]
+       \arrow[from=1-3, to=1-5]
+       \arrow[from=1-5, to=2-5]
+       \arrow[from=1-3, to=2-3]
+       \arrow[from=1-1, to=2-1]
+   \end{tikzcd}$$ 
+   where it is a standard categorical fact (vis. eg. \cite[\href{https://stacks.math.columbia.edu/tag/001U}{Tag 001U}]{stacks-project}) that the outer square with horizontal maps compositions is Cartesian as well yielding a cannonical isomorphism 
+   $$(G\times_{S}T)\times_{T}T'\cong G\times_{S}T'.$$
+\end{remark}
+One can show that this construction in fact yields a stack. 
+\begin{proposition}\label{prop: fibered category X mod G is an algebraic stack}
+    If $X$ is an $S$-algebraic space and $G$ a smooth group scheme over a base scheme $S$ with an action on $X$ then fibered category $[X/G]$ is an $S$-algebraic stack. 
+\end{proposition}
+At the expense of being pedantic, we make the following definition. 
+\begin{definition}[Quotient Stack]\label{def: quotient stack}
+    Let $X$ be an $S$-algebraic space and $G$ a smooth group scheme over a base scheme $S$ with an action on $X$. The quotient stack of $X$ by $G$ is the $S$-algebraic stack $[X/G]$. 
+\end{definition}
+This yields the important construction of the classifying stack as follows. 
+\begin{definition}[Classifying Stack]\label{def: classifying stack}
+    Let $G$ be a smooth group scheme over $S$. The classifying stack $BG$ is the stack quotient $[S/G]$. 
+\end{definition}
+\subsection{Properties of Stacks and Their Morphisms}\label{subsec: properties of stacks and morphisms}
+\begin{definition}[Inertia Stack]\label{def: inertia stack}
+    Let $\Xcal$ be an algebraic stack over a base scheme $S$. The inertia stack $\Ical_{\Xcal}$ is the fibered product of the following diagram:
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXFhjYWwiXSxbMiwxLCJcXFhjYWxcXHRpbWVzX3tTfVxcWGNhbCJdLFsyLDAsIlxcWGNhbCJdLFswLDEsIlxcZGVsdGFfe1xcWGNhbH0iLDJdLFsyLDEsIlxcZGVsdGFfe1xcWGNhbH0iXV0=
+    \begin{tikzcd}
+        && \Xcal \\
+        \Xcal && {\Xcal\times_{S}\Xcal}
+        \arrow["{\delta_{\Xcal}}"', from=2-1, to=2-3]
+        \arrow["{\delta_{\Xcal}}", from=1-3, to=2-3]
+    \end{tikzcd}$$
+\end{definition}
+More explicitly, we can understand the inertia stack as follows: it is a category whose objects are $(x,g)$ with $x\in\Xcal$ and $g$ an automorphism of $x\in\Xcal(T)$. A morphism $(x',g')\to(x,g)$ in the inertia stack $\Ical_{\Xcal}$ is a morphism $f:x'\to x$ in $\Xcal$ such that the diagram 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJ4JyJdLFsyLDAsIngiXSxbMCwxLCJ4JyJdLFsyLDEsIngiXSxbMCwxLCJmIl0sWzIsMywiZiIsMl0sWzAsMiwiZyciLDJdLFsxLDMsImciXV0=
+\begin{tikzcd}
+	{x'} && x \\
+	{x'} && x
+	\arrow["f", from=1-1, to=1-3]
+	\arrow["f"', from=2-1, to=2-3]
+	\arrow["{g'}"', from=1-1, to=2-1]
+	\arrow["g", from=1-3, to=2-3]
+\end{tikzcd}$$
+commutes. There is naturally a forgetful functor $p:\Ical_{X}\to\Xcal$ by $(x,g)\mapsto x$. 
+\begin{remark}
+    For any scheme $T$ and object $x\in\Xcal(T)$ the fibered product of the diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXEljYWxfe1xcWGNhbH0iXSxbMiwxLCJcXFhjYWwiXSxbMiwwLCJUIl0sWzIsMSwidCJdLFswLDFdXQ==
+    \begin{tikzcd}
+        && T \\
+        {\Ical_{\Xcal}} && \Xcal
+        \arrow["t", from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    is the algebraic space $\ulAut_{t}$ -- a functor on the category of $T$-schemes. 
+\end{remark}
+\begin{definition}[Property of Stack]\label{def: property of a stack}
+    Let $\Psf$ be a property of $S$-schemes stable on the smooth site $(\Sch_{S})_{\Sm}$ and $\Xcal$ an algebraic stack over $S$. The algebraic stack $\Xcal$ has the a property $\Psf$ if there is a smooth surjective morphism $X\to\Xcal$ with $X$ an $S$-scheme with property $\Psf$. 
+\end{definition}
+\begin{lemma}\label{lem: transfer of stack property to space}
+    Let $\Psf$ be a property of $S$-schemes stable on the smooth site $(\Sch_{S})_{\Sm}$ and $\Xcal$ an algebraic stack over $S$ with property $\Psf$. For any smooth morphism $y:Y\to\Xcal$ with $Y$ an algebraic space, the algebraic space $Y$ has property $\Psf$. 
+\end{lemma}
+\begin{proof}
+    Let $\pi:X\to\Xcal$ be a smooth surjective morphism with $X$ a scheme with property $\Psf$. In the fibered product 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc197XFxYY2FsfVkiXSxbMCwxLCJZIl0sWzIsMCwiWCJdLFsyLDEsIlxcWGNhbCJdLFsyLDMsIlxccGkiXSxbMSwzLCJ5IiwyXSxbMCwyLCJcXHByX3sxfSJdLFswLDEsIlxccHJfezJ9IiwyXV0=
+    \begin{tikzcd}
+        {X\times_{\Xcal}Y} && X \\
+        Y && \Xcal
+        \arrow["\pi", from=1-3, to=2-3]
+        \arrow["y"', from=2-1, to=2-3]
+        \arrow["{\pr_{1}}", from=1-1, to=1-3]
+        \arrow["{\pr_{2}}"', from=1-1, to=2-1]
+    \end{tikzcd}$$
+    we have $\pr_{1}:X\times_{\Xcal}Y\to X$ smooth and $\pr_{2}:X\times_{\Xcal}Y\to Y$ smooth surjective. So since $X$ has property $\Psf$, the fibered product $X\times_{\Xcal}Y$ has property $\Psf$, and thus $Y$ has property $\Psf$ as well by stability on the smooth site. 
+\end{proof}
+As we did with schemes, we also want to define properties of morphisms of stacks. We define the following preliminary notions.
+\begin{definition}[Chart]\label{def: chart for stack morphism}
+    Let $f:\Xcal\to\Ycal$ a morphism of algebraic stacks over a scheme $S$. A chart for $f$ is the data of a commutative diagram 
+    $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFsyLDEsIlxcWGNhbCJdLFs0LDAsIlkiXSxbNCwxLCJcXFljYWwiXSxbMCwwLCJYIl0sWzEsMywiZiIsMl0sWzAsMiwiZiciLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMiwzLCJwIl0sWzAsMSwicCciLDJdLFs0LDAsImciLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNCwyLCJoIiwwLHsiY3VydmUiOi00fV0sWzQsMSwicSIsMl1d
+    \begin{tikzcd}
+        X && {Y\times_{\Ycal}\Xcal} && Y \\
+        && \Xcal && \Ycal
+        \arrow["f"', from=2-3, to=2-5]
+        \arrow["{f'}"{pos=0.3}, from=1-3, to=1-5]
+        \arrow["p", from=1-5, to=2-5]
+        \arrow["{p'}"', from=1-3, to=2-3]
+        \arrow["g"{pos=0.6}, from=1-1, to=1-3]
+        \arrow["h", curve={height=-24pt}, from=1-1, to=1-5]
+        \arrow["q"', from=1-1, to=2-3]
+    \end{tikzcd}$$
+    such that 
+    \begin{enumerate}[label=(\alph*)]
+        \item $X,Y$ are algebraic spaces
+        \item and $g,p$ are smooth surjective morphisms. 
+    \end{enumerate}
+\end{definition}
+\begin{definition}[Chart by Schemes]\label{def: chart by schemes for stack morphism}
+    Let $f:\Xcal\to\Ycal$ a morphism of algebraic stacks over a scheme $S$. A chart for $f$ by schemes is the data of a commutative diagram 
+    $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFsyLDEsIlxcWGNhbCJdLFs0LDAsIlkiXSxbNCwxLCJcXFljYWwiXSxbMCwwLCJYIl0sWzEsMywiZiIsMl0sWzAsMiwiZiciLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMiwzLCJwIl0sWzAsMSwicCciLDJdLFs0LDAsImciLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNCwyLCJoIiwwLHsiY3VydmUiOi00fV0sWzQsMSwicSIsMl1d
+    \begin{tikzcd}
+        X && {Y\times_{\Ycal}\Xcal} && Y \\
+        && \Xcal && \Ycal
+        \arrow["f"', from=2-3, to=2-5]
+        \arrow["{f'}"{pos=0.3}, from=1-3, to=1-5]
+        \arrow["p", from=1-5, to=2-5]
+        \arrow["{p'}"', from=1-3, to=2-3]
+        \arrow["g"{pos=0.6}, from=1-1, to=1-3]
+        \arrow["h", curve={height=-24pt}, from=1-1, to=1-5]
+        \arrow["q"', from=1-1, to=2-3]
+    \end{tikzcd}$$
+    such that 
+    \begin{enumerate}[label=(\alph*)]
+        \item $X,Y$ are schemes
+        \item and $g,p$ are smooth surjective morphisms. 
+    \end{enumerate}
+\end{definition}
+This allows us to define properties of morphisms of stacks in the following way. 
+\begin{definition}[Property of Stack Morphism]\label{def: property of stack morphism}
+    Let $\Psf$ be a property of schemes stable and local on domain on the smooth site on $S$-schemes $(\Sch_{S})_{\Sm}$. A morphism of algebraic stacks $f:\Xcal\to\Ycal$ over $S$ has property $\Psf$ if there exists a chart of $f$ by schemes 
+    $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFsyLDEsIlxcWGNhbCJdLFs0LDAsIlkiXSxbNCwxLCJcXFljYWwiXSxbMCwwLCJYIl0sWzEsMywiZiIsMl0sWzAsMiwiZiciLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMiwzLCJwIl0sWzAsMSwicCciLDJdLFs0LDAsImciLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNCwyLCJoIiwwLHsiY3VydmUiOi00fV0sWzQsMSwicSIsMl1d
+    \begin{tikzcd}
+        X && {Y\times_{\Ycal}\Xcal} && Y \\
+        && \Xcal && \Ycal
+        \arrow["f"', from=2-3, to=2-5]
+        \arrow["{f'}"{pos=0.3}, from=1-3, to=1-5]
+        \arrow["p", from=1-5, to=2-5]
+        \arrow["{p'}"', from=1-3, to=2-3]
+        \arrow["g"{pos=0.6}, from=1-1, to=1-3]
+        \arrow["h", curve={height=-24pt}, from=1-1, to=1-5]
+        \arrow["q"', from=1-1, to=2-3]
+    \end{tikzcd}$$
+    such that the map of schemes $h:X\to Y$ has property $\Psf$. 
+\end{definition}
+This makes sense as the definition in \Cref{def: property of stack morphism} is in fact independent of chart. 
+\begin{lemma}[Independence of Chart]\label{lem: property of stack morphism independent of chart}
+   Let $\Psf$ be a property of schemes stable and local on domain on the smooth site of $S$-schemes $(\Sch_{S})_{\Sm}$. A morphism of algebraic stacks $f:\Xcal\to\Ycal$ has property $\Psf$ if and only if for every chart of $f$
+   $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFsyLDEsIlxcWGNhbCJdLFs0LDAsIlkiXSxbNCwxLCJcXFljYWwiXSxbMCwwLCJYIl0sWzEsMywiZiIsMl0sWzAsMiwiZiciLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMiwzLCJwIl0sWzAsMSwicCciLDJdLFs0LDAsImciLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNCwyLCJoIiwwLHsiY3VydmUiOi00fV0sWzQsMSwicSIsMl1d
+   \begin{tikzcd}
+       X && {Y\times_{\Ycal}\Xcal} && Y \\
+       && \Xcal && \Ycal
+       \arrow["f"', from=2-3, to=2-5]
+       \arrow["{f'}"{pos=0.3}, from=1-3, to=1-5]
+       \arrow["p", from=1-5, to=2-5]
+       \arrow["{p'}"', from=1-3, to=2-3]
+       \arrow["g"{pos=0.6}, from=1-1, to=1-3]
+       \arrow["h", curve={height=-24pt}, from=1-1, to=1-5]
+       \arrow["q"', from=1-1, to=2-3]
+   \end{tikzcd}$$
+    the morphism of algebraic spaces $h:X\to Y$ has the property $\Psf$. 
+\end{lemma}
+\begin{proof}
+    With the chart as above and $Y'\to Y$ a smooth surjective morphism of $S$-algebraic spaces, we get a commutative diagram 
+    $$% https://q.uiver.app/#q=WzAsOCxbMCwxLCJYIl0sWzIsMSwiWVxcdGltZXNfe1xcWWNhbH1cXFhjYWwiXSxbMiwyLCJcXFhjYWwiXSxbNCwxLCJZIl0sWzQsMiwiXFxZY2FsIl0sWzAsMCwiXFxsZWZ0KFknXFx0aW1lc197WX1cXGxlZnQoWSdcXHRpbWVzX3tcXFljYWx9XFxYY2FsXFxyaWdodClcXHJpZ2h0KVxcdGltZXNfeyhZXFx0aW1lc197XFxZY2FsfVxcWGNhbCl9WCJdLFsyLDAsIlknXFx0aW1lc197WX0oWVxcdGltZXNfe1xcWWNhbH1cXFhjYWwpIl0sWzQsMCwiWSciXSxbMiw0LCJmIiwyXSxbMyw0LCJwIl0sWzAsMSwiZyJdLFswLDIsInEiLDJdLFsxLDMsImYnIl0sWzEsMiwicCciLDJdLFs1LDAsIlxccHJfezJ9JyIsMl0sWzcsM10sWzYsMSwiXFxwcl97Mn0iLDJdLFs2LDcsIlxccHJfezF9Il0sWzUsNiwiXFxwcl97MX0nIiwwLHsibGFiZWxfcG9zaXRpb24iOjYwfV0sWzUsNywiaCciLDAseyJjdXJ2ZSI6LTR9XV0=
+    \begin{tikzcd}
+        {\left(Y'\times_{Y}\left(Y'\times_{\Ycal}\Xcal\right)\right)\times_{(Y\times_{\Ycal}\Xcal)}X} && {Y'\times_{Y}(Y\times_{\Ycal}\Xcal)} && {Y'} \\
+        X && {Y\times_{\Ycal}\Xcal} && Y \\
+        && \Xcal && \Ycal
+        \arrow["f"', from=3-3, to=3-5]
+        \arrow["p", from=2-5, to=3-5]
+        \arrow["g", from=2-1, to=2-3]
+        \arrow["q"', from=2-1, to=3-3]
+        \arrow["{f'}", from=2-3, to=2-5]
+        \arrow["{p'}"', from=2-3, to=3-3]
+        \arrow["{\pr_{2}'}"', from=1-1, to=2-1]
+        \arrow[from=1-5, to=2-5]
+        \arrow["{\pr_{2}}"', from=1-3, to=2-3]
+        \arrow["{\pr_{1}}", from=1-3, to=1-5]
+        \arrow["{\pr_{1}'}"{pos=0.6}, from=1-1, to=1-3]
+        \arrow["{h'}", curve={height=-26pt}, from=1-1, to=1-5]
+    \end{tikzcd}$$
+    where there are isomorphisms 
+    $$Y'\times_{\Ycal}\Xcal\cong Y'\times_{Y}(Y\times_{\Ycal}\Xcal)$$
+    and 
+    $$Y'\times_{Y}X\cong\left(Y'\times_{\Ycal}\Xcal\right)\times_{(Y\times_{\Ycal}\Xcal)}X\cong\left(Y'\times_{Y}\left(Y'\times_{\Ycal}\Xcal\right)\right)\times_{(Y\times_{\Ycal}\Xcal)}X$$ 
+    as the three squares being Cartesian imply that the outer top horizontal rectangle and outer right vertical rectangle are Cartesian as well. This yields the following chart of $f:\Xcal\to\Ycal$.
+    $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJZJ1xcdGltZXNfe1xcWWNhbH1cXFhjYWwiXSxbNCwwLCJZJyJdLFsyLDEsIlxcWGNhbCJdLFs0LDEsIlxcWWNhbCJdLFswLDAsIlhcXHRpbWVzX3tZfVknIl0sWzIsMywiZiIsMl0sWzAsMiwicCdcXGNpcmN+XFxwcl97Mn0iLDIseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMSwzXSxbMCwxLCJcXHByX3sxfSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjoyMH1dLFs0LDAsIlxccHJfezF9JyIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo2MH1dLFs0LDEsImgnIiwwLHsiY3VydmUiOi00fV0sWzQsMiwicVxcY2lyY35cXHByX3syfSciLDJdXQ==
+    \begin{tikzcd}
+        {X\times_{Y}Y'} && {Y'\times_{\Ycal}\Xcal} && {Y'} \\
+        && \Xcal && \Ycal
+        \arrow["f"', from=2-3, to=2-5]
+        \arrow["{p'\circ~\pr_{2}}"'{pos=0.3}, from=1-3, to=2-3]
+        \arrow[from=1-5, to=2-5]
+        \arrow["{\pr_{1}}"{pos=0.2}, from=1-3, to=1-5]
+        \arrow["{\pr_{1}'}"{pos=0.6}, from=1-1, to=1-3]
+        \arrow["{h'}", curve={height=-24pt}, from=1-1, to=1-5]
+        \arrow["{q\circ~\pr_{2}'}"', from=1-1, to=2-3]
+    \end{tikzcd}$$
+    Since $\pr_{2}':X\times_{Y}Y'\to X$ is smooth surjective as a map of spaces, $h$ has property $\Psf$ if and only if $h':X\times_{Y}Y'\to Y'$ has property $\Psf$. 
+    \\\\
+    For any two charts 
+    $$% https://q.uiver.app/#q=WzAsMTAsWzIsMCwiWV97MX1cXHRpbWVzX3tcXFljYWx9XFxYY2FsIl0sWzIsMSwiXFxYY2FsIl0sWzQsMCwiWV97MX0iXSxbNCwxLCJcXFljYWwiXSxbMCwwLCJYX3sxfSJdLFs2LDAsIlhfezJ9Il0sWzgsMCwiWV97Mn1cXHRpbWVzX3tcXFljYWx9XFxYY2FsIl0sWzgsMSwiXFxYY2FsIl0sWzEwLDAsIllfezJ9Il0sWzEwLDEsIlxcWWNhbCJdLFsxLDMsImYiLDJdLFs3LDksImYiLDJdLFs2LDcsInBfezJ9JyIsMl0sWzgsOSwicF97Mn0iXSxbNiw4LCJmJ197Mn0iLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbNSw2LCJnX3syfSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFs0LDAsImdfezF9IiwwLHsibGFiZWxfcG9zaXRpb24iOjcwfV0sWzAsMSwicCdfezF9IiwyXSxbMCwyLCJmJ197MX0iLDAseyJsYWJlbF9wb3NpdGlvbiI6MzB9XSxbMiwzLCJwX3sxfSJdLFs0LDIsImhfezF9IiwwLHsiY3VydmUiOi00fV0sWzUsOCwiaF97Mn0iLDAseyJjdXJ2ZSI6LTR9XSxbNCwxLCJxX3sxfSIsMl0sWzUsNywicV97Mn0iLDJdXQ==
+    \begin{tikzcd}
+        {X_{1}} && {Y_{1}\times_{\Ycal}\Xcal} && {Y_{1}} && {X_{2}} && {Y_{2}\times_{\Ycal}\Xcal} && {Y_{2}} \\
+        && \Xcal && \Ycal &&&& \Xcal && \Ycal
+        \arrow["f"', from=2-3, to=2-5]
+        \arrow["f"', from=2-9, to=2-11]
+        \arrow["{p_{2}'}"', from=1-9, to=2-9]
+        \arrow["{p_{2}}", from=1-11, to=2-11]
+        \arrow["{f'_{2}}"{pos=0.3}, from=1-9, to=1-11]
+        \arrow["{g_{2}}"{pos=0.7}, from=1-7, to=1-9]
+        \arrow["{g_{1}}"{pos=0.7}, from=1-1, to=1-3]
+        \arrow["{p'_{1}}"', from=1-3, to=2-3]
+        \arrow["{f'_{1}}"{pos=0.3}, from=1-3, to=1-5]
+        \arrow["{p_{1}}", from=1-5, to=2-5]
+        \arrow["{h_{1}}", curve={height=-24pt}, from=1-1, to=1-5]
+        \arrow["{h_{2}}", curve={height=-24pt}, from=1-7, to=1-11]
+        \arrow["{q_{1}}"', from=1-1, to=2-3]
+        \arrow["{q_{2}}"', from=1-7, to=2-9]
+    \end{tikzcd}$$
+    we show that $h_{1}$ has property $\Psf$ if and only if $h_{2}$ does also. Taking $Y'=Y_{1}\times_{\Ycal}Y_{2}$ 
+    $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJcXGxlZnQoWV97MX1cXHRpbWVzX3tcXFljYWx9WV97Mn1cXHJpZ2h0KVxcdGltZXNfe1xcWWNhbH1cXFhjYWwiXSxbNCwwLCJZX3sxfVxcdGltZXNfe1xcWWNhbH1ZX3syfSJdLFsyLDEsIlxcWGNhbCJdLFs0LDEsIlxcWWNhbCJdLFswLDAsIlxcbGVmdChZX3sxfVxcdGltZXNfe1xcWWNhbH1ZX3syfVxccmlnaHQpXFx0aW1lc197WV97aX19WCJdLFsyLDMsImYiLDJdLFswLDIsInAnXFxjaXJjflxccHJfezJ9IiwyLHsibGFiZWxfcG9zaXRpb24iOjMwfV0sWzEsM10sWzAsMSwiXFxwcl97MX0iLDAseyJsYWJlbF9wb3NpdGlvbiI6MjB9XSxbNCwwLCJcXHByX3sxfSciLDAseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbNCwxLCJoX3tpfSciLDAseyJjdXJ2ZSI6LTR9XSxbNCwyLCJxXFxjaXJjflxccHJfezJ9JyIsMl1d
+    \begin{tikzcd}
+        {\left(Y_{1}\times_{\Ycal}Y_{2}\right)\times_{Y_{i}}X} && {\left(Y_{1}\times_{\Ycal}Y_{2}\right)\times_{\Ycal}\Xcal} && {Y_{1}\times_{\Ycal}Y_{2}} \\
+        && \Xcal && \Ycal
+        \arrow["f"', from=2-3, to=2-5]
+        \arrow["{p'\circ~\pr_{2}}"'{pos=0.3}, from=1-3, to=2-3]
+        \arrow[from=1-5, to=2-5]
+        \arrow["{\pr_{1}}"{pos=0.2}, from=1-3, to=1-5]
+        \arrow["{\pr_{1}'}"{pos=0.6}, from=1-1, to=1-3]
+        \arrow["{h_{i}'}", curve={height=-24pt}, from=1-1, to=1-5]
+        \arrow["{q\circ~\pr_{2}'}"', from=1-1, to=2-3]
+    \end{tikzcd}$$
+    we see that $h_{1},h_{2}$ have the property $\Psf$ if and only if $h_{i}':Y'\times_{\Ycal}X\to\Ycal$ does for both $i\in\{1,2\}$.
+    In particular, this is symmetric in the $Y_{i}$'s, so without loss of generality take $Y_{1}=Y_{2}$ where we have the diagram 
+    $$% https://q.uiver.app/#q=WzAsNixbMCwyLCJcXGxlZnQoWV97MX1cXHRpbWVzX3tcXFljYWx9XFxYY2FsXFxyaWdodCk9XFxsZWZ0KFlfezJ9XFx0aW1lc197XFxZY2FsfVxcWGNhbFxccmlnaHQpIl0sWzQsMiwiWV97MX09WV97Mn0iXSxbMCwzLCJcXFhjYWwiXSxbNCwzLCJcXFljYWwiXSxbMiwxLCJYX3syfSJdLFsyLDAsIlhfezF9Il0sWzQsMCwiZ197Mn0iLDIseyJsYWJlbF9wb3NpdGlvbiI6NDB9XSxbNCwxLCJoX3syfSIsMCx7ImxhYmVsX3Bvc2l0aW9uIjo0MH1dLFs1LDAsImdfezF9IiwyXSxbNSwxLCJoX3sxfSJdLFswLDEsImYnX3sxfT1mJ197Mn0iXSxbMiwzLCJmIiwyXSxbMSwzLCJwX3sxfT1wX3syfSJdLFswLDIsInAnX3sxfT1wJ197Mn0iLDJdXQ==
+    \begin{tikzcd}
+        && {X_{1}} \\
+        && {X_{2}} \\
+        {\left(Y_{1}\times_{\Ycal}\Xcal\right)=\left(Y_{2}\times_{\Ycal}\Xcal\right)} &&&& {Y_{1}=Y_{2}} \\
+        \Xcal &&&& \Ycal
+        \arrow["{g_{2}}"'{pos=0.4}, from=2-3, to=3-1]
+        \arrow["{h_{2}}"{pos=0.4}, from=2-3, to=3-5]
+        \arrow["{g_{1}}"', from=1-3, to=3-1]
+        \arrow["{h_{1}}", from=1-3, to=3-5]
+        \arrow["{f'_{1}=f'_{2}}", from=3-1, to=3-5]
+        \arrow["f"', from=4-1, to=4-5]
+        \arrow["{p_{1}=p_{2}}", from=3-5, to=4-5]
+        \arrow["{p'_{1}=p'_{2}}"', from=3-1, to=4-1]
+    \end{tikzcd}$$
+    with $g_{1},g_{2}$ smooth surjections. Taking the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMiwzLCJZX3sxfT1ZX3syfSJdLFswLDIsIlhfezJ9Il0sWzAsMSwiWF97MX0iXSxbMiwwLCJYX3sxfVxcdGltZXNfe1xcWGNhbH1YX3syfSJdLFsxLDAsImhfezJ9IiwwLHsibGFiZWxfcG9zaXRpb24iOjQwfV0sWzIsMCwiaF97MX0iXSxbMywyLCJcXHBpX3sxfSIsMl0sWzMsMSwiXFxwaV97Mn0iLDIseyJsYWJlbF9wb3NpdGlvbiI6NjB9XSxbMywwLCJoX3sxfVxcY2lyY1xccGlfezF9PWhfezJ9XFxjaXJjXFxwaV97Mn0iXV0=
+    \begin{tikzcd}
+        && {X_{1}\times_{\Xcal}X_{2}} \\
+        {X_{1}} \\
+        {X_{2}} \\
+        && {Y_{1}=Y_{2}}
+        \arrow["{h_{2}}"{pos=0.4}, from=3-1, to=4-3]
+        \arrow["{h_{1}}", from=2-1, to=4-3]
+        \arrow["{\pi_{1}}"', from=1-3, to=2-1]
+        \arrow["{\pi_{2}}"'{pos=0.6}, from=1-3, to=3-1]
+        \arrow["{h_{1}\circ\pi_{1}=h_{2}\circ\pi_{2}}", from=1-3, to=4-3]
+    \end{tikzcd}$$
+    we see that $h_{1}$ or $h_{2}$ have property $\Psf$ if and only
+    $$h_{1}\circ\pi_{1}=h_{2}\circ\pi_{2}:X_{1}\times_{\Xcal}X_{2}\to Y_{1}$$
+    with $Y_{1}=Y_{2}$ has $\Psf$. But since $\pi_{1},\pi_{2}$ are smooth surjective and $\Psf$ stable on the smooth site and local on domain, $h_{1}$ has property $\Psf$ if and only if $h_{2}$ does too. 
+\end{proof}
+We now state an alternative way to define properties of morphisms of algebraic stacks via algebraic spaces. 
+\begin{definition}[Property of Stack Morphism]\label{def: property of stack morphism via spaces}
+    Let $\Psf$ be a property of $S$-algebraic spaces stable on the smooth site $(\Spaces_{S})_{\Sm}$. A representable morphism of $S$-algebraic stacks $f:\Xcal\to\Ycal$ has property $\Psf$ if for all morphisms $Y\to\Ycal$ for $Y$ an algebraic space
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJZXFx0aW1lc197XFxZY2FsfVxcWGNhbCJdLFswLDEsIlxcWGNhbCJdLFsyLDAsIlkiXSxbMiwxLCJcXFljYWwiXSxbMSwzLCJmIiwyXSxbMiwzXSxbMCwxXSxbMCwyXV0=
+    \begin{tikzcd}
+        {Y\times_{\Ycal}\Xcal} && Y \\
+        \Xcal && \Ycal
+        \arrow["f"', from=2-1, to=2-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+    the morphism $Y\times_{\Ycal}\Xcal\to Y$ has property $\Psf$.
+\end{definition}
+Properties such as \'{e}taleness, smoothness of relative dimension $d$, separatedness, properness, affineness, finiteness, unramifiedness, being a closed embedding, being an open embedding, and being an embedding, are all stable on the smooth site of $S$-spaces for a base scheme $S$ and thus can be used to describe morphisms of stacks. 
+\begin{definition}[Relative Stack Diagonal]\label{def: relative stack diagonal}
+    Let $f:\Xcal\to\Ycal$ be a morphism of algebraic stacks over $S$. The relative stack diagonal is the stack morphism
+    $$\delta_{\Xcal/\Ycal}:\Xcal\to\Xcal\times_{\Ycal}\Xcal.$$
+\end{definition}
+This allows us to understand separatedness of stacks. 
+\begin{definition}[Quasiseparated Stack Morphism]\label{def: quasiseparated stack morphism}
+    Let $f:\Xcal\to\Ycal$ be a morphism of algebraic stacks over a base scheme $S$. If $\delta_{\Xcal/\Ycal}$ representable by a quasiseparated and quasicompact algebraic space then $f$ is a quasiseparated morphism of stacks. 
+\end{definition}
+\begin{definition}[Separated Stack Morphism]\label{def: separated stack morphism}
+    Let $f:\Xcal\to\Ycal$ be a morphism of algebraic stacks over a base scheme $S$. If $\delta_{\Xcal/\Ycal}$ representable by a proper algebraic space then $f$ is a separated morphism of stacks. 
+\end{definition}
+When the target stack is the base scheme $S$, that is $\Ycal=S$, then we say that the stack has such a property. 
+\begin{definition}[Quasiseparated Stack]\label{def: quasiseparated stack}
+    Let $f:\Xcal\to S$ be a morphism of algebraic stacks over a base scheme $S$. If $\delta_{\Xcal/S}$ representable by a quasiseparated and quasicompact algebraic space then $\Xcal$ is a quasiseparated algebraic stack. 
+\end{definition}
+\begin{definition}[Separated Stack]\label{def: separated stack}
+    Let $f:\Xcal\to S$ be a morphism of algebraic stacks over a base scheme $S$. If $\delta_{\Xcal/S}$ representable by a proper algebraic space then $\Xcal$ is a separated algebraic stack.
+\end{definition}
+\subsection{Deligne-Mumford Stacks}\label{subsec: Deligne Mumford stacks}
+We now define Deligne-Mumford stacks. 
+\begin{definition}[Deligne-Mumford Stack]\label{def: Deligne Mumford stack}
+    An $S$-algebraic stack $\Xcal$ is Deligne-Mumford if there is a scheme $X$ and an \'{e}tale surjection $X\to\Xcal$.
+\end{definition}
+Recall that a map of schemes $X\to Y$ is formally unramified if the sheaf of differentials is trivial, that is $\Omega_{X/Y}^{1}=0$. In particular, formal unramifiedness is stable and local on domain on the smooth site for $S$-schemes $(\Sch_{S})_{\Sm}$ and stable on the \'{e}tale site for $S$-schemes $(\Sch_{S})_{\et}$. It thus makes sense for representable morphisms of stacks to be formally unramified. 
+\\\\
+This allows us to state an alternative characterization of Deligne-Mumford stacks. 
+\begin{theorem}\label{thm: DM stack iff diagonal is formally unramified}
+    Let $\Xcal$ be an $S$-algebraic stack. The algebraic stack $\Xcal$ is a Deligne-Mumford stack if and only if the diagonal
+    $$\delta_{\Xcal}:\Xcal\to\Xcal\times_{S}\Xcal$$
+    is formally unramified. 
+\end{theorem}
+One can then deduce the following corollary. 
+\begin{corollary}\label{corr: trivial automorphism groups imply space}
+    Let $\Xcal$ be an $S$-algebraic stack. If for every $S$-scheme $U$ and all $x\in\Xcal(U)$ satisfies $\ulAut_{x}=0$ then $\Xcal$ is an algebraic space. 
+\end{corollary}
+\begin{proof}
+    Since automorphism groups are trivial on all scheme-valued sections, $\delta_{\Xcal}$ is representable by monomorphisms and thus $\Xcal$ is a Deligne-Mumford stack. Let $X\to\Xcal$ be the \'{e}tale surjection with $X$ a scheme. The map $X\times_{\Xcal}X\to X\times_{S}X$ an \'{e}tale equivalence relation and thus $\Xcal\cong [X/X\times_{\Xcal}X]$, that is, $\Xcal$ is an algebraic space. 
+\end{proof}

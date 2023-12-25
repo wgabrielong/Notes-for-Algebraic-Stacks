@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  15 NOV 2023 23:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  23 DEC 2023 00:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -911,44 +911,55 @@ Package: stmaryrd 1994/03/03 St Mary's Road symbol package
 \symstmry=\mathgroup8
 LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 (Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+) (c:/texlive/2023/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2022/01/05 v1.2f Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup9
+\symboldletters=\mathgroup10
+\symboldsymbols=\mathgroup11
+Package bm Info: No bold for \OMX/cmex/m/n, using \pmb.
+Package bm Info: No bold for \U/msa/m/n, using \pmb.
+Package bm Info: No bold for \U/msb/m/n, using \pmb.
+Package bm Info: No bold for \U/rsfs/m/n, using \pmb.
+\symboldugrf@m=\mathgroup12
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 )
 \c@theorem=\count465
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
- (./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 4.aux) (./Section 5.aux) (./Section 6.aux) (./Section 7.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Appendix 1.aux))
+ (./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 5.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Section 14.aux) (./Appendix 1.aux) (./Appendix 2.aux))
 \openout1 = `"Algebraic Stacks - Notes.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
  (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
  (c:/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 37.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 39.
  (c:/texlive/2023/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 37.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 39.
  (c:/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1003,7 +1014,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (c:/texlive/2023/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 37.
+Package hyperref Info: Link coloring OFF on input line 39.
  (./Algebraic Stacks - Notes.out) (./Algebraic Stacks - Notes.out)
 \@outlinefile=\write5
 \openout5 = `"Algebraic Stacks - Notes.out"'.
@@ -1021,8 +1032,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '"Algebraic Stacks - Notes".bbl' found.
  (./Algebraic Stacks - Notes.bbl)
-Package biblatex Info: Reference section=0 on input line 37.
-Package biblatex Info: Reference segment=0 on input line 37.
+Package biblatex Info: Reference section=0 on input line 39.
+Package biblatex Info: Reference segment=0 on input line 39.
  (./Algebraic Stacks - Notes.toc)
 \tf@toc=\write6
 \openout6 = `"Algebraic Stacks - Notes.toc"'.
@@ -1033,137 +1044,254 @@ Package biblatex Info: Reference segment=0 on input line 37.
  (./Section 1.tex [2
 
 ] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 97--104
+Underfull \hbox (badness 10000) in paragraph at lines 132--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--104
+Underfull \hbox (badness 10000) in paragraph at lines 132--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--104
+Underfull \hbox (badness 10000) in paragraph at lines 132--139
 
  []
 
-) [4]
+[4]
+Underfull \hbox (badness 10000) in paragraph at lines 154--157
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 180--183
+
+ []
+
+[6]
+Overfull \hbox (19.79605pt too wide) in paragraph at lines 213--215
+\OT1/cmr/m/n/10.95 showing that $\OML/cmm/m/it/10.95 Z$ \OT1/cmr/m/n/10.95 fac-tors through both the cov-er-ings $\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 X[] \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 X\OMS/cmsy/m/n/10.95 g$ \OT1/cmr/m/n/10.95 and $\OMS/cmsy/m/n/10.95 f\OML/cmm/m/it/10.95 Y[] \OMS/cmsy/m/n/10.95 ! \OML/cmm/m/it/10.95 X\OMS/cmsy/m/n/10.95 g$\OT1/cmr/m/n/10.95 , that is, $\OML/cmm/m/it/10.95 h[] \OMS/cmsy/m/n/10.95 ^^R
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 300--303
+
+ []
+
+) [9]
 \openout2 = `"Section 2.aux"'.
 
- (./Section 2.tex) [5
+ (./Section 2.tex [10
 
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 66--69
+
+ []
+
+[11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 169--173
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--202
+
+ []
+
+[13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 296--299
+
+ []
+
+[15]) [16]
 \openout2 = `"Section 3.aux"'.
 
- (./Section 3.tex) [6
+ (./Section 3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 26--29
+
+ []
+
+[17
 
 
 
 ]
-\openout2 = `"Section 4.aux"'.
+Underfull \hbox (badness 10000) in paragraph at lines 59--63
 
- (./Section 4.tex) [7
+ []
+
+[18]
+Overfull \hbox (3.72pt too wide) in paragraph at lines 89--90
+[]\OT1/cmr/bx/n/10.95 Definition 3.8 \OT1/cmr/m/n/10.95 (Mor-phism of Tor-sors)\OT1/cmr/bx/n/10.95 . []\OT1/cmr/m/n/10.95 Let $\OT1/cmss/m/n/10.95 S$ \OT1/cmr/m/n/10.95 be a site, $\OML/cmm/b/it/10.95 ^^V$ \OT1/cmr/m/n/10.95 a sheaf of groups on $\OT1/cmss/m/n/10.95 S$\OT1/cmr/m/n/10.95 , and $(\OMS/cmsy/m/n/10.95 P\OML/cmm/m/it/10.95 ; ^^Z\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 (\OMS/cmsy/m/n/10.95 P\OML/cmm/m/it/10.95 ; ^^Z[]\OT1/cmr/m/n/10.95 )$
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 145--148
+
+ []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 151--154
 
-]
+ []
+
+) [20]
 \openout2 = `"Section 5.aux"'.
 
- (./Section 5.tex) [8
+ (./Section 5.tex
+Underfull \hbox (badness 10000) in paragraph at lines 3--6
+
+ []
+
+[21
 
 
 
-]
-\openout2 = `"Section 6.aux"'.
-
- (./Section 6.tex) [9
-
-
-
-]
-\openout2 = `"Section 7.aux"'.
-
- (./Section 7.tex) [10
-
-
-
-]
+]) [22]
 \openout2 = `"Section 8.aux"'.
 
- (./Section 8.tex) [11
+ (./Section 8.tex [23
 
 
 
-]
+] [24] [25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 266--270
+
+ []
+
+[27] [28]
+Underfull \hbox (badness 10000) in paragraph at lines 374--377
+
+ []
+
+) [29]
 \openout2 = `"Section 9.aux"'.
 
- (./Section 9.tex) [12
+ (./Section 9.tex [30
 
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 86--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--107
+
+ []
+
+[31] [32] [33] [34] [35]
+Underfull \hbox (badness 10000) in paragraph at lines 313--316
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 320--324
+
+ []
+
+) [36]
 \openout2 = `"Section 10.aux"'.
 
- (./Section 10.tex) [13
+ (./Section 10.tex [37
 
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 78--82
+
+ []
+
+[38] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
+
+ []
+
+) [40]
 \openout2 = `"Section 11.aux"'.
 
- (./Section 11.tex) [14
+ (./Section 11.tex [41
 
 
 
-]
+] [42]) [43]
 \openout2 = `"Section 12.aux"'.
 
- (./Section 12.tex) [15
+ (./Section 12.tex [44
+
+
+
+] [45]
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
+
+ []
+
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 190--193
+
+ []
+
+[47] [48] [49] [50]) [51]
+\openout2 = `"Section 13.aux"'.
+
+ (./Section 13.tex) [52
 
 
 
 ]
-\openout2 = `"Section 13.aux"'.
+\openout2 = `"Section 14.aux"'.
 
- (./Section 13.tex) [16
+ (./Section 14.tex) [53
 
-
-
-] [17
 
 
 ]
 \openout2 = `"Appendix 1.aux"'.
 
- (./Appendix 1.tex) [18
+ (./Appendix 1.tex
+Underfull \hbox (badness 10000) in paragraph at lines 25--30
 
-] [19
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--30
+
+ []
+
+[54
+
+
+
+]) [55]
+\openout2 = `"Appendix 2.aux"'.
+
+ (./Appendix 2.tex [56
+
+
+
+]) [57] [58
 
 
 ] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 4.aux) (./Section 5.aux) (./Section 6.aux) (./Section 7.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Appendix 1.aux))
+(./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 5.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Section 14.aux) (./Appendix 1.aux) (./Appendix 2.aux))
 Package rerunfilecheck Info: File `"Algebraic Stacks - Notes".out' has not changed.
-(rerunfilecheck)             Checksum: CDF4DA144A50351FDBDF2A685B538A42;3748.
+(rerunfilecheck)             Checksum: 05685776BE830748E429BDC269C03487;3521.
 Package logreq Info: Writing requests to '"Algebraic Stacks - Notes".run.xml'.
 \openout1 = `"Algebraic Stacks - Notes.run.xml"'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36545 strings out of 476017
- 726442 string characters out of 5793766
- 1870660 words of memory out of 5000000
- 56131 multiletter control sequences out of 15000+600000
- 527254 words of font info for 92 fonts, out of 8000000 for 9000
+ 42311 strings out of 476017
+ 869517 string characters out of 5793766
+ 1909660 words of memory out of 5000000
+ 61584 multiletter control sequences out of 15000+600000
+ 534182 words of font info for 115 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 101i,16n,104p,855b,1383s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on "Algebraic Stacks - Notes.pdf" (19 pages, 257298 bytes).
-PDF statistics:
- 361 PDF objects out of 1000 (max. 8388607)
- 297 compressed objects within 3 object streams
- 76 named destinations out of 1000 (max. 500000)
- 181 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 101i,19n,104p,1154b,1396s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<
+!pdfTeX error: pdflatex.exe (file c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb): fflush() failed (Invalid argument)
+ ==> Fatal error occurred, no output PDF file produced!

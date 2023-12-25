@@ -1,0 +1,90 @@
+\section{Group Objects in Categories}
+Let us recall the definition of group objects in a category. These are important examples in arithmetic and in geometry. For example, elliptic curves are group objects in the category of schemes $\Sch$ and topological groups are group objects in the category of topological spaces $\Top$. 
+\begin{definition}
+    Let $\Csf$ be a category with finite products and a final object $Z$. A group object is an object $X\in\Obj(\Csf)$ together with maps $m:X\times X\to X, i:X\to X, e:Z\to X$ satisfying the following axioms:
+    \begin{enumerate}[label=(\alph*)]
+        \item (Associativity Axiom) The diagram
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lcyBYXFx0aW1lcyBYIl0sWzIsMCwiWFxcdGltZXMgWCJdLFswLDEsIlhcXHRpbWVzIFgiXSxbMiwxLCJYIl0sWzAsMSwiKG0sXFxpZF97WH0pIl0sWzEsMywibSJdLFsyLDMsIm0iLDJdLFswLDIsIihcXGlkX3tYfSxtfSIsMl1d
+        \begin{tikzcd}
+            {X\times X\times X} && {X\times X} \\
+            {X\times X} && X
+            \arrow["{(m,\id_{X})}", from=1-1, to=1-3]
+            \arrow["m", from=1-3, to=2-3]
+            \arrow["m"', from=2-1, to=2-3]
+            \arrow["{(\id_{X},m)}"', from=1-1, to=2-1]
+        \end{tikzcd}$$
+        commutes. 
+        \item (Identity Axiom) The two maps
+        $$% https://q.uiver.app/#q=WzAsOCxbMCwwLCJYIl0sWzIsMCwiWlxcdGltZXMgWCJdLFs0LDAsIlhcXHRpbWVzIFgiXSxbNiwwLCJYIl0sWzAsMSwiWCJdLFsyLDEsIlhcXHRpbWVzIFoiXSxbNCwxLCJYXFx0aW1lcyBYIl0sWzYsMSwiWCJdLFsxLDIsIihlLFxcaWRfe1h9KSJdLFsyLDMsIm0iXSxbMCwxLCJcXHNpbSJdLFs2LDcsIm0iXSxbNSw2LCIoXFxpZF97WH0sZSkiXSxbNCw1LCJcXHNpbSJdXQ==
+        \begin{tikzcd}
+            X && {Z\times X} && {X\times X} && X \\
+            X && {X\times Z} && {X\times X} && X
+            \arrow["{(e,\id_{X})}", from=1-3, to=1-5]
+            \arrow["m", from=1-5, to=1-7]
+            \arrow["\sim", from=1-1, to=1-3]
+            \arrow["m", from=2-5, to=2-7]
+            \arrow["{(\id_{X},e)}", from=2-3, to=2-5]
+            \arrow["\sim", from=2-1, to=2-3]
+        \end{tikzcd}$$
+        are both the identity map on $X$. 
+        \item (Inverse Axiom) The maps
+        $$% https://q.uiver.app/#q=WzAsNixbMCwwLCJYIl0sWzIsMCwiWFxcdGltZXMgWCJdLFs0LDAsIlgiXSxbMCwxLCJYIl0sWzIsMSwiWFxcdGltZXMgWCJdLFs0LDEsIlgiXSxbMCwxLCIoaSxcXGlkX3tYfSkiXSxbMSwyLCJtIl0sWzMsNCwiKFxcaWRfe1h9LGkpIl0sWzQsNSwibSJdXQ==
+        \begin{tikzcd}
+            X && {X\times X} && X \\
+            X && {X\times X} && X
+            \arrow["{(i,\id_{X})}", from=1-1, to=1-3]
+            \arrow["m", from=1-3, to=1-5]
+            \arrow["{(\id_{X},i)}", from=2-1, to=2-3]
+            \arrow["m", from=2-3, to=2-5]
+        \end{tikzcd}$$
+        are both the composition 
+        $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJYIl0sWzIsMCwiWiJdLFs0LDAsIlgiXSxbMCwxXSxbMSwyLCJlIl1d
+        \begin{tikzcd}
+            X && Z && X.
+            \arrow[from=1-1, to=1-3]
+            \arrow["e", from=1-3, to=1-5]
+        \end{tikzcd}$$
+    \end{enumerate}
+\end{definition}
+One can equivalently define a group object as an object $X\in\Obj(\Csf)$ with a functor $\Csf^{\Opp}\to\Grp$ such that the composition with the forgetful functor to $\Sets$ is $h_{X}$, or as an object $X\in\Obj(\Csf)$ and for all $Y\in\Obj(\Csf)$ a group structure on $\Mor_{\Csf}(Y,X)$ such that for all $Y\to W$ there is an induced homomorphism of groups $\Mor_{\Csf}(W,X)\to\Mor_{\Csf}(Y,X)$. 
+\begin{example}
+    Let $S=\spec A$ and consider $\A^{1}_{S}=\spec A[t]=\GG_{a,S}$. This is a group scheme since for any $X\in\Obj(\Sch_{S})$ there is a group structure on $\Mor_{\Csf}(X,\A^{1}_{S})=\Ocal(X)$ the global sections of the structure sheaf and for any $X\to Y$ there is a natural homomorphism of groups $\Ocal(Y)\to\Ocal(X)$ by the pullback of sheaves $f^{\sharp}:\Ocal_{Y}\to f^{*}\Ocal_{X}$. 
+\end{example}
+\begin{example}
+    Similarly for $\GG_{m,S}=\spec A[t,t^{-1}]$ we know it represents the functor sending a scheme $X$ to its invertible sections $\Ocal(X)^{\times}$. For $X\to Y$, the homomorphism $\Ocal(Y)\to\Ocal_{X}$ by $\Ocal_{Y}\to f^{*}\Ocal_{X}$ restricts to a homomorphism of multiplicative groups $\Ocal(Y)^{\times}\to\Ocal(X)^{\times}$ as homomorphisms of rings send 0 to 0 and 1 to 1. 
+\end{example}
+\begin{example}
+    Consider a functor $\Sch_{S}^{\Opp}\to\Sets$ by $X\mapsto M_{n}(\Ocal(X))$, $n\times n$ matrices with entries in $\Ocal(X)$ represented by the scheme $\A^{n\times n}_{S}$. One can apply the determinant map on matrices $\det:\A^{n\times n}_{S}\to \A^{1}_{S}$ and consider the preimage of $\GG_{m,S}\subseteq\A^{1}_{S}$, those matrices whose determinant is nonvanishing. This is an open subscheme of invertible $n\times n$ matrices $\mathrm{GL}_{n,S}\subseteq\A^{n\times n}_{S}$ which has a group structure by matrix multiplication. 
+\end{example}
+\begin{definition}[Homomorphism of Group Objects]\label{def: group object homomorphism}
+    Let $\Csf$ be a category with finite products and final object $Z$. Let $X,Y\in\Obj(\Csf)$ be group objects. A homomorphism of group objects is a morphism $f:X\to Y$ in $\Csf$ such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lcyBYIl0sWzAsMSwiWVxcdGltZXMgWSJdLFsyLDAsIlgiXSxbMiwxLCJZIl0sWzAsMSwiZlxcdGltZXMgZiIsMl0sWzEsMywibV97WX0iLDJdLFswLDIsIm1fe1h9Il0sWzIsMywiZiJdXQ==
+    \begin{tikzcd}
+        {X\times X} && X \\
+        {Y\times Y} && Y
+        \arrow["{f\times f}"', from=1-1, to=2-1]
+        \arrow["{m_{Y}}"', from=2-1, to=2-3]
+        \arrow["{m_{X}}", from=1-1, to=1-3]
+        \arrow["f", from=1-3, to=2-3]
+    \end{tikzcd}$$
+    commutes. 
+\end{definition}
+Group objects are inherently interesting objects of study in algebraic geometry, such as in the study of Abelian varieties. However, group objects also act on other objects in the category, creating a new direction of study. 
+\begin{definition}[Action of Group Object]\label{def: action of group object}
+    Let $\Csf$ be a category. A left action $\alpha$ of a functor $G:\Csf^{\Opp}\to\Grp$ on a functor $F:\Csf^{\Opp}\to\Sets$ is a natural transformation $\alpha:G\times F\to F$ such that for all $Y\in\Obj(\Csf)$ the induced map $\alpha(Y):G(Y)\times F(Y)\to F(Y)$ is an action of the group $G(Y)$ on the set $F(Y)$. 
+\end{definition}
+For a group object in a category, its action on another object is given by the action of the functor the group object represents to the functor that the other object represents. 
+\begin{definition}[Equivariant]
+    Let $\Csf$ be a category and $X,Y\in\Obj(\Csf)$ objects with an action by a group object $G$. A morphism $f:X\to Y$ is $G$-equivariant if the diagram
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJHXFx0aW1lcyBYIl0sWzAsMSwiR1xcdGltZXMgWSJdLFsyLDAsIlgiXSxbMiwxLCJZIl0sWzIsMywiZiJdLFswLDEsIlxcaWRfe0d9XFx0aW1lcyBmIiwyXSxbMCwyXSxbMSwzXV0=
+    \begin{tikzcd}
+        {G\times X} && X \\
+        {G\times Y} && Y
+        \arrow["f", from=1-3, to=2-3]
+        \arrow["{\id_{G}\times f}"', from=1-1, to=2-1]
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=2-1, to=2-3]
+    \end{tikzcd}$$
+    with horizontal maps given by the action commutes. 
+\end{definition}
+This is equivalent to the data of the data of $X(W)\to Y(W)$ being $G(W)$-equivariant for all $W\in\Obj(\Csf)$. 

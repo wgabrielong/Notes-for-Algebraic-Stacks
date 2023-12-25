@@ -1,1 +1,176 @@
-\section{Descent}
+\section{Descent}\label{sec: descent}
+Descent generalizes the identity and gluing axioms for sheaves on topological spaces to the setting of sites. We have already seen that for $\Ssf$ a site, we should think of a fibered category over $\Ssf$ as a lax 2-functor in the sense of \Cref{def: lax 2 functor}, that is, as a presheaf of categories on $\Ssf$. A stack, which we will soon encounter, is a sheaf of categories over $\Ssf$. 
+\subsection{Descent in Fibered Categories}\label{subsec: descent in fibered categories}
+Let $p:\Fsf\to\Ssf$ be a category fibered over a site $\Ssf$ with a fixed cleavage $K$. For a covering $\{X_{i}\to X\}$, denote $X_{ij}=X_{i}\times_{X}X_{j}$ and $X_{ijk}=X_{i}\times_{X}X_{j}\times_{X}X_{k}$. We now define an object with descent data. 
+\begin{definition}[Object With Descent Data]\label{def: object w descent data}
+    Let $\{X_{i}\to X\}$ be a covering in $\Ssf$. An object with descent data on $\{X_{i}\to X\}$ is the tuple $(\{\xi_{i}\},\{\phi_{ij}\})$ with objects $\xi_{i}\in\Fsf_{X_{i}}$ and isomorphisms $\phi_{ij}:\pr_{2}^{*}\xi_{j}\to\pr_{1}^{*}\xi_{i}$ in $\Fsf_{X_{ij}}$ such that 
+    $$\pr_{1,3}^{*}\phi_{ik}=\pr_{1,2}^{*}\phi_{ij}\circ\pr_{2,3}^{*}\phi_{jk}:\pr_{3}^{*}\xi_{k}\to\pr_{1}^{*}\xi_{i}.$$
+\end{definition}
+\begin{remark}
+    The maps $\phi_{ij}$ are known as transition isomorphisms of the object $X$ with descent data. 
+\end{remark}
+One naturally defines morphisms of objects with descent data as follows. 
+\begin{definition}[Morphisms of Objects with Descent Data]
+    A morphism between objects with descent data on $\{X_{i}\to X\}$, $(\{\xi_{i}\},\{\phi_{ij}\})$ and $(\{\upsilon_{i}\},\{\psi_{i,j}\})$, is a tuple $\{\alpha_{i}\}$ with $\alpha_{i}:\Fsf_{X_{i}}\to\Fsf_{X_{i}}$ where $\xi_{i}\mapsto\upsilon_{i}$ such that for each pair $i,j$ the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXHByX3syfV57Kn1cXHhpX3tqfSJdLFswLDEsIlxccHJfezF9XnsqfVxceGlfe2l9Il0sWzIsMCwiXFxwcl97Mn1eeyp9XFx1cHNpbG9uX3tqfSJdLFsyLDEsIlxccHJfezF9XnsqfVxcdXBzaWxvbl97aX0iXSxbMSwzLCJcXHByX3sxfV57Kn1cXGFscGhhX3tpfSIsMl0sWzIsMywiXFxwc2lfe2lqfSJdLFswLDEsIlxccGhpX3tpan0iLDJdLFswLDIsIlxccHJfezJ9XnsqfVxcYWxwaGFfe2p9Il1d
+    \begin{tikzcd}
+        {\pr_{2}^{*}\xi_{j}} && {\pr_{2}^{*}\upsilon_{j}} \\
+        {\pr_{1}^{*}\xi_{i}} && {\pr_{1}^{*}\upsilon_{i}}
+        \arrow["{\pr_{1}^{*}\alpha_{i}}"', from=2-1, to=2-3]
+        \arrow["{\psi_{ij}}", from=1-3, to=2-3]
+        \arrow["{\phi_{ij}}"', from=1-1, to=2-1]
+        \arrow["{\pr_{2}^{*}\alpha_{j}}", from=1-1, to=1-3]
+    \end{tikzcd}$$
+    commutes. 
+\end{definition}
+The morphisms $\alpha_{i}$ compose in the obvious way making objects with descent data the objects of a category $\Fsf_{\{X_{i}\to X\}}$. 
+\\\\
+More explicitly, let $\xi\in\Fsf_{X}$ and $\{\sigma_{i}:X_{i}\to X\}$ a covering. We can construct an object with descent data as follows. Set $\xi_{i}=\sigma_{i}^{*}\xi$ and transition isomorphisms the identity after identifying $\pr_{2}^{*}\sigma_{j}^{*}\xi$ and $\pr_{1}^{*}\sigma_{i}^{*}\xi$, the pullbacks of $\xi$ to $X_{ij}$. For some $\alpha:\xi\to\upsilon$ in $\Fsf_{X}$ we get $\alpha_{i}=\sigma_{i}^{*}\alpha:\sigma_{i}^{*}\xi\to\sigma_{i}^{*}\upsilon$, yielding a morphism of objects with descent data $\{\alpha_{i}\}$ from $(\{\xi_{i}\},\{\phi_{ij}\})$ to $(\{\upsilon_{i}\},\{\psi_{ij}\})$. Evidently this is a functor $\Fsf_{X}\to\Fsf_{\{X_{i}\to X\}}$ where on objects is given by 
+$$\xi\mapsto(\{\xi_{i}\},\{\phi_{ij}\})$$
+and on morphisms by 
+$$(\alpha:\xi\to\upsilon)\mapsto \{\alpha_{i}:\xi_{i}\to\upsilon_{i}\}$$
+which are compatible with the transition isomorphisms $\phi_{ij},\psi_{ij}$. 
+\begin{remark}
+    This construction does not depend on the cleavage in the sense that the categories $\Fsf_{\{X_{i}\to X\}}$ are equivalent regardless of the choice of cleavage.
+\end{remark}
+We can now define some long-awaited notions. 
+\begin{definition}[Prestack]\label{def: categorical prestack}
+    Let $p:\Fsf\to\Ssf$ be a category fibered over a site. $\Fsf$ is a prestack over $\Ssf$ if for each covering $\{X_{i}\to X\}$ in $\Ssf$ the functor $\Fsf_{X}\to\Fsf_{\{X_{i}\to X\}}$ is fully faithful. 
+\end{definition}
+\begin{definition}[Stack]\label{def: categorical stack}
+    Let $p:\Fsf\to\Ssf$ be a category fibered over a site. $\Fsf$ is a stack over $\Ssf$ if for each covering $\{X_{i}\to X\}$ in $\Ssf$ the functor $\Fsf_{X}\to\Fsf_{\{X_{i}\to X\}}$ is an equivalence of categories. 
+\end{definition}
+Unpacking the definition, to be a prestack means that for $X\in\Obj(\Ssf)$; $\xi,\upsilon\in\Obj(\Fsf_{X})$; $\{X_{i}\to X\}$ a covering; $\xi_{i},\upsilon_{i}$ pullbacks of $\xi,\upsilon$ to the $X_{i}$; $\xi_{ij},\upsilon_{ij}$ pullbacks to $X_{ij}$ and there was some $a_{i}:\xi_{i}\to\upsilon_{i}$ in $\Fsf_{X_{i}}$ such that $\pr_{1}^{*}\alpha_{i}=\pr_{2}^{*}\alpha_{j}:\xi_{ij}\to\upsilon_{ij}$ then there is a unique $\alpha:\xi\to\upsilon$ in $\Fsf_{X}$ whose pullback is $\alpha_{i}:\xi_{i}\to\upsilon_{i}$ for all $i$. Clarifying what happens if $p:\Fsf\to\Ssf$ is a stack will require introducing the following notion. 
+\begin{definition}[Effective Descent Data]\label{def: effective descent data}
+    An object with descent data $(\{\xi_{i}\},\{\phi_{ij}\})$ in $\Fsf_{\{X_{i}\to X\}}$ is effective if it is isomorphic to the image of an object in $\Fsf_{X}$. 
+\end{definition} 
+In other words an object with descent data $(\{\xi_{i}\},\{\phi_{ij}\})$ in $\Fsf_{\{X_{i}\to X\}}$ is effective if there exists $\xi\in\Obj(\Fsf_{X})$ and Cartesian arrows $\xi_{i}\to\xi$ over $\sigma_{i}:X_{i}\to X$ such that the pentagonal diagram 
+$$% https://q.uiver.app/#q=WzAsNixbMiwwLCJcXHhpIl0sWzEsMV0sWzAsMSwiXFx4aV97aX0iXSxbNCwxLCJcXHhpX3tqfSJdLFsxLDMsIlxccHJfezF9XnsqfVxceGlfe2l9Il0sWzMsMywiXFxwcl97Mn1eeyp9XFx4aV97an0iXSxbMiwwXSxbMywwXSxbNCwyXSxbNSwzXSxbNSw0LCJcXHBoaV97aWp9Il1d
+\begin{tikzcd}
+	&& \xi \\
+	{\xi_{i}} & {} &&& {\xi_{j}} \\
+	\\
+	& {\pr_{1}^{*}\xi_{i}} && {\pr_{2}^{*}\xi_{j}}
+	\arrow[from=2-1, to=1-3]
+	\arrow[from=2-5, to=1-3]
+	\arrow[from=4-2, to=2-1]
+	\arrow[from=4-4, to=2-5]
+	\arrow["{\phi_{ij}}", from=4-4, to=4-2]
+\end{tikzcd}$$
+commutes for all $i,j$.  
+\\\\
+If $p:\Fsf\to\Ssf$ is a stack as in \Cref{def: categorical stack}, we know the functor $\Fsf_{X}\to\Fsf_{\{X_{i}\to X\}}$ is fully faithful and essentially surjective. So all $(\{\xi_{i}\},\{\phi_{ij}\})$ are isomorphic to the image of some object in $\Fsf_{X}$, that is, all descent data is effective. 
+\subsection{Descent for Torsors}\label{subsec: descent for torsors}
+Torsors are closely related to principal $G$-bundles in algebraic topology, and are central objects in the study of both algebraic and arithmetic geometry. 
+\begin{definition}[Torsor]\label{def: torsor}
+    Let $\Ssf$ be a site and $\Bmu$ a sheaf of groups on $\Ssf$. A $\Bmu$-torsor on $\Ssf$ is a pair $(\Pcal,\rho)$ where $\Pcal$ is a sheaf on $\Ssf$ with a left action 
+    $$\rho:\Bmu\times\Pcal\longrightarrow\Pcal$$
+    such that the following conditions hold:
+    \begin{enumerate}
+        \item For all $X\in\Obj(\Ssf)$ there is a covering $\{X_{i}\to X\}_{i\in I}$ such that $\Pcal(X_{i})\neq\emptyset$ for all $i\in I$.
+        \item The morphism of sheaves
+        $$\Bmu\times\Pcal\to\Pcal\times\Pcal; (g,p)\mapsto(p,g\cdot p)$$
+        is an isomorphism. 
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    The sheaf of groups $\Bmu$ need not be a sheaf of Abelian groups. 
+\end{remark}
+\begin{remark}
+    The condition (b) in \Cref{def: torsor} says that for $\Pcal(X)$ the action of the group $\Bmu(X)$ on $\Pcal(X)$ is simply transitive: that it is both free -- the identity is the only element fixing any point -- and for any two sections $p,p'\in\Pcal(X)$ there is a unique $g\in \mu(X)$ such that $g\cdot p=p'$. 
+\end{remark}
+\begin{definition}[Trivial Torsor]\label{def: trivial torsor}
+    Let $\Ssf$ be a site, $\Bmu$ a sheaf of groups on $\Ssf$, and $(\Pcal,\rho)$ a $\Bmu$-torsor on $\Ssf$ if $\Pcal$ has a global section. 
+\end{definition}
+If $(\Pcal,\rho)$ is a trivial $\Bmu$-torsor on a site $\Ssf$, then for a global section $p\in\Pcal(X)$ we have an isomorphism 
+$$\Bmu\to\Pcal; g\mapsto g\cdot p$$
+identifying $\Pcal$ with $\Bmu$ and the action $\rho$ with the endomorphism by left multiplication. Morphisms of torsors are defined in the natural way as follows. 
+\begin{definition}[Morphism of Torsors]\label{def: morphism of torosrs}
+    Let $\Ssf$ be a site, $\Bmu$ a sheaf of groups on $\Ssf$, and $(\Pcal,\rho),(\Pcal,\rho')$ two $\Bmu$-torsors on $\Ssf$. A morphism of torsors $f:(\Pcal',\rho')\to(\Pcal,\rho)$ is the data of a morphism of sheaves $f:\Pcal'\to\Pcal$ such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEJtdVxcdGltZXNcXFBjYWwnIl0sWzIsMCwiXFxCbXVcXHRpbWVzXFxQY2FsIl0sWzAsMSwiXFxQY2FsJyJdLFsyLDEsIlxcUGNhbCJdLFsyLDMsImYiLDJdLFswLDEsIlxcaWRfe1xcQm11fVxcdGltZXMgZiJdLFswLDIsIlxccmhvJyIsMl0sWzEsMywiXFxyaG8iXV0=
+    \begin{tikzcd}
+        {\Bmu\times\Pcal'} && \Bmu\times\Pcal \\
+        {\Pcal'} && \Pcal
+        \arrow["f"', from=2-1, to=2-3]
+        \arrow["{\id_{\Bmu}\times f}", from=1-1, to=1-3]
+        \arrow["{\rho'}"', from=1-1, to=2-1]
+        \arrow["\rho", from=1-3, to=2-3]
+    \end{tikzcd}$$
+    commutes. 
+\end{definition}
+Torsors are intimately connected to principal $G$-bundles in algebraic geometry and algebraic topology. 
+\begin{definition}[Principal $G$-Bundle]\label{def: principal G bundle}
+    Let $(\Sch_{X})_{\fppf}$ denote the fppf site of $X$-schemes for $X$ a base scheme and $\Bmu$ a sheaf of groups on $(\Sch_{X})_{\fppf}$ representable by a flat locally finitely presented $X$-group scheme $G$. A principal $G$-bundle on $X$ is a pair $(\pi:P\to X,\rho)$ where $\pi:P\to X$ is a flat, locally finitely presented, surjective morphism of schemes and 
+    $$\rho:G\times_{X}P\to P$$
+    a morphism such that the following conditions hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item The diagram 
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJHXFx0aW1lc197WH1HXFx0aW1lc197WH1QIl0sWzIsMCwiR1xcdGltZXNfe1h9UCJdLFswLDEsIkdcXHRpbWVzX3tYfVAiXSxbMiwxLCJQIl0sWzIsMywiXFxyaG8iLDJdLFsxLDMsIlxccmhvIl0sWzAsMSwiXFxpZF97R31cXHRpbWVzXFxyaG8iXSxbMCwyLCJtXFx0aW1lc1xcaWRfe1B9IiwyXV0=
+        \begin{tikzcd}
+            {G\times_{X}G\times_{X}P} && {G\times_{X}P} \\
+            {G\times_{X}P} && P
+            \arrow["\rho"', from=2-1, to=2-3]
+            \arrow["\rho", from=1-3, to=2-3]
+            \arrow["{\id_{G}\times\rho}", from=1-1, to=1-3]
+            \arrow["{m\times\id_{P}}"', from=1-1, to=2-1]
+        \end{tikzcd}$$
+        commutes, here denoting $m:G\times_{X}G\to G$ the group operation on the group scheme $G$. 
+        \item If $e:X\to G$ is the identity action, the composition 
+        $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJQIl0sWzIsMCwiR1xcdGltZXNfe1h9UCJdLFs0LDAsIlAiXSxbMCwxLCJlXFxjaXJjXFxwaVxcdGltZXNcXGlkX3tQfSJdLFsxLDIsIlxccmhvIl1d
+        \begin{tikzcd}
+            P && {G\times_{X}P} && P
+            \arrow["{e\circ\pi\times\id_{P}}", from=1-1, to=1-3]
+            \arrow["\rho", from=1-3, to=1-5]
+        \end{tikzcd}$$
+        is the identity on $P$. 
+        \item The map $(\rho,\pr_{2}):G\times_{X}P\to P\times_{X}P$ is an isomorphism 
+    \end{enumerate}
+\end{definition}
+The morphisms of principal $G$-bundles are given in the obvious way. 
+\begin{definition}[Morphisms of Principal $G$-Bundles]\label{def: morphism of principal G bundles}
+    Let $(\Sch_{X})_{\fppf}$ denote the fppf site of $X$-schemes for $X$ a base scheme and $\Bmu$ a sheaf of groups on $(\Sch_{X})_{\fppf}$ representable by a flat locally finitely presented $X$-group scheme $G$. A morphism of principal $G$-bundles 
+    $$f:(\pi':P'\to X,\rho')\to(\pi:P\to X,\rho)$$
+    is a morphism of $X$-schemes $f:P'\to P$ such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJHXFx0aW1lc197WH1QJyJdLFswLDEsIlAnIl0sWzIsMCwiR1xcdGltZXNfe1h9UCJdLFsyLDEsIlAiXSxbMSwzLCJmIiwyXSxbMCwyLCJcXGlkX3tHfVxcdGltZXMgZiJdLFswLDEsIlxccmhvJyIsMl0sWzIsMywiXFxyaG8iXV0=
+    \begin{tikzcd}
+        {G\times_{X}P'} && {G\times_{X}P} \\
+        {P'} && P
+        \arrow["f"', from=2-1, to=2-3]
+        \arrow["{\id_{G}\times f}", from=1-1, to=1-3]
+        \arrow["{\rho'}"', from=1-1, to=2-1]
+        \arrow["\rho", from=1-3, to=2-3]
+    \end{tikzcd}$$
+    commutes. 
+\end{definition}
+Given a principal $G$-bundle $(\pi:P\to X,\rho)$ on $X$, we get a $\mu$-torsor bytaking $\Pcal$ to be the sheaf on $(\Sch_{X})_{\fppf}$ represented by the scheme $P$ with action that induced by $\rho$. The conditions (a) and (b) of \Cref{def: principal G bundle} imply that the map $\Bmu\times\Pcal\to\Pcal$ is an action while condition (c) imposes that the action is simply transitive. Furthermore, since $\pi:P\to X$ is flat, locally finitely presented, and surjective as a map of schemes, there exists an fppf cover $\{X_{i}\to X\}$ such that $\Pcal(X_{i})\neq\emptyset$ for all $i\in I$. 
+\\\\
+Furthermore, one can observe that these constructions are functorial, yielding a categories of principal $G$-bundles on a scheme $X$ and $\Bmu$-torsors on the fppf site of $X$-schemes $(\Sch_{X})_{\fppf}$. Indeed, Yoneda's lemma tells us that this functor is fully faithful that is essentially surjective on the condition that the structure morphism of the algebraic group $G$ is affine. 
+\begin{proposition}\label{prop: if affine then G bundles are mu torsors}
+    Let $(\Sch_{X})_{\fppf}$ denote the fppf site of $X$-schemes for $X$ a base scheme and $\Bmu$ a sheaf of groups on $(\Sch_{X})_{\fppf}$ representable by a flat locally finitely presented $X$-group scheme $G$. If the structure morphism $G\to X$ is an affine morphism then there is a equivalence between the category of principal $G$-bundles on $X$ and the category $\Bmu$-torsors on the fppf site of $X$-schemes $(\Sch_{X})_{\fppf}$.
+\end{proposition}
+In some simple cases, we can describe the category of torsors in a relatively concrete manner. 
+\\\\
+Consider the scheme $X$ and $n$ an integer invertible on the scheme $X$. Denote $\Bmu_{n}$ the group scheme such that 
+$$\Bmu_{n}(S)=\left\{f\in\Ocal_{X}^{\times}:f^{n}=1\right\}.$$
+The category of $\Bmu_{n}$-torsors $\mathsf{Tors}(\Bmu_{n})$ on the small \'{e}tale site of $X$ $X_{\et}$ can be described as follows: consider $\Sigma_{n}$ the category with objects pairs $(L,\sigma)$ where $L$ is an invertible sheaf on the scheme $X$ and $\sigma:L^{\otimes n}\to\Ocal_{X}$ a trivialization of the $n$-th power of $L$, considering $L$ as a sheaf in the \'{e}tale topology. The morphisms in $\Sigma_{n}$ between two objects $(L',\sigma')$ and $(L,\sigma)$ are morphisms of line bundles $\rho:L'\to L$ such that the diagram 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJMJ157XFxvdGltZXMgbn0iXSxbMiwwLCJMXntcXG90aW1lcyBufSJdLFsxLDEsIlxcT2NhbF97WH0iXSxbMCwyLCJcXHNpZ21hJyIsMl0sWzEsMiwiXFxzaWdtYSJdLFswLDEsIlxccmhvXntcXG90aW1lcyBufSJdXQ==
+\begin{tikzcd}
+	{L'^{\otimes n}} && {L^{\otimes n}} \\
+	& {\Ocal_{X}}
+	\arrow["{\sigma'}"', from=1-1, to=2-2]
+	\arrow["\sigma", from=1-3, to=2-2]
+	\arrow["{\rho^{\otimes n}}", from=1-1, to=1-3]
+\end{tikzcd}$$
+commutes. One can construct a functor 
+$$F:\Sigma_{n}\longrightarrow\mathsf{Tors}(\Bmu_{n})$$
+by associating to each $(L,\sigma)\in\Sigma_{n}$ a sheaf $\Pcal_{(L,\sigma)}$ a sheaf on the \'{e}tale site $X_{\et}$ such that for any $U\to X$ \'{e}tale $\Pcal_{(L,\sigma)}(U)$ is the set of trivializations $\lambda:\Ocal_{U}\to L|_{U}$ such that the composite 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXE9jYWxfe1V9Il0sWzIsMCwiTF57XFxvdGltZXMgbn18X3tVfSJdLFs0LDAsIlxcT2NhbF97VX0iXSxbMSwyLCJcXHNpZ21hfF97VX0iXSxbMCwxLCJcXGxhbWJkYV57XFxvdGltZXMgbn0iXV0=
+\begin{tikzcd}
+	{\Ocal_{U}} && {L^{\otimes n}|_{U}} && {\Ocal_{U}}
+	\arrow["{\sigma|_{U}}", from=1-3, to=1-5]
+	\arrow["{\lambda^{\otimes n}}", from=1-1, to=1-3]
+\end{tikzcd}$$
+is the identity on the sheaf $\Ocal_{U}$. There is an action of $\Bmu_{n}(U)$ on $\Pcal_{(L,\sigma)}(U)$ for which $\zeta\in\Bmu_{n}(U)$ acts by $\lambda\mapsto \zeta\cdot\lambda$ which is simply transitive, endowing $\Pcal$ with the structure of a $\Bmu_{n}$-torsor restricting on fibers in the previously described way. 
+\begin{remark}
+    It is necessary to work in the \'{e}tale topology here, since it is not always possible to find a trivialization of the line bundle Zariski-locally. 
+\end{remark}

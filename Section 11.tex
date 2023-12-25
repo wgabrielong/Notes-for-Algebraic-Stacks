@@ -1,1 +1,108 @@
-\section{Gerbes}
+\section{Coarse Moduli Spaces}\label{sec: coarse moduli spaces}
+An important result in stack theory is the Keel-Mori theorem, showing the existence of coarse moduli spaces of algebraic stacks with finite diagonal, which in turn allows us to understand a number of important properties: the local structure of Deligne-Mumford stacks, a variant of Chow's lemma, and finiteness of cohomology of sheaves on Deligne-Mumford stacks. 
+\begin{definition}[Coarse Moduli Space]\label{def: coarse moduli space}
+    Let $\Xcal$ be an $S$-algebraic stack for a base scheme $S$. A coarse moduli space for the stack $\Xcal$ is a morphism $\pi:\Xcal\to X$ to a scheme $X$ such that the following conditions hold:
+    \begin{enumerate}[label=(\alph*)]
+        \item $\pi$ is initial for maps to $S$-algebraic spaces. 
+        \item For an algebraically closed field $k$, there is a bijection between isomorphism classes of $\Xcal(k)$ to the $k$-rational points of $X$
+        $$\left|\Xcal(k)\right|\to X(k).$$
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    $\pi$ being initial means that the scheme $X$ is the scheme $X$ is the initial object of the slice-over category $\Spaces_{(\Xcal/-)}$ with objects morphisms $(\Xcal\to Y)$ and morphisms between two objects $(\Xcal\to Y), (\Xcal\to Z)$ commuting triangles of the following type. 
+    $$% https://q.uiver.app/#q=WzAsMyxbMSwwLCJcXFhjYWwiXSxbMCwxLCJYIl0sWzIsMSwiWSJdLFswLDFdLFsxLDJdLFswLDJdXQ==
+    \begin{tikzcd}
+        & \Xcal \\
+        Y && Z
+        \arrow[from=1-2, to=2-1]
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=1-2, to=2-3]
+    \end{tikzcd}$$
+    More explicitly, for $g:\Xcal\to Z$ with $Z$ an algebraic space, 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFhjYWwiXSxbMiwxLCJaIl0sWzIsMCwiWCJdLFswLDEsImciLDJdLFswLDIsIlxccGkiXSxbMiwxLCJcXGV4aXN0cyFmIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+    \begin{tikzcd}
+        \Xcal && X \\
+        && Z
+        \arrow["g"', from=1-1, to=2-3]
+        \arrow["\pi", from=1-1, to=1-3]
+        \arrow["{\exists!f}", dashed, from=1-3, to=2-3]
+    \end{tikzcd}$$
+    there is a unique morphism of stacks such that $g=f\circ\pi$. 
+\end{remark}
+\subsection{The Theorem of Keel and Mori}\label{subsec: Keel Mori theorem}
+We now state the Keel-Mori theorem. 
+\begin{theorem}[Keel-Mori]\label{thm: Keel Mori theorem}
+    Let $\Xcal$ be an $S$-algebraic stack locally of finite presentation over $S$ with a finite diagonal over a locally Noetherian base scheme $S$. The algebraic stack $\Xcal$ admits a coarse moduli space such that:
+    \begin{enumerate}[label=(\alph*)]
+        \item $X$ is an $S$-scheme locally of finite type. Furthermore if $\Xcal$ is a separated algebraic stack, then $X$ is a separated $S$-scheme. 
+        \item $\pi$ is a proper morphism and $\Ocal_{X}\to\pi_{*}\Ocal_{\Xcal}$ is an isomorphism. 
+        \item If $X'\to X$ is a flat morphism with $X'$ an algebraic space, 
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXFhjYWwiXSxbMiwxLCJYIl0sWzIsMCwiWCciXSxbMCwwLCJYJ1xcdGltZXNfe1h9XFxYY2FsIl0sWzAsMSwiXFxwaSIsMl0sWzIsMV0sWzMsMF0sWzMsMl1d
+        \begin{tikzcd}
+            {X'\times_{X}\Xcal} && {X'} \\
+            \Xcal && X
+            \arrow["\pi"', from=2-1, to=2-3]
+            \arrow[from=1-3, to=2-3]
+            \arrow[from=1-1, to=2-1]
+            \arrow[from=1-1, to=1-3]
+        \end{tikzcd}$$
+        then $X'$ is a coarse moduli space for $X'\times_{X}\Xcal$. 
+    \end{enumerate}
+\end{theorem}
+The Keel-Mori theorem allows us to connect Deligne-Mumford stacks (\ref{def: Deligne Mumford stack}) with (topological) orbifolds. 
+\newpage
+\subsection{Local Structure of Deligne-Mumford Stacks}\label{subsec: local structure of DM stacks}
+\begin{theorem}[Local Structure of Deligne-Mumford Stacks]\label{def: local structure of DM stacks}
+    Let $\Xcal$ be a Deligne-Mumford stack locally of finite type with finite diagonal over a locally Noetherian base scheme $S$, and $\pi:\Xcal\to X$ its coarse moduli space. Let $\widetilde{x}$ be a geometric point of $\Xcal$ with image $\pi(\widetilde{x})=\overline{x}$ and $G_{\widetilde{x}}$ the automorphism group of $\widetilde{x}$. There exists $\overline{x}\in U\subseteq X$ an \'{e}tale neighborhood of $\overline{x}$ and a finite $U$-scheme $V$ with action of $G_{\widetilde{x}}$ such that in the Cartesian square 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwxLCJcXFhjYWwiXSxbMiwxLCJYIl0sWzIsMCwiVSJdLFswLDAsIlVcXHRpbWVzX3tYfVxcWGNhbCJdLFswLDEsIlxccGkiLDJdLFsyLDFdLFszLDBdLFszLDJdXQ==
+    \begin{tikzcd}
+        {U\times_{X}\Xcal} && U \\
+        \Xcal && X
+        \arrow["\pi"', from=2-1, to=2-3]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+    we have an isomorphism of stacks 
+    $$U\times_{X}\Xcal\cong\left[V/G_{\widetilde{x}}\right].$$
+\end{theorem}
+\begin{remark}
+    Since $\Xcal$ is a Deligne-Mumford stack with $\widetilde{x}$ a geometric point, $G_{\widetilde{x}}$ is a finite group. 
+\end{remark}
+The finiteness of the automorphism group $G_{\widetilde{x}}$ allows us to define another property of Deligne-Mumford stacks. 
+\begin{definition}[Tame Deligne-Mumford Stack]\label{def: tame DM stack}
+    Let $\Xcal$ be an algebraic stack locally of finite type over a locally Noetherian base scheme $S$. $\Xcal$ is a tame stack if for every geometric point $\widetilde{x}:\spec(k)\to\Xcal$, the order of the automorphism group $|G_{\widetilde{x}}|$ is an invertible element in $k$. 
+\end{definition}
+In the case of sufficiently nice Deligne-Mumford stacks, its sheaves are characterized by the sheaves on the coarse space. 
+\begin{proposition}\label{prop: exact map of QCoh sheaves on stacks to coarse space}
+    Let $\Xcal$ be Deligne-Mumford stack locally of finite type with finite diagonal over a locally Noetherian base scheme $S$ and coarse space $\pi:\Xcal\to X$. If $\Xcal$ is a tame stack, then the functor 
+    $$\pi_{*}:\QCoh\left(\Xcal\right)_{\LisEt}\longrightarrow\QCoh\left(X\right)$$
+    is exact. 
+\end{proposition}
+The following theorem characterizes the behavior of coarse spaces under base change. 
+\begin{theorem}\label{thm: coarse spaces under base change}
+    Let $\Xcal$ be a separated Deligne-Mumford stack of finite type over a locally Noetherian base scheme $S$ and coarse space $\pi:\Xcal\to X$. For $S'\to S$, $\tau:\Xcal\times_{S}S'\to Y$ the coarse space of the base change of the stack $\Xcal$ and $p:Y\to X\times_{S}S'$ the morphism induced by the universal property of the coarse space, $p$ is a universal homeomorphism. If further $S'\to S$ is flat or $\Xcal$ is a tame stack, then $p$ is an isomorphism. 
+\end{theorem}
+\begin{remark}
+    The properties of local finite typeness and separatedness are preserved by base change so the stack $\Xcal\times_{S}S'$ and the scheme $X\times_{S}S'$ obtained by base changes
+    $$% https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXFhjYWxcXHRpbWVzX3tTfVMnIl0sWzIsMSwiUyJdLFsyLDAsIlxcWGNhbCJdLFswLDEsIlMnIl0sWzQsMSwiUyciXSxbNiwxLCJTIl0sWzYsMCwiWCJdLFs0LDAsIlhcXHRpbWVzX3tTfVMnIl0sWzMsMV0sWzAsMl0sWzAsM10sWzIsMV0sWzQsNV0sWzYsNV0sWzcsNF0sWzcsNl1d
+    \begin{tikzcd}
+        {\Xcal\times_{S}S'} && \Xcal && {X\times_{S}S'} && X \\
+        {S'} && S && {S'} && S
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-5, to=2-7]
+        \arrow[from=1-7, to=2-7]
+        \arrow[from=1-5, to=2-5]
+        \arrow[from=1-5, to=1-7]
+    \end{tikzcd}$$
+    is also locally of finite type and separated, hence admitting a smooth moduli space by the Keel-Mori theorem \Cref{thm: Keel Mori theorem}. 
+\end{remark}
+\subsection{Chow's Lemma for Deligne-Mumford Stacks}\label{subsec: Chows lemma for DM stacks}
+\begin{theorem}[Chow's Lemma for Stacks]\label{thm: Chows lemma for stacks}
+    Let $\Xcal$ be a Deligne-Mumford stack of finite type with finite diagonal over a Noetherian base-scheme $S$. There exists a proper surjective morphism $X'\to\Xcal$ with $X'$ an $S$-scheme finite over a dense open substack of $\Xcal$ such that the composition 
+    $$X'\longrightarrow\Xcal\longrightarrow S$$
+    is a projective morphism of schemes. 
+\end{theorem}

@@ -1,2 +1,328 @@
-\part*{The Geometry of Stacks}
-\section{Geometric Properties of Stacks}
+\section{Quasicoherent Sheaves on Algebraic Stacks}\label{sec: quasicoherent sheaves on stacks}
+We work over a fixed base scheme $S$ and begin by defining the category $\Spaces_{\Xcal}$ of $\Xcal$ algebraic spaces for $\Xcal$ an $S$-algebraic stack. 
+\begin{definition}[$\Spaces_{\Xcal}$]\label{def: Xcal spaces}
+    Let $\Xcal$ be an $S$-algebraic stack. The category of $\Xcal$-spaces, $\Spaces_{\Xcal}$ 
+    \begin{enumerate}[label=(\alph*)]
+        \item has objects $(T,t)$ where $T$ is an $S$-algebraic space and $t:T\to\Xcal$ an $S$-morphism
+        \item has morphisms $(f,f^{b})$ where $f:T'\to T$ is an $S$-morphism of algebraic spaces and $f^{b}:t'\to t\circ f$ is a natural isomorphism of $S$-morphisms $T'\to\Xcal$ such that for 
+        $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCIoVCcnLHQnJykiXSxbMiwwLCIoVCcsdCcpIl0sWzQsMCwiKFQsdCkiXSxbMSwyLCIoZixmXntifSkiXSxbMCwxLCIoZyxnXntifSkiXV0=
+        \begin{tikzcd}
+            {(T'',t'')} && {(T',t')} && {(T,t)}
+            \arrow["{(f,f^{b})}", from=1-3, to=1-5]
+            \arrow["{(g,g^{b})}", from=1-1, to=1-3]
+        \end{tikzcd}$$
+        \begin{enumerate}[label=(\roman*)]
+            \item $f\circ g:T''\to T$ is an $S$-morphism of algebraic spaces
+            \item and 
+            $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJ0JyciXSxbMiwwLCJ0J1xcY2lyYyBnIl0sWzQsMCwidFxcY2lyYyBmXFxjaXJjIGciXSxbMCwxLCJnXntifSJdLFsxLDIsImcoZl57Yn0pIl1d
+            \begin{tikzcd}
+                {t''} && {t'\circ g} && {t\circ f\circ g}
+                \arrow["{g^{b}}", from=1-1, to=1-3]
+                \arrow["{g(f^{b})}", from=1-3, to=1-5]
+            \end{tikzcd}$$
+            are natural isomorphisms of $S$-morphisms $T''\to\Xcal$.
+        \end{enumerate}
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    For $(f,f^{b}):(T',t')\to(T,t)$ a morphism in $\Spaces_{\Xcal}$, we think of $f^{b}:t\to t\circ f$ a an isomorphism in $\Xcal(T')$ using the 2-Yoneda lemma. 
+\end{remark}
+\begin{remark}
+    If the algebraic stack $\Xcal$ is in fact an algebraic space, the category $\Spaces_{\Xcal}$ is equivalent to the slice category $\Spaces_{(-/\Xcal)}$. 
+\end{remark}
+One can naturally restrict the category $\Spaces_{\Xcal}$ to get a category of $\Xcal$-schemes $\Sch_{\Xcal}$. 
+\begin{definition}[$\Sch_{\Xcal}$]\label{def: Xcal schemes}
+    Let $\Xcal$ be an $S$-algebraic stack. The category of $\Xcal$-schemes, $\Sch_{\Xcal}$ is the full subcategory of $\Spaces_{\Xcal}$ with objects schemes. 
+\end{definition}
+We can in fact make a similar construction in the category of stacks. 
+\begin{definition}[$\Zcal$-Morphism of Stacks]\label{def: relative morphism of stacks}
+    Let $\Zcal$ be an $S$-algebraic stack and $f:\Xcal\to\Zcal,g:\Ycal\to\Zcal$ be two morphisms of stacks. A $\Zcal$-morphism of stacks $\Xcal\to\Ycal$ is a pair $(h,\sigma)$ with $h:\Xcal\to\Ycal$ a morphism of stacks and a natural isomorphism of stack morphisms $\sigma:f\to g\circ h$.
+\end{definition}
+This is perhaps more easily seen as the data of the following commutative diagram. 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFhjYWwiXSxbMiwwLCJcXFljYWwiXSxbMSwxLCJcXFpjYWwiXSxbMCwyLCJmIiwyXSxbMSwyLCJnIl0sWzAsMSwiaCJdLFszLDEsIlxcc2lnbWEiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
+\begin{tikzcd}
+	\Xcal && \Ycal \\
+	& \Zcal
+	\arrow[""{name=0, anchor=center, inner sep=0}, "f"', from=1-1, to=2-2]
+	\arrow["g", from=1-3, to=2-2]
+	\arrow["h", from=1-1, to=1-3]
+	\arrow["\sigma"{description}, shorten <=8pt, shorten >=8pt, Rightarrow, 2tail reversed, from=0, to=1-3]
+\end{tikzcd}$$
+Note here that in general stacks are 2-categories so their $\Hom$-sets are in fact 1-categories, giving us a natural notion of the category of morphisms between two stacks over a base stack. 
+\begin{definition}[The Category $\Hom_{\Zcal}(\Xcal,\Ycal)$]\label{def: hom category of stacks over a base}
+    Let $\Zcal$ be an $S$-algebraic stack and $f:\Xcal\to\Zcal,g:\Ycal\to\Zcal$ be two morphisms of stacks. The category of $\Zcal$-morphisms $\Hom_{\Zcal}(\Xcal,\Ycal)$ has objects $(h,\sigma)$ with morphisms between two objects $\lambda:(h,\sigma)\to(h',\sigma')$ a natural isomorphism of $S$-morphisms $\lambda:h\to h'$ such that the diagram of stack morphisms $\Xcal\to\Zcal$
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJmIl0sWzIsMCwiZ35cXGNpcmN+aCJdLFsyLDEsImd+XFxjaXJjfmgnIl0sWzEsMiwiXFxsYW1iZGEiXSxbMCwyLCJcXHNpZ21hJyIsMl0sWzAsMSwiXFxzaWdtYSciXV0=
+    \begin{tikzcd}
+        f && {g\circ h} \\
+        && {g\circ h'}
+        \arrow["\lambda", from=1-3, to=2-3]
+        \arrow["{\sigma'}"', from=1-1, to=2-3]
+        \arrow["{\sigma}", from=1-1, to=1-3]
+    \end{tikzcd}$$
+    commutes. 
+\end{definition}
+However, if in in \Cref{def: hom category of stacks over a base}, the morphisms $f:\Xcal\to\Zcal$ and $g:\Ycal\to\Zcal$ are representable, the isomorphism $\lambda$ is determined uniquely giving us the construction of a 1-category of relative spaces over $\Zcal$. More explicitly, if $\lambda$ is unique then for a triplet given by the additional data of $\lambda:(h,\sigma)\to(h',\sigma')$ and $\lambda':(h',\sigma')\to(h'',\sigma'')$ we have 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJmIl0sWzIsMCwiZ1xcY2lyYyBoIl0sWzIsMSwiZ1xcY2lyYyBoJyJdLFsyLDIsImdcXGNpcmMgaCcnIl0sWzEsMiwiXFxsYW1iZGEiXSxbMCwyLCJcXHNpZ21hJyIsMix7ImxhYmVsX3Bvc2l0aW9uIjo3MH1dLFswLDEsIlxcc2lnbWEiXSxbMCwzLCJcXHNpZ21hJyciLDIseyJsYWJlbF9wb3NpdGlvbiI6NzB9XSxbMiwzLCJcXGxhbWJkYSciXV0=
+\begin{tikzcd}
+	f && {g\circ h} \\
+	&& {g\circ h'} \\
+	&& {g\circ h''}
+	\arrow["\lambda", from=1-3, to=2-3]
+	\arrow["{\sigma'}"'{pos=0.7}, from=1-1, to=2-3]
+	\arrow["\sigma", from=1-1, to=1-3]
+	\arrow["{\sigma''}"'{pos=0.7}, from=1-1, to=3-3]
+	\arrow["{\lambda'}", from=2-3, to=3-3]
+\end{tikzcd}$$
+with $\lambda'$ unique as well so looking within $\Hom_{\Zcal}(\Xcal,\Ycal)$ we have a diagram 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCIoaCxcXHNpZ21hKSJdLFsyLDAsIihoJyxcXHNpZ21hJykiXSxbMSwxLCIoaCcnLFxcc2lnbWEnJykiXSxbMCwyLCJcXHdpZGV0aWxkZXtcXGxhbWJkYX0iLDJdLFswLDEsIlxcbGFtYmRhIl0sWzEsMiwiXFxsYW1iZGEnIl1d
+\begin{tikzcd}
+	{(h,\sigma)} && {(h',\sigma')} \\
+	& {(h'',\sigma'')}
+	\arrow["{\widetilde{\lambda}}"', from=1-1, to=2-2]
+	\arrow["\lambda", from=1-1, to=1-3]
+	\arrow["{\lambda'}", from=1-3, to=2-2]
+\end{tikzcd}$$
+where the map $(h,\sigma)\to (h'',\sigma'')$ is uniquely determined as 
+$$\lambda'\circ\lambda\circ\sigma=\widetilde{\lambda}\circ\sigma$$
+is a natural isomorphism with $\sigma$ a natural isomorphism, in particular an epimorphism, so $\lambda'\circ\lambda=\widetilde{\lambda}$ showing compositions are unique and $\Hom_{\Zcal}(\Xcal,\Ycal)$ is a 1-category. 
+\\\\
+We then define the category of relative spaces as follows. 
+\begin{definition}[$\RelSpaces_{\Zcal}$]\label{def: relative spaces over Zcal}
+    Let $\Zcal$ be an $S$-algebraic stack. The category $\RelSpaces_{\Zcal}$ has objects representable morphisms of stacks $(\Xcal\to\Zcal)$ and whose morphisms between $(\Xcal\to\Zcal)$ and $(\Ycal\to\Zcal)$ are $\Zcal$-morphisms of stacks $\Xcal\to\Ycal$. 
+\end{definition}
+\begin{remark}
+    One could equivalently define the morphisms in $\RelSpaces_{\Zcal}$ between representable morphisms $(\Xcal\to\Zcal)$ and $(\Ycal\to\Zcal)$ as commuting triangles of the following type:
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXFhjYWwiXSxbMiwwLCJcXFljYWwiXSxbMSwxLCJcXFpjYWwiXSxbMCwyXSxbMSwyXSxbMCwxXV0=
+    \begin{tikzcd}
+        \Xcal && \Ycal \\
+        & \Zcal
+        \arrow[from=1-1, to=2-2]
+        \arrow[from=1-3, to=2-2]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+\end{remark}
+Take caution that while the category of relative spaces $\RelSpaces_{\Zcal}$ has ``spaces'' in the name, it may have objects that are stacks. In particular those stacks $\Xcal$ such that $\Xcal\to\Zcal$ is representable. In particular for $\Spaces_{\Zcal}$ as in \Cref{def: Xcal spaces}, there is an inclusion of 1-categories $\Spaces_{\Zcal}\to\RelSpaces_{\Zcal}$.
+\\\\
+For $f:\Xcal\to\Ycal$ a morphism of stacks, one can define a functor $\Spaces_{\Xcal}\to\Spaces_{\Ycal}$ given on objects by 
+$$(T,t)\mapsto (T,f\circ t)$$
+and on morphisms by
+$$\left((g,g^{b}):(T',t')\to(T,t)\right)\mapsto\left((g,f\circ g^{b}):(T',f\circ t')\to(T,f\circ t)\right).$$
+This is evidently compatible with the structure on $\Spaces_{\Ycal}$ since the composition $f\circ t:T\to\Ycal$ is an $S$-morphism from an $S$-algebraic space $T$ to the stack $\Ycal$ and 
+$$% https://q.uiver.app/#q=WzAsNyxbMCwwLCJUJyJdLFswLDIsIlQiXSxbMSwxLCJcXFhjYWwiXSxbMywxLCJcXFljYWwiXSxbNSwwLCJUJyJdLFs1LDIsIlQiXSxbNywxLCJcXFljYWwiXSxbMCwxLCJnIiwyXSxbMCwyLCJ0JyJdLFsxLDIsInQiLDJdLFsxLDMsImZcXGNpcmMgdCIsMix7ImN1cnZlIjoyfV0sWzAsMywiZlxcY2lyYyB0JyIsMCx7ImN1cnZlIjotMn1dLFsyLDMsImYiLDEseyJsYWJlbF9wb3NpdGlvbiI6NDB9XSxbNCw2LCJmXFxjaXJjIHQnIiwwLHsibGFiZWxfcG9zaXRpb24iOjYwfV0sWzUsNiwiZlxcY2lyYyB0IiwyLHsibGFiZWxfcG9zaXRpb24iOjQwfV0sWzQsNSwiZyIsMl0sWzksMCwiZ157Yn0iLDEseyJsYWJlbF9wb3NpdGlvbiI6NDAsInNob3J0ZW4iOnsic291cmNlIjoxMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dLFsxNCw0LCJmKGdee2J9KSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9fX1dXQ==
+\begin{tikzcd}
+	{T'} &&&&& {T'} \\
+	& \Xcal && \Ycal &&&& \Ycal \\
+	T &&&&& T
+	\arrow["g"', from=1-1, to=3-1]
+	\arrow["{t'}", from=1-1, to=2-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "t"', from=3-1, to=2-2]
+	\arrow["{f\circ t}"', curve={height=12pt}, from=3-1, to=2-4]
+	\arrow["{f\circ t'}", curve={height=-12pt}, from=1-1, to=2-4]
+	\arrow["f"{description, pos=0.4}, from=2-2, to=2-4]
+	\arrow["{f\circ t'}"{pos=0.6}, from=1-6, to=2-8]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{f\circ t}"'{pos=0.4}, from=3-6, to=2-8]
+	\arrow["g"', from=1-6, to=3-6]
+	\arrow["{g^{b}}"{description, pos=0.4}, shorten <=3pt, shorten >=6pt, Rightarrow, 2tail reversed, from=0, to=1-1]
+	\arrow["{f(g^{b})}"{description}, shorten <=7pt, shorten >=7pt, Rightarrow, 2tail reversed, from=1, to=1-6]
+\end{tikzcd}$$
+we have natural isomorphisms of $T'\to\Ycal$
+$$f\circ g^{b}:f\circ t\circ g\to f\circ t'.$$
+This restricts to a functor $\Sch_{\Xcal}\to\Sch_{\Ycal}$. 
+\subsection{The Lisse-\'{E}tale Site of a Stack}\label{subsec: lisse etale site of a stack}
+We can now construct the lisse-\'{e}tale site of an $S$-stack $\Xcal$. 
+\begin{definition}[The Lisse-\'{E}tale Site of a Stack]\label{def: lisse etale site of a stack}
+    Let $\Xcal$ be an $S$-algebraic stack. The lisse-\'{e}tale site $\LisEt(\Xcal)$ on $\Xcal$ is the full subcategory of $\Sch_{\Xcal}$ with objects $(T,t)$ such that $t:T\to\Xcal$ is a smooth morphism. The Grothendieck topology of $\LisEt(\Xcal)$ is given by coverings 
+    $$\left\{(f_{i},f_{i}^{b}):(T_{i},t_{i})\to(T,t)\right\}$$
+    where $\{f_{i}:T_{i}\to T\}$ a covering in the small \'{e}tale site on $T$, $T_{\et}$. 
+\end{definition}
+\begin{remark}
+    Here $f_{i}^{b}$ and $t_{i}$ defined in the obvious way, with $t_{i}=t\circ f_{i}$ and $f_{i}^{b}:t_{i}\to t\circ f_{i}$ a natural isomorphism such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJUX3tpfSJdLFsxLDEsIlQiXSxbMiwwLCJcXFhjYWwiXSxbMCwxLCJmX3tpfSIsMl0sWzEsMiwidCIsMl0sWzAsMiwidF97aX0iXSxbNSwxLCJmXntifV97aX0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MTAsInRhcmdldCI6MTB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XV0=
+    \begin{tikzcd}
+        {T_{i}} && \Xcal \\
+        & T
+        \arrow["{f_{i}}"', from=1-1, to=2-2]
+        \arrow["t"', from=2-2, to=1-3]
+        \arrow[""{name=0, anchor=center, inner sep=0}, "{t_{i}}", from=1-1, to=1-3]
+        \arrow["{f^{b}_{i}}"{description}, shorten <=2pt, shorten >=2pt, Rightarrow, 2tail reversed, from=0, to=2-2]
+    \end{tikzcd}$$
+    commutes. 
+\end{remark}
+A Grothendieck topology allows us to define presheaves and sheaves on a site so we can define the lisse-\'{e}tale topos as follows. 
+\begin{definition}[The Lisse-\'{E}tale Topos of a Stack]\label{def: lisse etale topos}
+    Let $\Xcal$ be an $S$-stack. The lisse-\'{e}tale topos on $\Xcal$, $\Xcal_{\LisEt}$ is the category of sheaves on the lisse-\'{e}tale site $\LisEt(\Xcal)$. 
+\end{definition}
+Note that for any object $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$ there is an inclusion of categories from the small \'{e}tale site of $T$ to the lisse-\'{e}tale site $\iota_{T}:T_{\et}\to\LisEt(\Xcal)$ given on objects by
+$$(h:T'\to T)\mapsto (T',t\circ h)$$
+as $t\circ h:T'\to\Xcal$ is a smooth morphism by $h$ \'{e}tale and on morphisms $q:T''\to T'$ over $(h':T''\to T)\to (h':T'\to T)$ by 
+$$\left(q:T''\to T'\right)\mapsto\left((\iota_{T}(q),\iota_{T}(q)^{b}):(T'',t\circ h\circ q)\to(T',t\circ h)\right)$$
+where $\iota_{T}(q)^{b}$ is the natural transformation making the diagram on the right commute
+$$% https://q.uiver.app/#q=WzAsNyxbMCwwLCJUJyciXSxbMCwyLCJUJyJdLFszLDEsIlxcWGNhbCJdLFsxLDEsIlQiXSxbNiwwLCJUJyciXSxbNiwyLCJUIl0sWzgsMSwiXFxYY2FsIl0sWzAsMSwicSIsMl0sWzAsMiwidFxcY2lyYyBoJyIsMCx7ImN1cnZlIjotMn1dLFsxLDIsInRcXGNpcmMgaCIsMix7ImN1cnZlIjoyfV0sWzMsMiwidCIsMV0sWzAsMywiaCciXSxbMSwzLCJoIiwyXSxbNCw2LCJ0XFxjaXJjIGgnIl0sWzQsNSwiXFxpb3RhX3tUfShxKSIsMl0sWzUsNiwidFxcY2lyYyBoIiwyXSxbMTMsNSwiXFxpb3RhX3tUfShxKV57Yn0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJhcnJvd2hlYWQifX19XSxbMTEsMSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjMwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV1d
+\begin{tikzcd}
+	{T''} &&&&&& {T''} \\
+	& T && \Xcal &&&&& \Xcal \\
+	{T'} &&&&&& T
+	\arrow["q"', from=1-1, to=3-1]
+	\arrow["{t\circ h'}", curve={height=-12pt}, from=1-1, to=2-4]
+	\arrow["{t\circ h}"', curve={height=12pt}, from=3-1, to=2-4]
+	\arrow["t"{description}, from=2-2, to=2-4]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{h'}", from=1-1, to=2-2]
+	\arrow["h"', from=3-1, to=2-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{t\circ h'}", from=1-7, to=2-9]
+	\arrow["{\iota_{T}(q)}"', from=1-7, to=3-7]
+	\arrow["{t\circ h}"', from=3-7, to=2-9]
+	\arrow["{\iota_{T}(q)^{b}}"{description}, shorten <=7pt, shorten >=7pt, Rightarrow, 2tail reversed, from=1, to=3-7]
+	\arrow[shorten <=6pt, shorten >=9pt, Rightarrow, 2tail reversed, from=0, to=3-1]
+\end{tikzcd}$$
+induced by the commutativity of the triangle 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJUJyciXSxbMiwwLCJUJyJdLFsxLDEsIlQiXSxbMCwxLCJxIl0sWzAsMiwiaCciLDJdLFsxLDIsImgiXV0=
+\begin{tikzcd}
+	{T''} && {T'} \\
+	& T
+	\arrow["q", from=1-1, to=1-3]
+	\arrow["{h'}"', from=1-1, to=2-2]
+	\arrow["h", from=1-3, to=2-2]
+\end{tikzcd}$$
+in the small \'{e}tale site $T_{\et}$. This is compatible with the structure of coverings as coverings in $T_{\et}$ are by \'{e}tale morphisms so for a covering $\{\phi_{i}:T_{i}'\to T'\}$ of $(h:T'\to T)\in\Obj\left(T_{\et}\right)$, we have 
+$$\iota_{T}\left(\{\phi_{i}:T_{i}'\to T'\}\right)=\left\{(\phi_{i},\phi_{i}^{b}):\left(T_{i}',t\circ h\circ \phi_{i}\right)\to(T',t\circ h)\right\}$$
+where the compositions 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUX3tpfSciXSxbMiwwLCJUJyJdLFs0LDAsIlQiXSxbNiwwLCJcXFhjYWwiXSxbMiwzLCJ0Il0sWzEsMiwiaCJdLFswLDEsIlxccGhpX3tpfSJdXQ==
+\begin{tikzcd}
+	{T_{i}'} && {T'} && T && \Xcal
+	\arrow["t", from=1-5, to=1-7]
+	\arrow["h", from=1-3, to=1-5]
+	\arrow["{\phi_{i}}", from=1-1, to=1-3]
+\end{tikzcd}$$
+are compositions of \'{e}tale morphisms $\phi_{i},h$ and a smooth morphism $t$ and hence $t\circ h\circ \phi_{i}$ is smooth with the natural transformations $\phi_{i}^{b}$ are such that the diagram 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJUJ197aX0iXSxbMCwyLCJUJyJdLFsyLDEsIlxcWGNhbCJdLFsxLDIsInRcXGNpcmMgaCIsMl0sWzAsMiwidFxcY2lyYyBoXFxjaXJjIFxccGhpX3tpfSJdLFswLDEsIlxccGhpX3tpfSIsMl0sWzQsMSwiXFxwaGlfe2l9XntifSIsMSx7ImxhYmVsX3Bvc2l0aW9uIjo0MCwic2hvcnRlbiI6eyJzb3VyY2UiOjEwLCJ0YXJnZXQiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoiYXJyb3doZWFkIn19fV1d
+\begin{tikzcd}
+	{T'_{i}} \\
+	&& \Xcal \\
+	{T'}
+	\arrow["{t\circ h}"', from=3-1, to=2-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{t\circ h\circ \phi_{i}}", from=1-1, to=2-3]
+	\arrow["{\phi_{i}}"', from=1-1, to=3-1]
+	\arrow["{\phi_{i}^{b}}"{description, pos=0.4}, shorten <=4pt, shorten >=7pt, Rightarrow, 2tail reversed, from=0, to=3-1]
+\end{tikzcd}$$
+commutes. One can show that the condition of being a sheaf on $\LisEt(\Xcal)$ is can be checked locally on these inclusions of small \'{e}tale sites. 
+\begin{lemma}\label{lem: sheaf on liss etale site iff sheaf on each small site inclusion}
+    Let $\Xcal$ be an $S$-algebraic stack, $\LisEt(\Xcal)$ the lisse-\'{e}tale site on $\Xcal$, $$\iota_{T}:T_{\et}\to\LisEt(\Xcal)$$ 
+    the inclusion functor of the etale site $T_{\et}$ for $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$, and $F:\LisEt(\Xcal)\to\Sets$ a set-valued functor on $\LisEt(\Xcal)$. $F$ is a sheaf of sets on the lisse-\'{e}tale site $\LisEt(\Xcal)$ if and only if $F|_{\iota_{T}(T_{\et})}$ is a sheaf of sets for all $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$.
+\end{lemma}
+\subsection{Sheaves on Stacks}\label{subsec: sheaves on stacks}
+In algebraic geometry, we saw how each scheme $X$ has a special sheaf $\Ocal_{X}$, its structure sheaf, which we then use to define more complex structures such as quasicoherent sheaves. Developing stack theory in a similar way, we define the structure sheaf of an $S$-algebraic stack $\Xcal$ as follows. 
+\begin{definition}[Structure Sheaf of a Stack]\label{def: structure sheaf of stack}
+    Let $\Xcal$ be an $S$-algebraic stack. The structure sheaf $\Ocal_{\Xcal}$ is a functor 
+    $$\Ocal_{\Xcal}:\LisEt(\Xcal)^{\Opp}\to\Rings$$
+    such that $(T,t)\mapsto\Gamma(T,\Ocal_{T})$. 
+\end{definition}
+This is evidently compatible with morphisms: for $(f,f^{b}):(T',t')\to(T,t)$ the diagram 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCIoVCcsdCcpIl0sWzIsMCwiKFQsdCkiXSxbMCwxLCJcXEdhbW1hKFQnLCBcXE9jYWxfe1QnfSkiXSxbMiwxLCJcXEdhbW1hKFQsXFxPY2FsX3tUfSkiXSxbMCwxLCIoZixmXntifSkiXSxbMSwzXSxbMCwyXSxbMywyXV0=
+\begin{tikzcd}
+	{(T',t')} && {(T,t)} \\
+	{\Gamma(T', \Ocal_{T'})} && {\Gamma(T,\Ocal_{T})}
+	\arrow["{(f,f^{b})}", from=1-1, to=1-3]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-3, to=2-1]
+\end{tikzcd}$$
+commutes taking $\Gamma(T,\Ocal_{T})$ to $\Gamma(f(T),\Ocal_{T'})\subseteq\Gamma(T',\Ocal_{T'})$.
+Herein let $\Fcal\in\Xcal_{\LisEt}$, $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$, and $\Fcal_{(T,t)}$ the restriction of the sheaf $\Fcal$ to $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$, that is, $\Fcal\left((T,t)\right)\in\mathrm{Obj}(\Rings)$ as a functor. 
+\begin{definition}[Cartesian Sheaf of $\Lambda$-Modules]\label{def: cartesian sheaf of Lambda modules}
+    Let $\Xcal$ be an $S$-algebraic stack, $\LisEt(\Xcal)$ the lisse-\'{e}tale site on $\Xcal$, 
+    $$\Lambda:\LisEt(\Xcal)^{\Opp}\to\Rings$$
+    a sheaf of rings on $\LisEt(\Xcal)$, and $\Fcal$ of $\Lambda$-modules on $\LisEt(\Xcal)$. The sheaf of $\Lambda$-modules $\Fcal$ is Cartesian if for all $(f,f^{b}):(T',t')\to(T,t)$ the morphism of $\Lambda_{(T',t')}$-modules
+    $$f^{*}\Fcal_{(T,t)}:f^{-1}\Fcal_{(T,t)}\otimes_{(f^{-1}\Lambda_{(T,t)})}\Lambda_{(T',t')}\longrightarrow\Fcal_{(T',t')}$$
+    is an isomorphism. 
+\end{definition}
+A quasicoherent sheaf on a stack is defined to be a Cartesian sheaf in the sense of \Cref{def: cartesian sheaf of Lambda modules} such that it is a quasicoherent sheaf of $\Ocal_{T}$-modules for all $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$. 
+\begin{definition}[Quasicoherent Sheaf on a Stack]
+    Let $\Xcal$ be an $S$-algebraic stack, $\LisEt(\Xcal)$ the lisse-\'{e}tale site on $\Xcal$, 
+    $$\Lambda:\LisEt(\Xcal)^{\Opp}\to\Rings$$
+    a sheaf of rings on $\LisEt(\Xcal)$, and $\Fcal$ of $\Lambda$-modules on $\LisEt(\Xcal)$. The sheaf of $\Lambda$-modules $\Fcal$ is a quasicoherent sheaf if $\Fcal$ is a Cartesian sheaf of $\Lambda$-modules and $\Fcal_{(T,t)}$ is a quasicoherent sheaf of $\Ocal_{T}$-modules for all $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$.
+\end{definition} 
+As in the case of schemes, coherent sheaves require an additional Noetherian hypothesis. 
+\begin{definition}[Locally Noetherian Stack]\label{def: locally Noetherian stack}
+    Let $\Xcal$ be an $S$-algebraic stack, $\LisEt(\Xcal)$ the lisse-\'{e}tale site on $\Xcal$. $\Xcal$ is a locally Noetherian algebraic stack if the scheme $T$ is locally Noetherian for all $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$.
+\end{definition}
+We can now define coherent sheaves on algebraic stacks. 
+\begin{definition}[Coherent Sheaf on a Stack]
+    Let $\Xcal$ be a locally Noetherian $S$-algebraic stack, $\LisEt(\Xcal)$ the lisse-\'{e}tale site on $\Xcal$, 
+    $$\Lambda:\LisEt(\Xcal)^{\Opp}\to\Rings$$
+    a sheaf of rings on $\LisEt(\Xcal)$, and $\Fcal$ of $\Lambda$-modules on $\LisEt(\Xcal)$. The sheaf of $\Lambda$-modules $\Fcal$ is a coherent sheaf if $\Fcal$ is a quasicoherent sheaf of $\Lambda$-modules on $\LisEt(\Xcal)$ and $\Fcal_{(T,t)}$ is a finitely generated $\Lambda_{(T,t)}$-module for all $(T,t)\in\Obj\left(\LisEt(\Xcal)\right)$.
+\end{definition}
+We can then construct the category of quasicoherent sheaves on the $S$-algebraic stack $\Xcal$ which we denote $\QCoh(\Xcal)$ with objects quasicoherent sheaves on $\LisEt(\Xcal)$ and morphisms $\LisEt(\Xcal)$-preserving 2-functors $\Fcal\to\Gcal$ such that the diagram 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXEZjYWwiXSxbMiwwLCJcXEdjYWwiXSxbMSwxLCJcXExpc0V0KFxcWGNhbCkiXSxbMCwxXSxbMSwyXSxbMCwyXV0=
+\begin{tikzcd}
+	\Fcal && \Gcal \\
+	& {\LisEt(\Xcal)}
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-3, to=2-2]
+	\arrow[from=1-1, to=2-2]
+\end{tikzcd}$$
+commutes. There is a natural embedding of topoi into the lisse-\'{e}tale topos as in \Cref{def: lisse etale topos} $\Xcal_{\LisEt}$
+$$\QCoh(\Xcal)\hookrightarrow\Xcal_{\LisEt}.$$
+\begin{proposition}\label{prop: coherence by section}
+    Let $\Xcal$ be an $S$-algebraic stack (resp. locally Noetherian $S$-algebraic stack), $\Fcal$ a Cartesian sheaf of $\Ocal_{\Xcal}$-modules, and $x:X\to\Xcal$ a smooth surjective map with $X$ a scheme. $\Fcal$ is a quasicoherent sheaf of $\Ocal_{\Xcal}$-modules (resp. coherent sheaf of $\Ocal_{\Xcal}$-modules) if and only if $\Fcal_{(X,x)}$ is a quasicoherent sheaf of $\Ocal_{X}$-modules (resp. is a coherent sheaf of of $\Ocal_{X}$-modules).
+\end{proposition}
+\begin{remark}
+    The use of notation $\Ocal_{X}$-modules is justified as we have isomorphisms 
+    $$(\Ocal_{\Xcal})_{(X,x)}=\Gamma(X,\Ocal_{X})=\Ocal_{X}(X).$$
+\end{remark}
+\begin{proof}
+    Let $(Z,z)\in\Obj\left(\LisEt(\Xcal)\right)$ be another object and consider the following Cartesian square. 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc197XFxYY2FsfVoiXSxbMCwxLCJaIl0sWzIsMCwiWCJdLFsyLDEsIlxcWGNhbCJdLFsxLDMsInoiLDJdLFsyLDMsIngiXSxbMCwxLCJwIiwyXSxbMCwyLCJxIl1d
+    \begin{tikzcd}
+        {X\times_{\Xcal}Z} && X \\
+        Z && \Xcal
+        \arrow["z"', from=2-1, to=2-3]
+        \arrow["x", from=1-3, to=2-3]
+        \arrow["p"', from=1-1, to=2-1]
+        \arrow["q", from=1-1, to=1-3]
+    \end{tikzcd}$$
+    Note that $p$ is smooth as it is obtained from $x:X\to\Xcal$ smooth by base change along $z:Z\to\Xcal$. Arguing by restricting to quasicoherent sheaves on schemes \cite[\href{https://stacks.math.columbia.edu/tag/05JU}{Tag 05JU}]{stacks-project} there is an \'{e}tale surjection $\pi:Z'\to Z$ and $s:Z'\to X\times_{\Xcal}Z$ such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsNSxbMiwwLCJYXFx0aW1lc197XFxYY2FsfVoiXSxbMiwxLCJaIl0sWzQsMCwiWCJdLFs0LDEsIlxcWGNhbCJdLFswLDAsIlonIl0sWzEsMywieiIsMl0sWzIsMywieCJdLFswLDIsInEiXSxbMCwxLCJwIiwyXSxbNCwwLCJzIl0sWzQsMSwiXFxwaSIsMl1d
+    \begin{tikzcd}
+        {Z'} && {X\times_{\Xcal}Z} && X \\
+        && Z && \Xcal
+        \arrow["z"', from=2-3, to=2-5]
+        \arrow["x", from=1-5, to=2-5]
+        \arrow["q", from=1-3, to=1-5]
+        \arrow["p"', from=1-3, to=2-3]
+        \arrow["s", from=1-1, to=1-3]
+        \arrow["\pi"', from=1-1, to=2-3]
+    \end{tikzcd}$$
+    commutes. Thus we have that $\Fcal_{(Z,z)}$ is quasicoherent (resp. coherent) if and only if $\pi^{*}\Fcal_{(Z,z)}=\Fcal_{(Z',z\circ\pi)}$  is quasicoherent (resp. coherent). It thus suffices to verify that $\Fcal_{(Z,z)}$ is quasicoherent when $z$ factors in the following way 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJaIl0sWzIsMCwiWCJdLFs0LDAsIlxcWGNhbCJdLFswLDEsImciXSxbMSwyLCJ4Il0sWzAsMiwieiIsMix7ImN1cnZlIjoyfV1d
+    \begin{tikzcd}
+        Z && X && \Xcal
+        \arrow["g", from=1-1, to=1-3]
+        \arrow["x", from=1-3, to=1-5]
+        \arrow["z"', curve={height=12pt}, from=1-1, to=1-5]
+    \end{tikzcd}$$
+    in which case we have $\Fcal_{(Z,z)}\cong g^{*}\Fcal_{(X,x)}$ since $\Fcal$ is Cartesian giving the claim. 
+\end{proof}
+\subsection{The \'{E}tale Site of a Stack}\label{subsec: etale site of a stack}
+We defined the lisse-\'{e}tale site on an $S$-algebraic stack $\Xcal$ in \Cref{def: lisse etale site of a stack} as the category of schemes admitting a smooth morphism to $\Xcal$ with the data of coverings roughly those of the small \'{e}tale site on each scheme. We can further restrict this site to those schemes with an \'{e}tale morphism to the stack $\Xcal$ to define the \'{e}tale site on the stack. 
+\newpage
+\begin{definition}[\'{E}tale Site on a Stack]\label{def: etale site of a stack}
+    Let $\Xcal$ be an $S$-algebraic stack. The \'{e}tale site $\Et(\Xcal)$ on $\Xcal$ is the full subcategory of $\Sch_{\Xcal}$ with objects $(T,t)$ such that $t:T\to\Xcal$ is an \'{e}tale morphism. The Grothendieck topology of $\Et(\Xcal)$ is given by coverings 
+    $$\left\{(f_{i},f_{i}^{b}):(T_{i},t_{i})\to(T,t)\right\}$$
+    where $\{f_{i}:T_{i}\to T\}$ is a covering in the small \'{e}tale site on $T$, $T_{\et}$. 
+\end{definition}
+As in the case of the lisse-\'{e}tale site, the \'{e}tale topos $\Xcal_{\Et}$ is the category of sheaves on the site $\Et(\Xcal)$ and $\Ocal_{\Xcal_{\Et}}$ the subfunctor of the structure sheaf on the lisse-\'{e}tale site restricted to the full subcategory $\Et(\Xcal)$ of $\LisEt(\Xcal)$ as in \Cref{def: structure sheaf of stack}. Naturally, a sheaf of $\Ocal_{\Xcal_{\Et}}$-modules $\Fcal$ is quasicoherent (resp. coherent) if $\Fcal_{(T,t)}$ is a sheaf of quasicoherent $\Ocal_{T}$-modules (resp. sheaf of coherent $\Ocal_{T}$-modules) for all $(T,t)\in\Obj\left(\Et(\Xcal)\right)$. 
+\\\\
+Having defined the \'{e}tale site $\Et(\Xcal)$ as a site whose underlying category is a full subcategory of $\LisEt(\Xcal)$ with the same coverings, there is a natural inclusion of categories and thus sites 
+$$\Et(\Xcal)\hookrightarrow\LisEt(\Xcal).$$
+However, as previously described, $\Ocal_{\Xcal_{\Et}}$ is a subfunctor and thus subsheaf of $\Ocal_{\Xcal}$ inducing a morphism of ringed topoi 
+$$r:\left(\Xcal_{\LisEt},\Ocal_{\Xcal}\right)\to\left(\Xcal_{\Et},\Ocal_{\Xcal_{\Et}}\right).$$
+More explicitly, let $\RelSpaces_{\Xcal}$ be category of relative spaces over the stack $\Xcal$ as in \Cref{def: relative spaces over Zcal} and $\Et\left(\RelSpaces_{\Xcal}\right)$ the full subcategory of relative spaces $\RelSpaces_{\Xcal}$ with objects objects \'{e}tale representable morphisms of stacks $(\Ycal\to\Xcal)$ -- here taking algebraic spaces and schemes to be a stack in the tautological way. Similarly define $\LisEt\left(\RelSpaces_{\Xcal}\right)$ following \Cref{def: lisse etale site of a stack} as the full subcategory of relative spaces $\RelSpaces_{\Xcal}$ with objects smooth representable morphisms $(\Ycal\to\Xcal)$ for which there is surjective \'{e}tale morphism $y:Y\to\Ycal$ for $Y$ a scheme and coverings given by jointly surjective \'{e}tale morphisms. There is an inclusion 
+$$\Et\left(\RelSpaces_{\Xcal}\right)\hookrightarrow\LisEt\left(\RelSpaces_{\Xcal}\right)$$
+which induces a continuous morphism of sites that lifts to a morphism of topoi under certain limit and colimit preserving hypotheses satisfied by this functor (vis. eg. \cite[\href{https://stacks.math.columbia.edu/tag/039Z}{Tag 039Z}]{stacks-project}).
+\\\\
+On Deligne-Mumford stacks, however, quasicoherent sheaves on the lisse-\'{e}tale site and the \'{e}tale site coincide. 
+\begin{proposition}\label{prop: if DM then lisse etale qcoh sheaf is etale qcoh sheaf}
+    Let $\Xcal$ be an $S$-algebraic stack. If $\Xcal$ is a Deligne-Mumford stack then the restriction functor on quasicoherent sheaves 
+    $$r_{*}:\QCoh\left(\Xcal\right)_{\LisEt}\longrightarrow\QCoh\left(\Xcal\right)_{\Et}$$
+    is an equivalence of categories. 
+\end{proposition}

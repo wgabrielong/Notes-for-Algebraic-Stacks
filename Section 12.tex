@@ -1,1 +1,363 @@
-\section{Cohomology of Stacks}
+\section{Gerbes}\label{sec: gerbes}
+Recall that for a scheme $X$ and $\Bmu$ a sheaf of Abelian groups on the small \'{e}tale site of $X$, the first sheaf cohomology $H^{1}(X,\Bmu)$ is isomorphic to the group of $\Bmu$-torsors on $X$. The interpretation can be extended to $H^{2}(X,\Bmu)$ as the set of $\Bmu$-gerbes which can be roughly thought of as a stack over $X$ which is a twisted form of the classifying stack $B\Bmu$. 
+\subsection{Torsors and First Cohomology}\label{subsec: torsors and first cohomology}
+Let $\Tcal$ be a topos on a site $\Ssf$ and $\Bmu\in\Obj(\Tcal)$ a sheaf of Abelian groups on $\Ssf$. We describe a bijection between the set of $\Bmu$-torsors and $H^{1}(\Tcal,\Bmu)$. 
+\begin{definition}[Wedge of Torsors]\label{def: wedge of torsors}
+    Let $(\Pcal,\rho),(\Pcal',\rho')$ be two $\Bmu$-torsors on a site $\Ssf$ with a final object. The wedge $(\Pcal\wedge\Pcal',\rho\wedge\rho')$ is the quotient of $\Pcal\times\Pcal'$ by the action 
+    $$g\cdot(p,p')\mapsto(gp,g^{-1}p').$$
+\end{definition}
+This easily implies the following. 
+\begin{proposition}[Magma Structure on $\Tors$]\label{def: magma on wedge of torsors}
+    Let $(\Pcal,\rho),(\Pcal',\rho')$ be two $\Bmu$-torsors on a site $\Ssf$ with a final object. The operation 
+    $$\wedge:\Tors(\Bmu)\times\Tors(\Bmu)\longrightarrow\Tors(\Bmu)$$
+    $$\left((\Pcal,\rho),(\Pcal',\rho')\right)\mapsto\left(\Pcal\wedge\Pcal',\rho\wedge\rho'\right)$$
+    endows $\Tors(\Bmu)$ with the structure of a magma.
+\end{proposition}
+\begin{remark}
+    Recall here that a magma is a set closed under a binary operation. 
+\end{remark}
+\begin{proof}
+    The action
+    $$\rho\wedge\rho':\Bmu\times\Pcal\times\Pcal'\longrightarrow\Pcal$$
+    by 
+    $$g\cdot (p,p')\mapsto(gp,p')$$
+    descends to $\Pcal\wedge\Pcal'$ endowing it with the structure of a $\Bmu$-torsor. 
+\end{proof}
+Denote $\underline{\ZZ}$ the constant sheaf on the integers $\ZZ$. We can define a category $\Extsf(\underline{\ZZ},\Bmu)$ in the following way. 
+\begin{definition}[$\Extsf(\underline{\ZZ},\Bmu)$]\label{def: ext category on integer sheaf}
+    Let $\Ssf$ be a site with a final object and $\Bmu$ a sheaf of Abelian groups on $\Ssf$. Define $\Extsf(\underline{\ZZ},\Bmu)$ be the category with: 
+    \begin{enumerate}[label=(\alph*)]
+        \item Objects short exact sequences of sheaves of Abelian groups on $\Ssf$, $(0\to\Bmu\to\Ecal\to\underline{\ZZ}\to0)$. 
+        \item Morphisms between 
+        $$(0\to\Bmu\to\Ecal'\to\underline{\ZZ}\to0),(0\to\Bmu\to\Ecal\to\underline{\ZZ}\to0)\in\Obj\left(\Extsf(\underline{\ZZ},\Bmu)\right)$$
+        commutative diagrams of the following type:
+        $$% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlxcQm11Il0sWzIsMCwiXFxFY2FsJyJdLFszLDAsIlxcdW5kZXJsaW5le1xcWlp9Il0sWzQsMCwiMCJdLFswLDEsIjAiXSxbMSwxLCJcXEJtdSJdLFsyLDEsIlxcRWNhbCJdLFszLDEsIlxcdW5kZXJsaW5le1xcWlp9Il0sWzQsMSwiMCJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFs1LDZdLFs2LDddLFs3LDhdLFs4LDldLFszLDgsIlxcd3IiXSxbMiw3XSxbMSw2LCJcXHdyIiwyXV0=
+        \begin{tikzcd}
+            0 & \Bmu & {\Ecal'} & {\underline{\ZZ}} & 0 \\
+            0 & \Bmu & \Ecal & {\underline{\ZZ}} & 0
+            \arrow[from=1-1, to=1-2]
+            \arrow[from=1-2, to=1-3]
+            \arrow[from=1-3, to=1-4]
+            \arrow[from=1-4, to=1-5]
+            \arrow[from=2-1, to=2-2]
+            \arrow[from=2-2, to=2-3]
+            \arrow[from=2-3, to=2-4]
+            \arrow[from=2-4, to=2-5]
+            \arrow["\wr", from=1-4, to=2-4]
+            \arrow[from=1-3, to=2-3]
+            \arrow["\wr"', from=1-2, to=2-2]
+        \end{tikzcd}$$
+    \end{enumerate}
+\end{definition}
+We can check locally to show that for any such morphism in \Cref{def: ext category on integer sheaf} (b), the morphism $\Ecal'\to\Ecal$ is in fact an isomorphism. One can then define a functor from $\Extsf(\underline{\ZZ},\Bmu)$ to the category of $\Bmu$-torsors $\Tors(\Bmu)$ and show that it is an equivalence of categories. 
+\begin{proposition}\label{prop: integer ext category is equivalent to torsor category}
+    The functor 
+    $$\pi:\Extsf(\underline{\ZZ},\Bmu)\longrightarrow\Tors(\Bmu)$$
+    by
+    $$(0\to\Bmu\to\Ecal\to\underline{\ZZ}\to0)\mapsto \pi^{-1}(1)\in\Ecal; 1\in\Gamma(\Ssf,\Bmu)$$
+    is an equivalence of categories. 
+\end{proposition}
+This allows us to deduce the desired result. 
+\begin{corollary}\label{prop: bijection of first cohomology and iso classes of torsors}
+    There is a bijection between $H^{1}(\Ssf,\Bmu)$ and the set of isomorphism classes of $\Bmu$-torsors. 
+\end{corollary}
+\subsection{Gerbes and Second Cohomology}\label{subsec: gerbes and second cohomology}
+Recall for $p:\Fsf\to\Ssf$ a (categorical) stack over a site, for any $x\in\Obj(\Fsf_{X})$ the fiber over $X\in\Obj(\Ssf)$ there is a sheaf $\ulAut_{x}$ over the slice category $\Ssf_{(-/X)}$. For $\Bmu$ a sheaf of Abelian groups on $\Ssf$, a gerbe is a stack constructed such that the restriction of the sheaf $\Bmu$ to the slice category $\Ssf_{(-/X)}$ is isomorphic to the automorpihsm group $\ulAut_{x}$. More explicitly, we have the following. 
+\begin{definition}[Gerbe]\label{def: gerbe}
+    Let $\Ssf$ be a site and $\Bmu$ a sheaf of Abelian groups on $\Ssf$. A $\Bmu$-gerbe over $\Ssf$ is a stack $p:\Fsf\to\Ssf$ where $\Fsf$ is the fibered category with objects $(x,\iota_{x})$ where for all $x\in\Obj(\Fsf)$ an isomorphism of sheaves of groups 
+    $$\iota_{x}:\Bmu|_{\Ssf_{(-/p(x))}}\longrightarrow\ulAut_{x}$$
+    such that:
+    \begin{enumerate}[label=(\alph*)]
+        \item For any $X\in\Obj(\Ssf)$ there is a covering $\{\phi_{i}:X_{i}\to X\}_{i\in I}$ with $\Fsf_{X_{i}}\neq\emptyset$ for all $i\in I$.
+        \item For any $x,x'\in\Fsf_{X}$ there is a covering $\{\phi_{i}:X_{i}\to X\}_{i\in I}$ with $\phi_{i}^{*}x=\phi_{i}^{*}x'$ in $\Fsf_{X_{i}}$ for all $i\in I$. 
+        \item For all $X\in\Obj(\Ssf)$ and isomorphism $\sigma:x\to x'$ in $\Fsf_{X}$ a commutative diagram of the following type:
+        $$% https://q.uiver.app/#q=WzAsMyxbMCwxLCJcXHVsQXV0X3t4fSJdLFsyLDEsIlxcdWxBdXRfe3gnfSJdLFsxLDAsIlxcQm11Il0sWzIsMCwiXFxpb3RhX3t4fSIsMl0sWzIsMSwiXFxpb3RhX3t4J30iXSxbMCwxLCJcXHNpZ21hIiwyXV0=
+        \begin{tikzcd}
+            & \Bmu \\
+            {\ulAut_{x}} && {\ulAut_{x'}}
+            \arrow["{\iota_{x}}"', from=1-2, to=2-1]
+            \arrow["{\iota_{x'}}", from=1-2, to=2-3]
+            \arrow["\sigma"', from=2-1, to=2-3]
+        \end{tikzcd}$$
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    Morphisms between objects in fibers of $\Fsf$ are induced along morphisms in $\Ssf$. For $(g:Y\to X)\in\Mor_{\Ssf}$ there is a functor of categories $g^{*}:\Fsf_{Y}\to g^{*}\Fsf_{X}$ that for $p(y)=Y$ with $y=g^{*}x$ an isomorphism of groups $\iota_{y}:\Bmu|_{(-/p(y))}\to\ulAut_{y}$ satisfying the additional conditions (a), (b), and (c) in \Cref{def: gerbe} such that the following diagram commutes. 
+    $$% https://q.uiver.app/#q=WzAsMyxbMSwwLCJcXEJtdSJdLFswLDEsIlxcdWxBdXRfe3l9Il0sWzIsMSwiXFx1bEF1dF97eH0iXSxbMCwyLCJcXGlvdGFfe3h9Il0sWzAsMSwiXFxpb3RhX3t5fSIsMl0sWzEsMiwiKGZeeyp9KV97Kn0iLDJdXQ==
+    \begin{tikzcd}
+        & \Bmu \\
+        {\ulAut_{y}} && {\ulAut_{x}}
+        \arrow["{\iota_{x}}", from=1-2, to=2-3]
+        \arrow["{\iota_{y}}"', from=1-2, to=2-1]
+        \arrow["{(f^{*})_{*}}"', from=2-1, to=2-3]
+    \end{tikzcd}$$
+    Note further that the morphism of sheaves of groups $(f^{*})_{*}$ need not be an isomorphism. This is not crucial for the definition of the gerbe, and we hence omit it from the definition. 
+\end{remark}
+A morphism of $\Bmu$-gerbes can be defined in the natural way. 
+\newpage
+\begin{definition}[Morphism of Gerbes]\label{def: morphism of gerbes}
+    Let $\Ssf$ be a site and $\Bmu$ a sheaf of Abelian groups on $\Ssf$ with $p:\Fsf\to\Ssf$ and $p':\Fsf'\to\Ssf$ to $\Bmu$-gerbes on $\Ssf$. A morphism of $\Bmu$-gerbes is a morphism of stacks $f:\Fsf'\to\Fsf$ such that for $f(x')=x$ the diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMSwwLCJcXEJtdSJdLFswLDEsIlxcdWxBdXRfe3gnfSJdLFsyLDEsIlxcdWxBdXRfe3h9Il0sWzEsMiwiZl97Kn0iLDJdLFswLDIsIlxcaW90YV97eH0iXSxbMCwxLCJcXGlvdGFfe3gnfSIsMl1d
+    \begin{tikzcd}
+        & \Bmu \\
+        {\ulAut_{x'}} && {\ulAut_{x}}
+        \arrow["{f_{*}}"', from=2-1, to=2-3]
+        \arrow["{\iota_{x}}", from=1-2, to=2-3]
+        \arrow["{\iota_{x'}}"', from=1-2, to=2-1]
+    \end{tikzcd}$$
+    commutes. 
+\end{definition}
+We can in fact refine this characterization of morphisms of $\Bmu$-gerbes as we now show. 
+\begin{proposition}\label{prop: a morphism of gerbes is an isomorphism}
+    Let $\Ssf$ be a site and $\Bmu$ a sheaf of Abelian groups on $\Ssf$ with $p:\Fsf\to\Ssf$ and $p':\Fsf'\to\Ssf$ to $\Bmu$-gerbes on $\Ssf$. If $f:\Fsf'\to\Fsf$ is a morphism of gerbes then $f:\Fsf'\to\Fsf$ is an isomorphism of gerbes. 
+\end{proposition}
+We now show the correspondence with second cohomology. 
+\\\\
+Consider the following construction. Let $\Bmu$ be a sheaf of Abelian groups on a site $\Ssf$ and 
+$$% https://q.uiver.app/#q=WzAsNSxbMCwwLCIxIl0sWzEsMCwiXFxCbXUiXSxbMiwwLCJHIl0sWzMsMCwiUSJdLFs0LDAsIjEiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XV0=
+\begin{tikzcd}
+	1 & \Bmu & G & Q & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}$$
+be an exact sequence of sheaves of groups where $G,Q$ need not be sheaves of Abelian groups. Given a $Q$-torsor $\Pcal$ as in \Cref{def: torsor} we can construct a fibered category over the site $\Ssf$. 
+\begin{remark}
+    We use multiplicative notation for the sequence above, since the construction in practice often uses multiplicative groups such as $\GG_{m}$. 
+\end{remark}
+\begin{definition}[The Category $\Gcal_{\Pcal}$]\label{def: category g sub p}
+    Consider the following construction. Let $\Bmu$ be a sheaf of Abelian groups on a site $\Ssf$ and 
+    $$% https://q.uiver.app/#q=WzAsNSxbMCwwLCIxIl0sWzEsMCwiXFxCbXUiXSxbMiwwLCJHIl0sWzMsMCwiUSJdLFs0LDAsIjEiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XV0=
+    \begin{tikzcd}
+	1 & \Bmu & G & Q & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \end{tikzcd}$$
+    be an exact sequence of sheaves of groups and $\Pcal$ a $Q$-torsor. Let $\Gcal_{\Pcal}$ be the fibered category over $\Ssf$ with 
+    \begin{enumerate}[label=(\alph*)]
+        \item Objects triples $\left(X,\widetilde{\Pcal},\epsilon\right)$ with $X\in\Obj(\Ssf)$, $\widetilde{\Pcal}$ a $G|_{\Ssf_{(-/X)}}$-torsor on the slice category $\Ssf_{(-/X)}$, and $\epsilon:b_{*}\widetilde{\Pcal}\to\Pcal|_{\Ssf_{(-/X)}}$ an isomorphism of $Q|_{\Ssf_{(-/X)}}$-torsors. 
+        \item Morphsims 
+        $$(f,f^{b}):\left(X',\widetilde{\Pcal'},\epsilon'\right)\longrightarrow\left(X,\widetilde{\Pcal},\epsilon\right)$$
+        where $f:X'\to X$ is a morphism in $\Ssf$ and $f^{b}:f^{*}\widetilde{\Pcal}\to\widetilde{\Pcal'}$ an isomorphism of $G|_{\Ssf_{(-/X')}}$-torsors such that the pentagon 
+        $$% https://q.uiver.app/#q=WzAsNSxbMSwzLCJiX3sqfWZeeyp9XFx3aWRldGlsZGV7XFxQY2FsfSJdLFszLDMsImZeeyp9Yl97Kn1cXHdpZGV0aWxkZXtcXFBjYWx9Il0sWzAsMSwiYl97Kn1cXHdpZGV0aWxkZXtcXFBjYWwnfSJdLFs0LDEsImZeeyp9XFxQY2FsfF97XFxTc2ZfeygtL1gpfX0iXSxbMiwwLCJcXFBjYWx8X3tcXFNzZl97KC0vWCcpfX0iXSxbMCwxLCJcXHNpbSIsMl0sWzEsMywiZl57Kn1cXGVwc2lsb24iLDJdLFszLDQsIlxcc2ltIiwyXSxbMiw0LCJcXGVwc2lsb24nIl0sWzAsMiwiYl97Kn1mXntifSJdXQ==
+        \begin{tikzcd}
+            && {\Pcal|_{\Ssf_{(-/X')}}} \\
+            {b_{*}\widetilde{\Pcal'}} &&&& {f^{*}\Pcal|_{\Ssf_{(-/X)}}} \\
+            \\
+            & {b_{*}f^{*}\widetilde{\Pcal}} && {f^{*}b_{*}\widetilde{\Pcal}}
+            \arrow["\sim"', from=4-2, to=4-4]
+            \arrow["{f^{*}\epsilon}"', from=4-4, to=2-5]
+            \arrow["\sim"', from=2-5, to=1-3]
+            \arrow["{\epsilon'}", from=2-1, to=1-3]
+            \arrow["{b_{*}f^{b}}", from=4-2, to=2-1]
+        \end{tikzcd}$$
+        commutes. 
+    \end{enumerate}
+\end{definition}
+% is this commutative diagram correct? 
+\begin{remark}
+    $p:\Gcal_{\Pcal}\to\Ssf$ is defined by the functorial assignment 
+    $$\left(X,\widetilde{\Pcal},\epsilon\right)\mapsto X.$$
+    In particular, the fibered category $\Gcal_{\Pcal}$ is a category fibered in groupoids over the site $\Ssf$. 
+\end{remark}
+Note that for any $\left(X,\widetilde{\Pcal},\epsilon\right)\in\Obj\left(\Gcal_{\Pcal}\right)$ the automorphism presheaf $\ulAut_{\left(X,\widetilde{\Pcal},\epsilon\right)}$ is the presheaf of groups such that for any $g:X'\to X$ associates the automorphism group of the $G|_{\Ssf_{(-/X')}}$-torsor $\widetilde{\Pcal}|_{\Ssf_{(-/X')}}$ such that the pushout 
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXFBjYWx8X3tcXFNzZl97KC0vWCcpfX0iXSxbMCwxLCJYJyJdLFsyLDEsIlgiXSxbMiwwLCJcXFBjYWx8X3tcXFNzZl97KC0vWCl9fSJdLFszLDIsIiIsMix7InN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxLCIiLDIseyJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiZyIsMl0sWzAsMywiYl97Kn0iXV0=
+\begin{tikzcd}
+	{\Pcal|_{\Ssf_{(-/X')}}} && {\Pcal|_{\Ssf_{(-/X)}}} \\
+	{X'} && X
+	\arrow[no head, from=1-3, to=2-3]
+	\arrow[no head, from=1-1, to=2-1]
+	\arrow["g"', from=2-1, to=2-3]
+	\arrow["{b_{*}}", from=1-1, to=1-3]
+\end{tikzcd}$$
+along $b_{*}$ is the identity automorphism. In particular this group of automorphisms is $\Bmu(X')$ giving a cannonical isomorphism 
+$$\iota_{x}:\Bmu|_{\Ssf_{(-/X)}}\longrightarrow\ulAut_{\left(X,\widetilde{\Pcal},\epsilon\right)}.$$
+\begin{proposition}\label{prop: g sub p is a mu gerbe}
+    Consider the following construction. Let $\Bmu$ be a sheaf of Abelian groups on a site $\Ssf$ and 
+    $$% https://q.uiver.app/#q=WzAsNSxbMCwwLCIxIl0sWzEsMCwiXFxCbXUiXSxbMiwwLCJHIl0sWzMsMCwiUSJdLFs0LDAsIjEiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XV0=
+    \begin{tikzcd}
+	1 & \Bmu & G & Q & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+    \end{tikzcd}$$
+    be an exact sequence of sheaves of groups and $\Pcal$ a $Q$-torsor. The fibered category $p:\Gcal_{\Pcal}$ is a $\Bmu$-gerbe. Furthermore, the construction is functorial with respect to $Q$-torsors. 
+\end{proposition}
+We now describe the correspondence between second cohomology and $\Bmu$-torsors. 
+\\\\
+For $\alpha\in H^{2}(\Ssf,\Bmu)$ we can construct a $\Bmu$-gerbe $\Gcal_{\alpha}$ as follows: choose some inclusion of sheaves of Abelian groups $i:\Bmu\to I$ and since $i$ is injective, this yields an exact sequence of sheaves of Abelian groups 
+$$% https://q.uiver.app/#q=WzAsNSxbMCwwLCIwIl0sWzEsMCwiXFxCbXUiXSxbMiwwLCJJIl0sWzMsMCwiSS9cXEJtdSJdLFs0LDAsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XV0=
+\begin{tikzcd}
+	0 & \Bmu & I & {I/\Bmu} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}$$
+and once again with $i$ injective, the boundary map 
+$$\partial: H^{1}(\Ssf,I/\Bmu)\longrightarrow H^{2}(\Ssf,\Bmu)$$
+is an isomorphism. Thus our previous construction from $Q$-torsors as described in \Cref{def: category g sub p} suffices and is a $\Bmu$-gerbe by \Cref{prop: g sub p is a mu gerbe} with the correspondence described by 
+$$\alpha\mapsto\Gcal_{\partial^{-1}(\alpha)}.$$
+This is functorial on exact sequences: for $i':\Bmu\to I'$ another inclusion and for a choice $\rho:I\to I'$ descending to the quotient $\overline{\rho}:I/\Bmu\to I'/\Bmu$ we have the commutative diagram
+$$% https://q.uiver.app/#q=WzAsMTAsWzAsMCwiMCJdLFsxLDAsIlxcQm11Il0sWzIsMCwiSSJdLFszLDAsIkkvXFxCbXUiXSxbNCwwLCIwIl0sWzAsMSwiMCJdLFsxLDEsIlxcQm11Il0sWzIsMSwiSSciXSxbMywxLCJJJy9cXEJtdSJdLFs0LDEsIjAiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XSxbNSw2XSxbNiw3XSxbNyw4XSxbOCw5XSxbMSw2LCJcXHdyIiwyXSxbMiw3LCJcXHJobyIsMl0sWzMsOCwiXFxvdmVybGluZXtcXHJob30iLDJdXQ==
+\begin{tikzcd}
+	0 & \Bmu & I & {I/\Bmu} & 0 \\
+	0 & \Bmu & {I'} & {I'/\Bmu} & 0
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow["\wr"', from=1-2, to=2-2]
+	\arrow["\rho"', from=1-3, to=2-3]
+	\arrow["{\overline{\rho}}"', from=1-4, to=2-4]
+\end{tikzcd}$$
+where $i'=\rho\circ i$ that induces the commutative triangle 
+$$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJIXnsxfShcXFNzZixJL1xcQm11KSJdLFsyLDAsIkheezF9KFxcU3NmLEknL1xcQm11KSJdLFsxLDEsIkheezJ9KFxcU3NmLFxcQm11KSJdLFswLDIsIlxccGFydGlhbCIsMl0sWzAsMSwiXFxvdmVybGluZXtcXHJob30iXSxbMSwyLCJcXHBhcnRpYWwnIl1d
+\begin{tikzcd}
+	{H^{1}(\Ssf,I/\Bmu)} && {H^{1}(\Ssf,I'/\Bmu)} \\
+	& {H^{2}(\Ssf,\Bmu)}
+	\arrow["\partial"', from=1-1, to=2-2]
+	\arrow["{\overline{\rho}}", from=1-1, to=1-3]
+	\arrow["{\partial'}", from=1-3, to=2-2]
+\end{tikzcd}$$
+but taking $\gamma\in H^{1}(\Ssf,I/\Bmu)$ such that $\overline{\rho}(\gamma)=\gamma'\in H^{1}(\Ssf,I'/\Bmu)$ with $\Bmu$-gerbes $\Gcal_{\gamma},\Gcal_{\gamma'}$, respectively, and $\Pcal$ the $I/\Bmu$-torsor corresponding to $\Gcal_{\gamma}$ we can pushout along $\overline{\rho}$ where for $\left(X,\widetilde{\Pcal},\epsilon\right)\in\Gcal_{\Pcal}(X)$ we have $\left(X,\rho_{*}\widetilde{\Pcal},\overline{\rho}_{*}\epsilon\right)\in\in\Gcal_{\Pcal'}(X)$ inducing 
+$$\Gcal_{\Pcal}\longrightarrow\Gcal_{\Pcal'}$$
+but such morphisms are isomorphisms by \Cref{prop: a morphism of gerbes is an isomorphism} giving the claim. 
+\begin{theorem}\label{thm: second cohomology is bijective with iso classes of gerbes}
+    Let $\Ssf$ be a site and $\Bmu$ a sheaf of Abelian groups on $\Ssf$. There is a bijection between the cohomology classes in $H^{2}(\Ssf,\Bmu)$ and isomorphism classes of $\Bmu$-gerbes. 
+\end{theorem}
+\subsection{Twisted Sheaves}\label{subsec: twisted sheaves}
+One application the theory of gerbes and torsors have is to twisted sheaves. Following \Cref{subsec: torsors and first cohomology}, let $\underline{\GG_{m}}$ be the sheaf 
+$$\underline{\GG_{m}}:\left(\Sch_{S}\right)_{\et}^{\Opp}\longrightarrow\Grp$$
+given on objects by 
+$$(T\to S)\mapsto \Gamma\left(T,\Ocal_{T}^{\times}\right)$$
+and on $S$-morphisms
+$$(f:T'\to T)\mapsto \left(f^{\sharp}:\Gamma(T,f_{*}\Ocal_{T'}^{\times})\longrightarrow \Gamma(T',\Ocal_{T'}^{\times})\right).$$
+One can show that an $\underline{\GG_{m}}$-gerbe is an algebraic stack. Let $\Gcal$ be an $\underline{\GG_{m}}$-gerbe and $E$ a locally free sheaf on $\Gcal$ of finite rank. Given a field $k$ and a geometric point $x:\spec(k)\to\Gcal$ we have an action of $\Aut_{x}\cong\GG_{m}(k)\cong k^{\times}$ on the $k$-vector space $E(x)=x^{*}E$. Any representation of $\GG_{m}(k)$ $V$ admits a decomposition as graded vector spaces 
+$$V\cong\bigoplus_{i\in\ZZ}V_{i}$$
+where the action of $\GG_{m}(k)$ acts by $u\cdot v\mapsto u^{i}v$ for $v\in V_{i}$. The set of integers $i\in\ZZ$ such that $V_{i}\neq0$ are known as the weights of the representation. 
+\begin{definition}[Twisted Sheaf]\label{def: twisted sheaf}
+    Let $\Gcal$ be a $\underline{\GG_{m}}$-gerbe on $(\Sch_{S})_{\et}$, $E$ a locally free sheaf of finite rank on $\Gcal$, and $n\in\ZZ$. $E$ is an $n$-twisted sheaf if for all fields $k$ and all geometric points $x:\spec(k)\to\Gcal$ the representation is of weight $n$, that is $E(x)=E(x)_{n}$.
+\end{definition}
+Twisted sheaves satisfy several nice properties. 
+\begin{lemma}\label{lem: properties of twisted sheaves}
+    Let $\Gcal$ be a $\underline{\GG_{m}}$-gerbe on $(\Sch_{S})_{\et}$ with structure morphism $\pi:\Gcal\to S$. 
+    \begin{enumerate}[label=(\alph*)]
+        \item If $E_{1}$ is an $n_{1}$-twisted sheaf and $E_{2}$ is an $n_{2}$-twisted sheaf on $\Gcal$ for $n_{1},n_{2}\in\ZZ$ then $E_{1}\otimes E_{2}$ is an $(n_{1}+n_{2})$-twisted sheaf. 
+        \item If $M$ is a locally free sheaf of finite rank on $S$, then $\pi^{*}M$ is a 0-twisted sheaf on $\Gcal$ and defines an equivalence between the category of locally free sheaves of finite rank on $S$ and $0$-twisted sheaves on $\Gcal$. 
+        \item If $E$ is an $n$-twisted sheaf on $\Gcal$, then the dual $E^{\vee}$ is a $(-n)$-twisted sheaf on $\Gcal$. 
+    \end{enumerate}
+\end{lemma}
+Note that the correspondence in \Cref{lem: properties of twisted sheaves} (b) is compatible with tensor products of sheaves both on $\Gcal$ and $S$. In particular, for $E$ an $n$-twisted sheaf on the gerbe $\Gcal$, we can construct a sheaf of non-commutative algebras by taking endomorphisms 
+$$\sheafEnd(E)=\Hom_{\Sh(\Gcal)}\left(E,E\right)=E^{\vee}\otimes E$$
+is 0-twisted by \Cref{lem: properties of twisted sheaves} (a) and (c). In particular, it is isomorphic to a pullback $\pi^{*}\Acal_{E}$ of a sheaf of lcoally free algebras $\Acal_{E}$ on $S$. This connects the study of gerbes and Brauer groups. 
+\begin{definition}[Azumaya Algebra]\label{def: Azumaya algebra}
+    Let $S$ be a scheme. An Azumaya algebra is a sheaf of $\Ocal_{S}$-algebras $\Acal$ such that \'{e}tale locally is isomorphic to $\sheafEnd(E)$ for a locally free sheaf $E$ of finite rank. 
+\end{definition}
+\begin{remark}
+    For $\Acal$ an Azumaya algebra on $S$ the ring of global sections $\Gamma(S,\Ocal_{S})$ is isomorphic to the center of $\Acal$. 
+\end{remark}
+If $E$ is a locally free sheaf of finite rank on $S$ and $L$ a line bundle, we can twist $E$ by the line bundle $L$ yielding a canonical isomorphism of algebras 
+$$\sheafEnd(E)\cong\sheafEnd(E\otimes L)$$
+and thus the locally free sheaf of finite rank $E$ is not unique. We can attempt to refine this construction in the following way. 
+\begin{definition}[The Stack $\Gcal_{\Acal}$]\label{def: stack of Azumaya algebras}
+    Let $\Acal$ be an Azumaya algebra on a scheme $S$ and define $\Gcal_{\Acal}$ to be the stack over the big \'{e}tale site of $S$-schemes $(\Sch_{S})_{\et}$ with:
+    \begin{enumerate}[label=(\alph*)]
+        \item Objects $(f:T\to S, E, \sigma)$ where $f$ is a morphism of $S$-schemes, $E$ a locally free sheaf of finite rank on $T$, and  $\sigma:\sheafEnd(E)\to f^{*}\Acal$ an isomorphism of $\Ocal_{T}$-algebras. 
+        \item Morphisms 
+        $$(g,g^{b}):(f':T'\to S, E',\sigma')\longrightarrow (f:T\to S, E, \sigma)$$
+        where $g:T'\to T$ is an $S$-morphism and $g^{b}:g^{*}E\to E'$ an isomorphism of locally free sheaves of finite rank on $T'$ such that the diagram 
+        $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHNoZWFmRW5kKGdeeyp9RSkiXSxbMiwwLCJcXHNoZWFmRW5kKEUnKSJdLFsxLDEsImYnXnsqfVxcQWNhbCJdLFswLDIsIlxcc2lnbWEiLDJdLFsxLDIsIlxcc2lnbWEnIl0sWzAsMSwiZ157Yn0iXV0=
+        \begin{tikzcd}
+            {\sheafEnd(g^{*}E)} && {\sheafEnd(E')} \\
+            & {f'^{*}\Acal}
+            \arrow["\sigma"', from=1-1, to=2-2]
+            \arrow["{\sigma'}", from=1-3, to=2-2]
+            \arrow["{g^{b}}", from=1-1, to=1-3]
+        \end{tikzcd}$$
+        commutes. 
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    For any $(f:T\to S, E, \sigma)\in\Obj\left(\Gcal_{\Acal}\right)$ there is a natural map 
+    $$\underline{\GG_{m}}(T)\to\Aut\left((f:T\to S, E,\sigma)\right); u\mapsto(\id,u).$$
+\end{remark}
+We can in fact show that this stack is a $\underline{\GG_{m}}$-gerbe. 
+\begin{proposition}\label{def: stack of Azumaya algebras is a Gm gerbe}
+    Let $\Acal$ be an Azumaya algebra on the scheme $S$. The algebraic stack $\Gcal_{\Acal}$ on the big \'{e}tale site of $S$-schemes $(\Sch_{S})_{\et}$ is a $\underline{\GG_{m}}$-gerbe. 
+\end{proposition}
+The construction of the stack $\Gcal_{\Acal}$ admits a refinement by the stack $\widetilde{\Gcal_{\Acal}}$. 
+\newpage
+\begin{definition}[The Stack $\widetilde{\Gcal_{\Acal}}$]
+    Let $\Acal$ be an Azumaya algebra on a scheme $S$ and define $\widetilde{\Gcal_{\Acal}}$ to be the stack over the big \'{e}tale site of $S$-schemes $(\Sch_{S})_{\et}$ with:
+    \begin{enumerate}[label=(\alph*)]
+        \item Objects quadruples $(f:T\to S, E, \sigma, \lambda)$ where $f:T\to S$ is a morphism of $S$-schemes, $E$ a locally free sheaf of finite rank on $T$, $\sigma:\sheafEnd(E)\to f^{*}\Acal$ an isomorphism of $\Ocal_{T}$-algebras, and $\lambda:\Ocal_{T}\to\bigwedge^{\sqrt{\mathrm{rank}(\Acal)}}E$ a trivialization of the line bundle $\det E$. 
+        \item Morphisms 
+        $$(g,g^{b}):(f':T'\to S, E', \sigma', \lambda')\longrightarrow(f:T\to S, E, \sigma, \lambda)$$
+        where $g:T'\to T$ is an $S$-morphism, $g^{b}:g^{*}E\to E'$ an isomorphism of locally free sheaves of finite rank on $T'$ such that the diagrams
+        $$% https://q.uiver.app/#q=WzAsNixbMCwwLCJcXHNoZWFmRW5kKGdeeyp9RSkiXSxbMiwwLCJcXHNoZWFmRW5kKEUnKSJdLFsxLDEsImYnXnsqfVxcQWNhbCJdLFs0LDAsIlxcT2NhbF97VH0iXSxbNiwwLCJcXGJpZ3dlZGdlXntcXHNxcnR7XFxtYXRocm17cmFua30oXFxBY2FsKX19RSciXSxbNiwxLCJcXGJpZ3dlZGdlXntcXHNxcnR7XFxtYXRocm17cmFua30oXFxBY2FsKX19Z157Kn1FIl0sWzAsMiwiXFxzaWdtYSIsMl0sWzEsMiwiXFxzaWdtYSciXSxbMCwxLCJnXntifSJdLFszLDQsIlxcbGFtYmRhJyJdLFszLDUsImdeeyp9XFxsYW1iZGEiLDJdLFs0LDUsImdee2J9Il1d
+        \begin{tikzcd}
+            {\sheafEnd(g^{*}E)} && {\sheafEnd(E')} && {\Ocal_{T}} && {\bigwedge^{\sqrt{\mathrm{rank}(\Acal)}}E'} \\
+            & {f'^{*}\Acal} &&&&& {\bigwedge^{\sqrt{\mathrm{rank}(\Acal)}}g^{*}E}
+            \arrow["\sigma"', from=1-1, to=2-2]
+            \arrow["{\sigma'}", from=1-3, to=2-2]
+            \arrow["{g^{b}}", from=1-1, to=1-3]
+            \arrow["{\lambda'}", from=1-5, to=1-7]
+            \arrow["{g^{*}\lambda}"', from=1-5, to=2-7]
+            \arrow["{g^{b}}", from=1-7, to=2-7]
+        \end{tikzcd}$$
+        commute.
+    \end{enumerate}
+\end{definition}
+For $(f:T\to S, E, \sigma, \lambda)\in\Obj\left(\widetilde{\Gcal_{\Acal}}\right)$, the subgroup $\Bmu_{\sqrt{\mathrm{rank}(\Acal)}}\hookrightarrow\underline{\GG_{m}}$ of $(\sqrt{\mathrm{rank}(\Acal)})$-th roots of unity preserves $\lambda$. In particular, one can show the following. 
+\begin{proposition}\label{prop: tidle GA is a mu r gerbe}
+    Let $\Acal$ be an Azumaya algebra on the scheme $S$. The algebraic stack $\widetilde{\Gcal_{\Acal}}$ on the big \'{e}tale site of $S$-schemes is a $\Bmu_{r}$-gerbe where $r=\sqrt{\mathrm{rank}(\Acal)}$. Furthermore, the pushout along the inclusion $\Bmu_{r}\hookrightarrow\underline{\GG_{m}}$ yields an equivalence of categories from the pushout to the $\underline{\GG_{m}}$-gerbe $\Gcal_{\Acal}$.
+\end{proposition}
+\Cref{thm: second cohomology is bijective with iso classes of gerbes} suggests that there is a bijection between classes of the second cohomology on the big \'{e}tale site $H^{2}\left((\Sch_{S})_{\et},\underline{\GG_{m}}\right)$ and $\underline{\GG_{m}}$-torsors up to isomorphism. We describe the cohomology class 
+$$[\Gcal_{\Acal}]\in H^{2}\left((\Sch_{S})_{\et},\underline{\GG_{m}}\right)$$
+as follows. Let $r=\sqrt{\mathrm{rank}(\Acal)}$ and consider 
+$$\underline{\mathrm{GL}_{r}}:(\Sch_{S})_{\et}^{\Opp}\to\Grp$$
+by 
+$$(T\to S)\mapsto \mathrm{GL}_{r}\left(\Ocal_{T}\right)$$
+and 
+$$\underline{\mathrm{PGL}_{r}}:(\Sch_{S})_{\et}^{\Opp}\to\Grp$$
+by 
+$$(T\to S)\mapsto \mathrm{PGL}_{r}\left(\Ocal_{T}\right)$$
+sheaves of groups on the big \'{e}tale site $(\Sch_{S})_{\et}$ sending a scheme $(T\to S)$ to invertible matrices with entries in the ring of global sections and equivalence classes of such matrices modulo the diagonal action, respectively. 
+\begin{remark}
+    One can easily show compatibility with morphisms in the standard way. We omit the verification for ease of exposition. 
+\end{remark}
+There is a short exact sequence of sheaves on the big \'{e}tale site 
+$$% https://q.uiver.app/#q=WzAsNSxbMCwwLCIxIl0sWzEsMCwiXFx1bmRlcmxpbmV7XFxHR197bX19Il0sWzIsMCwiXFx1bmRlcmxpbmV7XFxtYXRocm17R0x9X3tyfX0iXSxbMywwLCJcXHVuZGVybGluZXtcXG1hdGhybXtQR0x9X3tyfX0iXSxbNCwwLCIxIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF1d
+\begin{tikzcd}
+	1 & {\underline{\GG_{m}}} & {\underline{\mathrm{GL}_{r}}} & {\underline{\mathrm{PGL}_{r}}} & 1
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+\end{tikzcd}$$
+and denote $P_{\Acal}$ the functor 
+$$P_{\Acal}:(\Sch_{S})_{\et}\longrightarrow\Sets$$
+by 
+$$(T\to S)\mapsto\mathrm{Isom}\left(\mathrm{Mat}_{r}(\Ocal_{T}),f^{*}\Acal\right).$$
+Any automorphism of $\mathrm{Mat}_{r}(\Ocal_{T})$ is locally inner and conjugation by an invertible matrix in $\mathrm{GL}_{r}(\Ocal_{T})$ is trivial if and only if the element is a scalar in $\mathrm{GL}_{r}(\Ocal_{T})$. In particular, $P_{\Acal}$ is a $\underline{\mathrm{PGL}_{r}}$-torsor and representable by an $S$-scheme. 
+\begin{lemma}\label{lem: GA is the image of PA under the boundary map}
+    Let $\Acal$ be an Azumaya algebra on $S$ and $\Gcal_{\Acal}$ the corresponding $\underline{\GG_{m}}$-gerbe on the big \'{e}tale site $(\Sch_{S})_{\et}^{\Opp}$ and $P_{\Acal}:(\Sch_{S})_{\et}\to\Sets$ be the $\underline{\mathrm{PGL}_{r}}$-torsor taking an $S$-scheme $T$ to isomorphisms between $\mathrm{Mat}_{r}(\Ocal_{T})$ and $f^{*}\Acal$ with $f:T\to S$. The cohomology class 
+    $$[\Gcal_{\Acal}]\in H^{2}\left((\Sch_{S})_{\et},\underline{\GG_{m}}\right)$$
+    is the image of $[P_{\Acal}]$ under the boundary map 
+    $$\partial:H^{1}\left((\Sch_{S})_{\et},\underline{\mathrm{PGL}_{r}}\right)\longrightarrow H^{2}\left((\Sch_{S})_{\et},\underline{\GG_{m}}\right).$$
+\end{lemma}
+Let $\pi:\Gcal_{\Acal}\to S$ be the structure morphism. On the $\underline{\GG_{m}}$-gerbe there is a tautological locally free sheaf $\Ecal$ and an isomorphism 
+$$\sigma:\sheafEnd(\Ecal)\longrightarrow \pi^{*}\Acal$$
+of algebras over $\Gcal_{\Acal}$ and we can recover the Azumaya algebra $\Acal$ on $S$ as the pushforward $\Acal=\pi_{*}\sheafEnd(\Ecal)$ where $\Ecal$ is a 1-twisted sheaf on $\Gcal_{\Acal}$. A converse is given as follows. 
+\begin{proposition}\label{prop: pushfoward of gerbes and azumaya algebras}
+    Let $\pi:\Gcal\to S$ be a $\underline{\GG_{m}}$-gerbe and suppose there is a 1-twisted locally free sheaf of finite rank $\Ecal$ on $\Gcal$. $\pi_{*}\sheafEnd(\Ecal)$ is an Azumaya algebra on $S$, $\pi^{*}\pi_{*}\sheafEnd(\Ecal)\to\sheafEnd(\Ecal)$ is an isomorphism of sheaves on $\Gcal$, and $\Gcal\cong\Gcal_{\pi_{*}\sheafEnd(\Ecal)}$. 
+\end{proposition}
