@@ -1,6 +1,6 @@
 \contentsline {section}{\tocsection {}{}{Overview}}{1}{section*.1}%
 \contentsline {part}{\tocpart {Part}{}{Grothendieck Topologies, Sites, and Fibered Categories}}{2}{section*.3}%
-\contentsline {section}{\tocsection {}{1}{Grothendieck Topologies}}{2}{section.1}%
+\contentsline {section}{\tocsection {}{1}{Grothendieck Topologies and Sites}}{2}{section.1}%
 \contentsline {subsection}{\tocsubsection {}{1.1}{Sites in Algebraic Geometry}}{2}{subsection.1.1}%
 \contentsline {subsection}{\tocsubsection {}{1.2}{Sheaves on Sites}}{4}{subsection.1.2}%
 \contentsline {subsection}{\tocsubsection {}{1.3}{Sheaves on the Site of Schemes}}{9}{subsection.1.3}%
