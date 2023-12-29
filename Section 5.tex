@@ -1,7 +1,7 @@
 \part*{Algebraic Spaces}\label{part: algebraic spaces}
 \section{Algebraic Spaces}\label{sec: algebraic spaces}
 We begin with a discussion of various algebro-geometric and categorical preliminaries required to define algebraic spaces. 
-\\\\
+\subsection{The Category of Schemes}
 First recall that we have defined stable properties of morphisms in \Cref{def: stable property of morphisms}. We now define a stable property of objects in a category. 
 \begin{definition}[Stable Class of Objects]\label{def: stable class of objects}
     Let $\Ssf$ be a site such that all representable presheaves are sheaves. A subclass of objects $\Obj(\Csf)\subseteq\Obj(\Ssf)$ is stable with respect to a property $\Psf$ if for all coverings $\{X_{i}\to X\}$, $X$ has property $\Psf$ if and only if $X_{i}$ have property $\Psf$ for all $i$. 
@@ -49,24 +49,25 @@ One can show the following fact about morphisms of schemes. \newpage
         \item The following properties of morphisms in $(\Sch_{S})_{\et}$ are stable and local on domain: locally of finite type, locally of finite presentation, flat, \'{e}tale, universally open, locally quasi-finite, and smooth. 
     \end{enumerate}
 \end{proposition}
+\subsection{Representability and Sheaves on the \'{E}tale Site}
 We now introduce some language to describe morphisms of sheaves on the \'{e}tale site. 
 \begin{definition}[Representable by Schemes]\label{def: morphism of etale sheaves representable by schemes}
-    Let $S$ be a scheme and let $\Fsf,\Gsf$ be sheaves on the site $(\Sch_{S})_{\et}$ and $f:\Fsf\to\Gsf$ a morphism of sheaves. The morphism $f$ is representable by schemes if for every $S$-scheme $T$ and morphism $T\to \Gsf$ the fibered product functor $\Fsf\times_{\Gsf}h_{T}$ is representable by a scheme. 
+    Let $S$ be a scheme and let $\Fsf,\Gsf$ be sheaves on the site $(\Sch_{S})_{\et}$ and $f:\Fsf\to\Gsf$ a morphism of sheaves. The morphism $f$ is representable by schemes if for every $S$-scheme $T$ and morphism $T\to \Gsf$ the fibered product functor $\Fsf\times_{\Gsf}T$ is representable by a scheme. 
 \end{definition}
 \begin{definition}[Properties of Morphisms of \'{E}tale Sheaves]
-    Let $S$ be a scheme and let $\Fsf,\Gsf$ be sheaves on the site $(\Sch_{S})_{\et}$, $f:\Fsf\to\Gsf$ a morphism of sheaves, and $\Psf$ a stable property of morphisms of schemes. If $f$ is representable by schemes, then $f$ has property $\Psf$ if for every $S$-scheme $T$ the morphism $\pr_{2}:\Fsf\times_{\Gsf}h_{T}\to h_{T}$ has $\Psf$. 
+    Let $S$ be a scheme and let $\Fsf,\Gsf$ be sheaves on the site $(\Sch_{S})_{\et}$, $f:\Fsf\to\Gsf$ a morphism of sheaves, and $\Psf$ a stable property of morphisms of schemes. If $f$ is representable by schemes, then $f$ has property $\Psf$ if for every $S$-scheme $T$ the morphism $\pr_{2}:\Fsf\times_{\Gsf}T\to T$ has $\Psf$. 
 \end{definition}
 \begin{example}
-    Let $\Fsf,\Gsf$ be representable sheaves, say by $X,Y$, respectively. Any morphism $f:\Fsf\to\Gsf$ is representable by sheaves, induced by the corresponding morphism of schemes $X\to Y$. For any $S$-scheme $T$ with a map $T\to Y$ we have that $\Fsf\times_{\Gsf}h_{T}$ is the scheme $T\times_{Y}X$. 
+    Let $\Fsf,\Gsf$ be representable sheaves, say by $X,Y$, respectively. Any morphism $f:\Fsf\to\Gsf$ is representable by sheaves, induced by the corresponding morphism of schemes $X\to Y$. For any $S$-scheme $T$ with a map $T\to Y$ we have that $\Fsf\times_{\Gsf}T$ is the scheme $T\times_{Y}X$. 
 \end{example}
 \begin{lemma}\label{lem: morphisms of schemes and etale sheaves}
-    Let $S$ be a scheme and $f:X\to Y$ be a $S$-morphism of schemes and $\Psf$ a stable property of morphisms of schemes. The morphism $f$ has property $\Psf$ if and only if the morphism of representable sheaves $h_{f}:h_{X}\to h_{Y}$ has property $\Psf$. 
+    Let $S$ be a scheme and $f:X\to Y$ be a $S$-morphism of schemes and $\Psf$ a stable property of morphisms of schemes. The morphism $f$ has property $\Psf$ if and only if the morphism of representable sheaves $h_{f}:h_{X}\to Y$ has property $\Psf$. 
 \end{lemma}
 \begin{proof}
     Let $T$ be an $S$-scheme and $g:T\to Y$ with $h_{g}:h_{T}\to h_{Y}$ where we have a natural isomorphism $h_{T}\times_{h_{Y}}h_{X}\Longrightarrow h_{X\times_{Y}T}$.
     $$% https://q.uiver.app/#q=WzAsOCxbMiwxLCJZIl0sWzIsMCwiVCJdLFswLDEsIlgiXSxbMCwwLCJYXFx0aW1lc197WX1UIl0sWzQsMCwiaF97WH1cXHRpbWVzX3toX3tZfX1oX3tUfVxcUmlnaHRhcnJvdyBoX3tYXFx0aW1lc197WX1UfSJdLFs0LDEsImhfe1h9Il0sWzYsMCwiaF97VH0iXSxbNiwxLCJoX3tZfSJdLFsyLDBdLFszLDFdLFsxLDBdLFszLDJdLFs1LDddLFs0LDZdLFs0LDVdLFs2LDddXQ==
     \begin{tikzcd}
-        {X\times_{Y}T} && T && {h_{X}\times_{h_{Y}}h_{T}\Rightarrow h_{X\times_{Y}T}} && {h_{T}} \\
+        {X\times_{Y}T} && T && {h_{T}\times_{h_{Y}}h_{X}\Rightarrow h_{X\times_{Y}T}} && {h_{T}} \\
         X && Y && {h_{X}} && {h_{Y}}
         \arrow[from=2-1, to=2-3]
         \arrow[from=1-1, to=1-3]
@@ -77,15 +78,17 @@ We now introduce some language to describe morphisms of sheaves on the \'{e}tale
         \arrow[from=1-5, to=2-5]
         \arrow[from=1-7, to=2-7]
     \end{tikzcd}$$
-    We have that $f$ is $\Psf$ if and only if $X_{\times_{Y}}T\to T$ is $\Psf$ if and only if $h_{X\times_{Y}T}\to h_{T}$ is $\Psf$ if and only if $h_{f}$ is $\Psf$ upon repeated application of the stable property of morphisms. 
+    We have that $f$ is $\Psf$ if and only if $X\times_{Y}T\to T$ is $\Psf$ if and only if $h_{X\times_{Y}T}\to h_{T}$ is $\Psf$ if and only if $h_{f}$ is $\Psf$ upon repeated application of the stable property of morphisms. 
 \end{proof}
 We prove an additional lemma before defining algebraic spaces.
 \begin{lemma}[Representable Diagonal Implies Representability]\label{lem: rep diagonal then rep}
-    Let $S$ be a scheme and $\Fsf$ a sheaf on $(\Sch_{S})_{\et}$. If $\delta_{\Fsf}:\Fsf\to\Fsf\times\Fsf$ is representable by schemes and $T$ any $S$-scheme then the morphism of sheaves $f:h_{T}\to\Fsf$ is representable by schemes. 
+    Let $S$ be a scheme and $\Fsf$ a sheaf on $(\Sch_{S})_{\et}$. If $\delta_{\Fsf}:\Fsf\to\Fsf\times\Fsf$ is representable by schemes and $T$ any $S$-scheme then the morphism of sheaves $f:T\to\Fsf$ is representable by schemes. 
 \end{lemma} 
 \begin{proof}
     This follows from general abstract nonsense. See \cite[\href{https://stacks.math.columbia.edu/tag/0022}{Lemma 0022}]{stacks-project} and \cite[\href{https://stacks.math.columbia.edu/tag/0024}{Lemma 0024}]{stacks-project}. 
 \end{proof}
+\newpage
+\subsection{Algebraic Spaces}
 We are now able to define algebraic spaces, an important, slightly more restricted notion of an algebraic stack. 
 \begin{definition}[Algebraic Space]\label{def: algebraic space}
     Let $S$ be a scheme. An algebraic space over $S$ is a functor $X:\Sch_{S}^{\Opp}\to\Sets$ such that the following hold:
@@ -95,3 +98,109 @@ We are now able to define algebraic spaces, an important, slightly more restrict
         \item There is an $S$-scheme $U$ and a surjective \'{e}tale morphism $U\to X$. 
     \end{enumerate}
 \end{definition}
+\begin{remark}
+    Let $S$ be a scheme. Objects of the category of $S$-schemes $\Sch_{S}$ are tautologically algebraic spaces. 
+\end{remark}
+Given a base scheme $S$, we can consider the category of algebraic spaces $\Spaces_{S}$ with objects sheaves of sets on the big \'{e}tale site $(\Sch_{S})_{\et}$ and morphisms base-preserving 2-functors, or morphisms of sheaves on the site.  
+
+\subsection{Sheaf Quotients}
+We begin with the definition of an \'{e}tale equivalence relation. 
+\begin{definition}[\'{E}tale Equivalence Relation]\label{def: etale equiv relation}
+    Let $S$ be a scheme. An \'{e}tale equivalence relation on an $S$-scheme $X$ is a monomorphism of schemes $R\hookrightarrow X\times_{S}X$ such that 
+    \begin{enumerate}[label=(\alph*)]
+        \item For all $S$-schemes $T$, the $T$-points $R(T)\subseteq X(T)\times X(T)$ is an equivalence relation on $X(T)$. 
+        \item The maps $s,t:R\to X$ induced by the projections from $X\times_{S}X$ are \'{e}tale morphisms.
+        $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJSIl0sWzEsMSwiWFxcdGltZXNfe1N9WCJdLFsxLDIsIlgiXSxbMywxLCJYIl0sWzEsM10sWzEsMl0sWzAsMiwidCIsMix7ImN1cnZlIjoyfV0sWzAsMywicyIsMCx7ImN1cnZlIjotMn1dLFswLDEsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Imhvb2siLCJzaWRlIjoidG9wIn19fV1d
+        \begin{tikzcd}
+            R \\
+            & {X\times_{S}X} && X \\
+            & X
+            \arrow[from=2-2, to=2-4]
+            \arrow[from=2-2, to=3-2]
+            \arrow["t"', curve={height=12pt}, from=1-1, to=3-2]
+            \arrow["s", curve={height=-12pt}, from=1-1, to=2-4]
+            \arrow[hook, from=1-1, to=2-2]
+        \end{tikzcd}$$
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    If $S=\spec\ZZ$ then \Cref{def: etale equiv relation} defines an ``absolute'' \'{e}tale equivalence relation, as opposed to the $S$-relative notion we just discussed. We omit these technicalities in our discussion going forward. 
+\end{remark}
+Taking the quotient by $R$, we have a functor
+$$(\Sch_{S})^{\Opp}\longrightarrow\Sets$$
+by
+$$T\mapsto X(T)/R(T).$$
+We denote the \'{e}tale sheaf $X/R$ which is in fact an algebraic space. 
+\begin{proposition}\label{prop: X mod R is an algebraic space}
+    \begin{enumerate}[label=(\alph*)]
+        \item Let $S$ be a scheme. If $R$ is an \'{e}tale equivalence relation on an $S$-scheme $X$, then  $X/R$ is an algebraic space. 
+        \item If further $Y$ is an $S$-algebraic space and $X\to Y$ an \'{e}tale surjective morphism, then $R$ is an \'{e}tale equivalence relation and $X/R\to Y$ is an isomorphism. 
+    \end{enumerate}
+\end{proposition}
+\subsection{Properties of Algebraic Spaces}
+We consider various properties of algebraic spaces, and how they relate to to properties of schemes. 
+\begin{definition}[Property of Algebraic Space]\label{def: property of algebraic space}
+    Let $\Psf$ be a property of schemes stable on the \'{e}tale site. An algebraic space $X$ has the property $\Psf$ if there exists a scheme $U$ with property $\Psf$ and an \'{e}tale surjection $U\to X$.
+\end{definition}
+One can define a property of a morphism of algebraic spaces in the following way. 
+\begin{definition}[Properties of Morphisms of Algebraic Spaces]\label{def: property of morphisms of spaces}
+    Let $f:X\to Y$ be a morphism of $S$-algebraic spaces and $\Psf$ a property of morphisms stable on the \'{e}tale site. The morphism $f$ has the property $\Psf$ if there exists a scheme $V$ and an \'{e}tale surjection $V\to Y$ such that 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJWXFx0aW1lc197WX1YIl0sWzAsMSwiWCJdLFsyLDEsIlkiXSxbMiwwLCJWIl0sWzMsMl0sWzEsMl0sWzAsM10sWzAsMV1d
+    \begin{tikzcd}
+        {V\times_{Y}X} && V \\
+        X && Y
+        \arrow[from=1-3, to=2-3]
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=1-1, to=1-3]
+        \arrow[from=1-1, to=2-1]
+    \end{tikzcd}$$
+    the morphism $V\times_{Y}X\to V$ has $\Psf$. 
+\end{definition}
+One particularly nice property of the category of $S$-algebraic spaces is the following. 
+\begin{proposition}\label{prop: spaces has all colimits}
+    The category of $S$-algebraic spaces $\Spaces_{S}$ has all finite limits. 
+\end{proposition}
+Building on \Cref{def: property of algebraic space,def: property of morphisms of spaces}, we can define separatedness of morphisms of algebraic spaces and of algebraic spaces themselves as follows. 
+\begin{definition}[Quasiseparated Morphism of Spaces]\label{def: quasiseparated morphism of spaces}
+    Let $f:X\to Y$ be a morphism of $S$-algebraic spaces. $f$ is quasiseparated if the relative diagonal $\delta_{X/Y}:X\to X\times_{Y}X$ is quasicompact. 
+\end{definition}
+\begin{definition}[Locally Separated Morphism of Spaces]\label{def: locally separated morphism of spaces}
+    Let $f:X\to Y$ be a morphism of $S$-algebraic spaces. $f$ is locally separated if the relative diagonal $\delta_{X/Y}:X\to X\times_{Y}X$ is an embedding.
+\end{definition}
+\begin{definition}[Separated Morphism of Spaces]\label{def: separated morphism of spaces}
+    Let $f:X\to Y$ be a morphism of $S$-algebraic spaces. $f$ is separated if the relative diagonal $\delta_{X/Y}:X\to X\times_{Y}X$ is a closed embedding.
+\end{definition}
+The notions for schemes are defined by the structure morphism to $S$ having that particular property. More explicitly, we have the following. 
+\begin{definition}[Quasiseparated Algebraic Space]\label{def: quasiseparated space}
+    Let $X$ be an $S$ algebraic space. $X$ is quasiseparated if the morphism $X\to S$ is quasiseparated.
+\end{definition}
+\begin{definition}[Locally Separated Algebraic Space]\label{def: locally separated space}
+    Let $X$ be an $S$ algebraic space. $X$ is locally separated if the morphism $X\to S$ is locally separated.
+\end{definition}
+\begin{definition}[Separated Algebraic Space]\label{def: separated space}
+    Let $X$ be an $S$ algebraic space. $X$ is separated if the morphism $X\to S$ is separated. 
+\end{definition}
+\begin{remark}
+    Note here that everything can be checked in the category of schemes since the diagonals are representable by schemes. 
+\end{remark}
+\begin{remark}
+    This style of definition will recur in considering algebraic stacks, \Cref{def: quasiseparated stack morphism,def: separated stack morphism,def: quasiseparated stack,def: separated stack}.
+\end{remark}
+Another useful definition of morphisms of spaces is as follows. 
+\begin{definition}[Properties of Morphisms of Algebraic Spaces]\label{def: property of spaces via schemes}
+    Let $f:X\to Y$ be a morphism of $S$-algebraic spaces and $\Psf$ a property of morphisms stable on the \'{e}tale site and local on domain. The morphism $f$ has the property $\Psf$ if there are schemes $U,V$ and \'{e}tale maps $u:U\to X, v:V\to Y$ such that 
+    $$% https://q.uiver.app/#q=WzAsNCxbMiwxLCJZIl0sWzIsMCwiViJdLFswLDEsIlUiXSxbMCwwLCJWXFx0aW1lc197WX1VIl0sWzIsMCwiZlxcY2lyYyB1IiwyXSxbMSwwLCJ2Il0sWzMsMl0sWzMsMV1d
+    \begin{tikzcd}
+        {V\times_{Y}U} && V \\
+        U && Y
+        \arrow["{f\circ u}"', from=2-1, to=2-3]
+        \arrow["v", from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+    the morphism of schemes $V\times_{Y}U\to V$ has $\Psf$.
+\end{definition}
+We can refine the topology under consideration and think of algebraic spaces as fppf sheaves as well. 
+\begin{theorem}\label{thm: spaces are fppf sheaves}
+    If $S$ is a scheme and $X$ an $S$-algebraic space with quasicompact diagonal then $X$ is an fppf sheaf on the site $(\Sch_{S})_{\fppf}$.
+\end{theorem}

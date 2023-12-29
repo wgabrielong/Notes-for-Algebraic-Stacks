@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  26 DEC 2023 11:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.10)  29 DEC 2023 13:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -926,7 +926,7 @@ LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 \c@theorem=\count465
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
- (./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 5.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Section 14.aux) (./Appendix 1.aux) (./Appendix 2.aux))
+ (./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 5.aux) (./Section 6.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Section 14.aux) (./Appendix 1.aux) (./Appendix 2.aux))
 \openout1 = `"Algebraic Stacks - Notes.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -1140,36 +1140,38 @@ Underfull \hbox (badness 10000) in paragraph at lines 151--154
 ) [20]
 \openout2 = `"Section 5.aux"'.
 
- (./Section 5.tex
-Underfull \hbox (badness 10000) in paragraph at lines 3--6
-
- []
-
-[21
+ (./Section 5.tex [21
 
 
 
-]) [22]
+] [22] [23] [24]) [25]
+\openout2 = `"Section 6.aux"'.
+
+ (./Section 6.tex) [26
+
+
+
+]
 \openout2 = `"Section 8.aux"'.
 
- (./Section 8.tex [23
+ (./Section 8.tex [27
 
 
 
-] [24] [25] [26]
+] [28] [29] [30]
 Underfull \hbox (badness 10000) in paragraph at lines 266--270
 
  []
 
-[27] [28]
+[31] [32]
 Underfull \hbox (badness 10000) in paragraph at lines 374--377
 
  []
 
-) [29]
+) [33]
 \openout2 = `"Section 9.aux"'.
 
- (./Section 9.tex [30
+ (./Section 9.tex [34
 
 
 
@@ -1183,7 +1185,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 104--107
 
  []
 
-[31] [32] [33] [34] [35]
+[35] [36] [37] [38] [39]
 Underfull \hbox (badness 10000) in paragraph at lines 313--316
 
  []
@@ -1193,10 +1195,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 320--324
 
  []
 
-) [36]
+) [40]
 \openout2 = `"Section 10.aux"'.
 
- (./Section 10.tex [37
+ (./Section 10.tex [41
 
 
 
@@ -1205,46 +1207,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 78--82
 
  []
 
-[38] [39]
+[42] [43]
 Underfull \hbox (badness 10000) in paragraph at lines 156--160
 
  []
 
-) [40]
+) [44]
 \openout2 = `"Section 11.aux"'.
 
- (./Section 11.tex [41
+ (./Section 11.tex [45
 
 
 
-] [42]) [43]
+] [46]) [47]
 \openout2 = `"Section 12.aux"'.
 
- (./Section 12.tex [44
+ (./Section 12.tex [48
 
 
 
-] [45]
+] [49]
 Underfull \hbox (badness 10000) in paragraph at lines 114--117
 
  []
 
-[46]
+[50]
 Underfull \hbox (badness 10000) in paragraph at lines 190--193
 
  []
 
-[47] [48] [49] [50]) [51]
+[51] [52] [53] [54]) [55]
 \openout2 = `"Section 13.aux"'.
 
- (./Section 13.tex) [52
+ (./Section 13.tex) [56
 
 
 
 ]
 \openout2 = `"Section 14.aux"'.
 
- (./Section 14.tex) [53
+ (./Section 14.tex) [57
 
 
 
@@ -1261,42 +1263,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--30
 
  []
 
-[54
+[58
 
 
 
-]) [55]
+]) [59]
 \openout2 = `"Appendix 2.aux"'.
 
- (./Appendix 2.tex [56
+ (./Appendix 2.tex [60
 
 
 
-]) [57] [58
+]) [61] [62
 
 
 ] 
 enddocument/afterlastpage: lastpage setting LastPage.
-(./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 5.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Section 14.aux) (./Appendix 1.aux) (./Appendix 2.aux))
+(./Algebraic Stacks - Notes.aux (./Section 1.aux) (./Section 2.aux) (./Section 3.aux) (./Section 5.aux) (./Section 6.aux) (./Section 8.aux) (./Section 9.aux) (./Section 10.aux) (./Section 11.aux) (./Section 12.aux) (./Section 13.aux) (./Section 14.aux) (./Appendix 1.aux) (./Appendix 2.aux))
 Package rerunfilecheck Info: File `"Algebraic Stacks - Notes".out' has not changed.
-(rerunfilecheck)             Checksum: 4EC8F4E79FEBFB30D25C0CABA3328F30;3577.
+(rerunfilecheck)             Checksum: AFC4BAD58B78790BF73B6C6FE8727E2B;3809.
 Package logreq Info: Writing requests to '"Algebraic Stacks - Notes".run.xml'.
 \openout1 = `"Algebraic Stacks - Notes.run.xml"'.
 
  ) 
 Here is how much of TeX's memory you used:
- 42311 strings out of 476017
- 869517 string characters out of 5793766
+ 42542 strings out of 476017
+ 875514 string characters out of 5793766
  1909660 words of memory out of 5000000
- 61584 multiletter control sequences out of 15000+600000
+ 61781 multiletter control sequences out of 15000+600000
  534182 words of font info for 115 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  101i,19n,104p,1154b,1396s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on "Algebraic Stacks - Notes.pdf" (58 pages, 561100 bytes).
+Output written on "Algebraic Stacks - Notes.pdf" (62 pages, 571724 bytes).
 PDF statistics:
- 930 PDF objects out of 1000 (max. 8388607)
- 813 compressed objects within 9 object streams
- 376 named destinations out of 1000 (max. 500000)
- 173 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 985 PDF objects out of 1000 (max. 8388607)
+ 864 compressed objects within 9 object streams
+ 403 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

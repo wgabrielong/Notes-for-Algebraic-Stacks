@@ -1182,6 +1182,9 @@ INPUT Section 3.aux
 INPUT ./Section 5.aux
 INPUT Section 5.aux
 INPUT Section 5.aux
+INPUT ./Section 6.aux
+INPUT Section 6.aux
+INPUT Section 6.aux
 INPUT ./Section 8.aux
 INPUT Section 8.aux
 INPUT Section 8.aux
@@ -1368,6 +1371,16 @@ INPUT ./Section 5.tex
 INPUT Section 5.tex
 INPUT ./Section 5.tex
 INPUT Section 5.tex
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+OUTPUT Section 6.aux
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+INPUT ./Section 6.tex
+INPUT Section 6.tex
+INPUT ./Section 6.tex
+INPUT Section 6.tex
 INPUT ./Section 8.tex
 INPUT ./Section 8.tex
 INPUT ./Section 8.tex
@@ -1499,6 +1512,9 @@ INPUT Section 3.aux
 INPUT ./Section 5.aux
 INPUT Section 5.aux
 INPUT Section 5.aux
+INPUT ./Section 6.aux
+INPUT Section 6.aux
+INPUT Section 6.aux
 INPUT ./Section 8.aux
 INPUT Section 8.aux
 INPUT Section 8.aux
