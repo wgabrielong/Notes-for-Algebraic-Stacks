@@ -1,2 +1,99 @@
 \section{Quotients in Algebraic Spaces}\label{sec: quotients in algebraic spaces}
 In the category of affine schemes and $G$ a finite group acting on an affine scheme $\spec A$, the quotient of the affine scheme by the group action is the affine scheme $\spec A^{G}$, where $A^{G}$ is the ring of $G$-invariant elements of $A$. We consider more general quotients using the tools of algebraic spaces. 
+
+\subsection{Quotients by Finite Flat Groupoids}
+Consider a subcategory of the category of $S$-schemes that is a groupoid and $s,t:X_{1}\to X_{0}$. Taking the fibered product, we have a map $m:X_{1}\times_{s,X_{0},t}\to X_{1}$ as follows
+$$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX3sxfVxcdGltZXNfe3MsWF97MH0sdH1YX3sxfSJdLFsyLDAsIlhfezF9Il0sWzAsMSwiWF97MX0iXSxbMiwxLCJYX3swfSJdLFsxLDMsInMiXSxbMiwzLCJ0IiwyXSxbMCwyXSxbMCwxXV0=
+\begin{tikzcd}
+	{X_{1}\times_{s,X_{0},t}X_{1}} && {X_{1}} \\
+	{X_{1}} && {X_{0}}
+	\arrow["s", from=1-3, to=2-3]
+	\arrow["t"', from=2-1, to=2-3]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-3]
+\end{tikzcd}$$
+There are special maps $f:X_{0}\to T$ known as invariant maps which are defined as follows. 
+\begin{definition}[Invariant Morphism]\label{def: invariant morphism}
+    Let $s,t:X_{0}\to X_{1}$ be isomorphisms of schemes and $T$ be an algebraic space. A morphism $f:X_{0}\to T$ is invariant if $f\circ s=f\circ t$. 
+\end{definition}
+We prove the following theorem. 
+\begin{theorem}\label{thm: invariant morphisms extending finite flat morphisms}
+    If $s,t:X_{1}\to X_{0}$ are finite flat isomorphisms of schemes such that for all $x\in X_{0}$, $s(t^{-1}(x))$ is contained in an affine open subscheme of $X_{0}$ then there exists an invariant morphism of schemes $\pi:X_{0}\to Y$ and is universal with respect to this property. 
+\end{theorem}
+\begin{remark}
+    In other words, $\pi$ is universal for invariant morphisms to schemes: for any other invariant morphism $g:X_{0}\to Z$, there is a unique morphism $h:Y\to Z$ such that $g=h\circ\pi$ such given by the commutativity of the following diagram. 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYX3sxfSJdLFsyLDAsIlhfezB9Il0sWzQsMCwiWSJdLFs0LDEsIloiXSxbMiwzLCJcXGV4aXN0cyFoIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsMywiZyIsMl0sWzEsMiwiXFxwaSJdLFswLDMsIiIsMCx7ImN1cnZlIjoyfV0sWzAsMSwicyIsMCx7Im9mZnNldCI6LTF9XSxbMCwxLCJ0IiwyLHsib2Zmc2V0IjoxfV1d
+    \begin{tikzcd}
+        {X_{1}} && {X_{0}} && Y \\
+        &&&& Z
+        \arrow["{\exists!h}", dashed, from=1-5, to=2-5]
+        \arrow["g"', from=1-3, to=2-5]
+        \arrow["\pi", from=1-3, to=1-5]
+        \arrow[curve={height=12pt}, from=1-1, to=2-5]
+        \arrow["s", shift left, from=1-1, to=1-3]
+        \arrow["t"', shift right, from=1-1, to=1-3]
+    \end{tikzcd}$$
+\end{remark}
+\subsection{Topological Properties of Algebraic Spaces}
+Recall the definition of quasiseparatedness \Cref{def: quasiseparated space}. We show the following lemma. 
+\begin{lemma}\label{lem: space is a point}
+    If $X$ is a quasiseparated $S$-algebraic space such that there is an epimorphism $g:\spec(K)\to X$ for some field $K$ then $X$ is the spectrum of a field. 
+\end{lemma}
+Just as we can forget the structure sheaf of a scheme to consider its underlying topological space, we can do the same for algebraic spaces as follows. 
+\begin{definition}[Topological Space of Algebraic Space]\label{def: topological space of algebraic space}
+    Let $X$ be an $S$-algebraic space. The topological space associated to $X$ is 
+    $$|X|=\Mor_{\Spaces_{S}}\left(\spec(k), X\right)/\sim$$
+    where $(\spec(k)\to X)\sim(\spec(k')\to X)$ if and only if there is an isomorphism of affine schemes $\sigma:\spec(k)\to\spec(k')$ such that the diagram 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHNwZWMoaykiXSxbMiwwLCJcXHNwZWMoaycpIl0sWzEsMSwiWCJdLFswLDJdLFswLDEsIlxcc2lnbWEiXSxbMSwyXV0=
+    \begin{tikzcd}
+        {\spec(k)} && {\spec(k')} \\
+        & X
+        \arrow[from=1-1, to=2-2]
+        \arrow["\sigma", from=1-1, to=1-3]
+        \arrow[from=1-3, to=2-2]
+    \end{tikzcd}$$
+    commutes. 
+\end{definition}
+We naturally define a closed subspace of the topological space $|X|$ as those arising as the topological realization of a closed sub-algebraic space of the algebraic space $X$. 
+\begin{proposition}
+    If $X$ is a quasiseparated $S$-algebraic spae and $f:\spec(k)\to X$ a morphism of algebraic spaces for a field $k$ then there exists a point $\iota:\spec(k')\to X$ and a factorization of $f$ as 
+    $$% https://q.uiver.app/#q=WzAsMyxbMCwwLCJcXHNwZWMoaykiXSxbMiwwLCJcXHNwZWMoaycpIl0sWzQsMCwiWCJdLFsxLDIsIlxcaW90YSJdLFswLDEsImciXV0=
+    \begin{tikzcd}
+        {\spec(k)} && {\spec(k')} && X.
+        \arrow["\iota", from=1-3, to=1-5]
+        \arrow["g", from=1-1, to=1-3]
+    \end{tikzcd}$$
+\end{proposition}
+Note that the topological realization functor $|-|:\Spaces_{S}\to\Top$ is functorial since for $f:X\to Y$ a morphism of $S$-algebraic spaces, we can define the points of $Y$ by pre-composing maps $\spec(k)\to X$ with $f$. For $Z\subseteq Y$ an open sub-algebraic space -- the complement of a closed sub-algebraic space -- its preimage $f^{-1}(Z)\subseteq X$ is necessarily an open sub-algebraic space giving an open subspace $|f^{-1}(Z)|\subseteq|X|$ as its topological realization, showing $|f|$ is a continuous map, that is, a morphism in the category of topological spaces $\Top$. 
+\\\\
+Closedness and properness of morphisms of algebraic spaces are defined in terms of the underlying topological spaces as follows. 
+\begin{definition}[Closed Morphism of Algebraic Spaces]\label{def: closed morphism of algebraic spaces}
+    Let $f:X\to Y$ be a morphism of quasiseparated $S$-algebraic spaces. $f$ is a closed morphism of $S$-algebraic spaces if $|f|:|X|\to|Y|$ is a closed map of topological spaces. 
+\end{definition}
+\begin{definition}[Universally Closed Morphism of Algebraic Spaces]\label{def: universally closed morphism of algebraic spaces}
+    Let $f:X\to Y$ be a morphism of quasiseparated $S$-algebraic spaces. $f$ is a universally closed morphism if for all maps of algebraic spaces $Z\to Y$ with $Z$ a quasiseparated algebraic space the morphism of algebraic spaces induced by base change $X\times_{Y}Z\to Y$ is closed. 
+\end{definition}
+\begin{remark}
+    In \Cref{def: universally closed morphism of algebraic spaces} we are evidently considering the following pullback diagram. 
+    $$% https://q.uiver.app/#q=WzAsNCxbMCwwLCJYXFx0aW1lc197WX1aIl0sWzIsMCwiWCJdLFsyLDEsIlkiXSxbMCwxLCJaIl0sWzEsMiwiZiJdLFswLDNdLFszLDJdLFswLDFdXQ==
+    \begin{tikzcd}
+        {X\times_{Y}Z} && X \\
+        Z && Y
+        \arrow["f", from=1-3, to=2-3]
+        \arrow[from=1-1, to=2-1]
+        \arrow[from=2-1, to=2-3]
+        \arrow[from=1-1, to=1-3]
+    \end{tikzcd}$$
+\end{remark}
+
+\begin{definition}[Proper Morphism of Algebraic Spaces]\label{def: proper morphism of algebraic spaces}
+    Let $f:X\to Y$ be a morphism of algebraic spaces. $f$ is a proper morphism of algebraic spaces if it is separated, of finite type, and universally closed. 
+\end{definition}
+\begin{remark}
+    Just as in the case of schemes, proper morphisms of stacks are taken to be separated (\Cref{def: separated morphism of spaces}), of finite type, and universally closed (\Cref{def: universally closed morphism of algebraic spaces}). Finite-typeness here is to be taken in the sense of \Cref{def: properties of morphisms of spaces via schemes} where there exist schemes $U,V$ and surjective \'{e}tale morphisms $U\to X, V\to Y$ such that the morphism of schemes $V\times_{Y}U\to V$ is of finite type. 
+\end{remark}
+\subsection{Open Subschemes of Algebraic Spaces}
+We show that every algebraic space contains a scheme as a dense open set. 
+\begin{theorem}\label{thm: every algebraic space has a dense open subscheme}
+    If $X$ is a quasiseparated $S$-algebraic space then there is a scheme $U$ and a dense open embedding $U\hookrightarrow X$. 
+\end{theorem}

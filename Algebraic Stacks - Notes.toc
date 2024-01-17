@@ -10,38 +10,48 @@
 \contentsline {section}{\tocsection {}{3}{Descent}}{17}{section.3}%
 \contentsline {subsection}{\tocsubsection {}{3.1}{Descent in Fibered Categories}}{17}{subsection.3.1}%
 \contentsline {subsection}{\tocsubsection {}{3.2}{Descent for Torsors}}{18}{subsection.3.2}%
-\contentsline {part}{\tocpart {Part}{}{Algebraic Spaces}}{21}{section*.4}%
-\contentsline {section}{\tocsection {}{4}{Algebraic Spaces}}{21}{section.4}%
-\contentsline {subsection}{\tocsubsection {}{4.1}{The Category of Schemes}}{21}{subsection.4.1}%
-\contentsline {subsection}{\tocsubsection {}{4.2}{Representability and Sheaves on the \'{E}tale Site}}{22}{subsection.4.2}%
-\contentsline {subsection}{\tocsubsection {}{4.3}{Algebraic Spaces}}{23}{subsection.4.3}%
-\contentsline {subsection}{\tocsubsection {}{4.4}{Sheaf Quotients}}{23}{subsection.4.4}%
-\contentsline {subsection}{\tocsubsection {}{4.5}{Properties of Algebraic Spaces}}{23}{subsection.4.5}%
-\contentsline {section}{\tocsection {}{5}{Quotients in Algebraic Spaces}}{26}{section.5}%
-\contentsline {part}{\tocpart {Part}{}{Algebraic Stacks}}{27}{section*.5}%
-\contentsline {section}{\tocsection {}{6}{Algebraic Stacks}}{27}{section.6}%
-\contentsline {subsection}{\tocsubsection {}{6.1}{The Classifying Stack of a Group}}{28}{subsection.6.1}%
-\contentsline {subsection}{\tocsubsection {}{6.2}{Properties of Stacks and Their Morphisms}}{29}{subsection.6.2}%
-\contentsline {subsection}{\tocsubsection {}{6.3}{Deligne-Mumford Stacks}}{33}{subsection.6.3}%
-\contentsline {section}{\tocsection {}{7}{Quasicoherent Sheaves on Algebraic Stacks}}{34}{section.7}%
-\contentsline {subsection}{\tocsubsection {}{7.1}{The Lisse-\'{E}tale Site of a Stack}}{36}{subsection.7.1}%
-\contentsline {subsection}{\tocsubsection {}{7.2}{Sheaves on Stacks}}{37}{subsection.7.2}%
-\contentsline {subsection}{\tocsubsection {}{7.3}{The \'{E}tale Site of a Stack}}{39}{subsection.7.3}%
-\contentsline {part}{\tocpart {Part}{}{The Geometry of Stacks}}{41}{section*.6}%
-\contentsline {section}{\tocsection {}{8}{Geometric Properties of Stacks}}{41}{section.8}%
-\contentsline {subsection}{\tocsubsection {}{8.1}{The Functors $\operatorname {\underline {Spec}}$ and $\operatorname {\underline {Proj}}$}}{42}{subsection.8.1}%
-\contentsline {subsection}{\tocsubsection {}{8.2}{Root Stacks}}{43}{subsection.8.2}%
-\contentsline {section}{\tocsection {}{9}{Coarse Moduli Spaces}}{45}{section.9}%
-\contentsline {subsection}{\tocsubsection {}{9.1}{The Theorem of Keel and Mori}}{45}{subsection.9.1}%
-\contentsline {subsection}{\tocsubsection {}{9.2}{Local Structure of Deligne-Mumford Stacks}}{46}{subsection.9.2}%
-\contentsline {subsection}{\tocsubsection {}{9.3}{Chow's Lemma for Deligne-Mumford Stacks}}{47}{subsection.9.3}%
-\contentsline {section}{\tocsection {}{10}{Gerbes}}{48}{section.10}%
-\contentsline {subsection}{\tocsubsection {}{10.1}{Torsors and First Cohomology}}{48}{subsection.10.1}%
-\contentsline {subsection}{\tocsubsection {}{10.2}{Gerbes and Second Cohomology}}{49}{subsection.10.2}%
-\contentsline {subsection}{\tocsubsection {}{10.3}{Twisted Sheaves}}{52}{subsection.10.3}%
-\contentsline {section}{\tocsection {}{11}{Cohomology of Stacks}}{56}{section.11}%
-\contentsline {section}{\tocsection {}{12}{Derived Categories of Stacks}}{57}{section.12}%
-\contentsline {part}{\tocpart {Part}{}{End Material}}{58}{section*.7}%
-\contentsline {section}{\tocsection {Appendix}{A}{Representable Functors}}{58}{appendix.A}%
-\contentsline {section}{\tocsection {Appendix}{B}{Group Objects in Categories}}{60}{appendix.B}%
-\contentsline {section}{\tocsection {Appendix}{}{References}}{62}{section*.8}%
+\contentsline {section}{\tocsection {}{4}{Descent for Quasicoherent Sheaves}}{21}{section.4}%
+\contentsline {part}{\tocpart {Part}{}{Algebraic Spaces}}{22}{section*.4}%
+\contentsline {section}{\tocsection {}{5}{Algebraic Spaces}}{22}{section.5}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{The Category of Schemes}}{22}{subsection.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{Representability and Sheaves on the \'{E}tale Site}}{23}{subsection.5.2}%
+\contentsline {subsection}{\tocsubsection {}{5.3}{Algebraic Spaces}}{24}{subsection.5.3}%
+\contentsline {subsection}{\tocsubsection {}{5.4}{Sheaf Quotients}}{24}{subsection.5.4}%
+\contentsline {subsection}{\tocsubsection {}{5.5}{Properties of Algebraic Spaces}}{24}{subsection.5.5}%
+\contentsline {subsection}{\tocsubsection {}{5.6}{Characterization as $\mathsf {fppf}$-Sheaves}}{27}{subsection.5.6}%
+\contentsline {section}{\tocsection {}{6}{Quotients in Algebraic Spaces}}{28}{section.6}%
+\contentsline {subsection}{\tocsubsection {}{6.1}{Quotients by Finite Flat Groupoids}}{28}{subsection.6.1}%
+\contentsline {subsection}{\tocsubsection {}{6.2}{Topological Properties of Algebraic Spaces}}{28}{subsection.6.2}%
+\contentsline {subsection}{\tocsubsection {}{6.3}{Open Subschemes of Algebraic Spaces}}{29}{subsection.6.3}%
+\contentsline {section}{\tocsection {}{7}{Quasicoherent Sheaves on Algebraic Spaces}}{30}{section.7}%
+\contentsline {subsection}{\tocsubsection {}{7.1}{Quasicoherent Sheaves on Spaces}}{30}{subsection.7.1}%
+\contentsline {subsection}{\tocsubsection {}{7.2}{Affine Morphisms and Stein Factorization}}{30}{subsection.7.2}%
+\contentsline {subsection}{\tocsubsection {}{7.3}{Chow's Lemma for Algebraic Spaces}}{30}{subsection.7.3}%
+\contentsline {subsection}{\tocsubsection {}{7.4}{Finiteness of Cohomology of Spaces}}{30}{subsection.7.4}%
+\contentsline {part}{\tocpart {Part}{}{Algebraic Stacks}}{31}{section*.5}%
+\contentsline {section}{\tocsection {}{8}{Algebraic Stacks}}{31}{section.8}%
+\contentsline {subsection}{\tocsubsection {}{8.1}{The Classifying Stack of a Group}}{32}{subsection.8.1}%
+\contentsline {subsection}{\tocsubsection {}{8.2}{Properties of Stacks and Their Morphisms}}{33}{subsection.8.2}%
+\contentsline {subsection}{\tocsubsection {}{8.3}{Deligne-Mumford Stacks}}{37}{subsection.8.3}%
+\contentsline {section}{\tocsection {}{9}{Quasicoherent Sheaves on Algebraic Stacks}}{38}{section.9}%
+\contentsline {subsection}{\tocsubsection {}{9.1}{The Lisse-\'{E}tale Site of a Stack}}{40}{subsection.9.1}%
+\contentsline {subsection}{\tocsubsection {}{9.2}{Sheaves on Stacks}}{41}{subsection.9.2}%
+\contentsline {subsection}{\tocsubsection {}{9.3}{The \'{E}tale Site of a Stack}}{43}{subsection.9.3}%
+\contentsline {part}{\tocpart {Part}{}{The Geometry of Stacks}}{45}{section*.6}%
+\contentsline {section}{\tocsection {}{10}{Geometric Properties of Stacks}}{45}{section.10}%
+\contentsline {subsection}{\tocsubsection {}{10.1}{The Functors $\operatorname {\underline {Spec}}$ and $\operatorname {\underline {Proj}}$}}{46}{subsection.10.1}%
+\contentsline {subsection}{\tocsubsection {}{10.2}{Root Stacks}}{47}{subsection.10.2}%
+\contentsline {section}{\tocsection {}{11}{Coarse Moduli Spaces}}{49}{section.11}%
+\contentsline {subsection}{\tocsubsection {}{11.1}{The Theorem of Keel and Mori}}{49}{subsection.11.1}%
+\contentsline {subsection}{\tocsubsection {}{11.2}{Local Structure of Deligne-Mumford Stacks}}{50}{subsection.11.2}%
+\contentsline {subsection}{\tocsubsection {}{11.3}{Chow's Lemma for Deligne-Mumford Stacks}}{51}{subsection.11.3}%
+\contentsline {section}{\tocsection {}{12}{Gerbes}}{52}{section.12}%
+\contentsline {subsection}{\tocsubsection {}{12.1}{Torsors and First Cohomology}}{52}{subsection.12.1}%
+\contentsline {subsection}{\tocsubsection {}{12.2}{Gerbes and Second Cohomology}}{53}{subsection.12.2}%
+\contentsline {subsection}{\tocsubsection {}{12.3}{Twisted Sheaves}}{56}{subsection.12.3}%
+\contentsline {section}{\tocsection {}{13}{Cohomology of Stacks}}{60}{section.13}%
+\contentsline {section}{\tocsection {}{14}{Derived Categories of Stacks}}{61}{section.14}%
+\contentsline {part}{\tocpart {Part}{}{End Material}}{62}{section*.7}%
+\contentsline {section}{\tocsection {Appendix}{A}{Representable Functors}}{62}{appendix.A}%
+\contentsline {section}{\tocsection {Appendix}{B}{Group Objects in Categories}}{64}{appendix.B}%
+\contentsline {section}{\tocsection {Appendix}{}{References}}{66}{section*.8}%
